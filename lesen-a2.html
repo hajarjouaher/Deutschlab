@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lesen A1 - Deutschlab</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background:#0f0f1a;
+    color:white;
+}
+
+/* HEADER */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+    position:sticky;
+    top:0;
+    backdrop-filter: blur(10px);
+}
+
+.back{
+    background:gold;
+    color:black;
+    padding:8px 12px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* TITLE */
+h1{
+    text-align:center;
+    margin:20px 0;
+    color:gold;
+}
+
+/* CARD LAYOUT (IMPORTANT FIX) */
+.card{
+    max-width:900px;
+    margin:25px auto;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:15px;
+    padding:20px;
+
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.01);
+    box-shadow:0 0 20px rgba(255,215,0,0.2);
+}
+
+/* IMAGE */
+.card img{
+    width:280px;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+    flex-shrink:0;
+}
+
+/* CONTENT */
+.card-content{
+    flex:1;
+}
+
+/* TEXT */
+.card h2{
+    color:gold;
+    margin-top:0;
+}
+
+.card p{
+    color:#ccc;
+    line-height:1.7;
+    font-size:18px;
+}
+
+/* QUESTION BOX */
+.question{
+    margin-top:15px;
+    padding:10px;
+    background:rgba(0,0,0,0.3);
+    border-radius:10px;
+}
+
+.question label{
+    display:block;
+    margin:6px 0;
+    cursor:pointer;
+}
+
+button{
+    margin-top:10px;
+    padding:8px 12px;
+    background:gold;
+    border:none;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+    .card{
+        flex-direction:column;
+    }
+
+    .card img{
+        width:100%;
+        height:200px;
+    }
+}
+.back{
+    position:fixed;
+    top:20px;
+    right:20px;
+    text-decoration:none;
+    background:gold;
+    color:black;
+    padding:10px 18px;
+    border-radius:12px;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    transition:0.3s;
+    z-index:1000;
+}
+
+.back:hover{
+    background:white;
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="topbar">
+    <a class="back" href="index.html">⬅ Home</a>
+</div>
+
+<h1>Texte + Übungen (A2 Niveau)</h1>
+
+<!-- 1 WOHNUNG -->
+<div class="card">
+    <img src="appartment.jfif">
+
+    <div class="content">
+        <h2>1) Wohnung in Berlin</h2>
+
+        <p>
+        Maria wohnt in einer kleinen Wohnung in Berlin.
+        Die Wohnung ist modern, aber manchmal laut.
+        Sie arbeitet von zu Hause aus am Computer.
+        Am Wochenende putzt sie oder trifft Freunde.
+        Manchmal gibt es Probleme mit dem Nachbarn.
+        </p>
+
+        <div class="question">
+            <p>1) Wo wohnt Maria?</p>
+            <label><input type="radio" name="q1" value="berlin"> Berlin</label>
+            <label><input type="radio" name="q1" value="münchen"> München</label>
+            <button onclick="check('q1','berlin','r1')">Check</button>
+            <div class="result" id="r1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Wo arbeitet sie?</p>
+            <label><input type="radio" name="q2" value="home"> Zu Hause</label>
+            <label><input type="radio" name="q2" value="büro"> Büro</label>
+            <button onclick="check('q2','home','r2')">Check</button>
+            <div class="result" id="r2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Wann putzt sie?</p>
+            <label><input type="radio" name="q3" value="wochenende"> Wochenende</label>
+            <label><input type="radio" name="q3" value="morgen"> Morgen</label>
+            <button onclick="check('q3','wochenende','r3')">Check</button>
+            <div class="result" id="r3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Gibt es Probleme?</p>
+            <label><input type="radio" name="q4" value="ja"> Ja</label>
+            <label><input type="radio" name="q4" value="nein"> Nein</label>
+            <button onclick="check('q4','ja','r4')">Check</button>
+            <div class="result" id="r4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Mit wem hat sie Probleme?</p>
+            <label><input type="radio" name="q5" value="nachbar"> Nachbar</label>
+            <label><input type="radio" name="q5" value="chef"> Chef</label>
+            <button onclick="check('q5','nachbar','r5')">Check</button>
+            <div class="result" id="r5"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 2 REISEN -->
+<div class="card">
+    <img src="travel.jfif">
+
+    <div class="content">
+        <h2>2) Reisen</h2>
+
+        <p>
+        Laura reist oft mit dem Zug in verschiedene Städte.
+        Sie packt ihren Koffer und fährt zum Bahnhof.
+        Im Zug liest sie oder hört Musik.
+        Manchmal ist die Reise lang und sie fühlt sich müde.
+        </p>
+
+        <div class="question">
+            <p>1) Wie reist Laura?</p>
+            <label><input type="radio" name="q6" value="zug"> Zug</label>
+            <label><input type="radio" name="q6" value="auto"> Auto</label>
+            <button onclick="check('q6','zug','r6')">Check</button>
+            <div class="result" id="r6"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Wohin geht sie?</p>
+            <label><input type="radio" name="q7" value="bahnhof"> Bahnhof</label>
+            <label><input type="radio" name="q7" value="schule"> Schule</label>
+            <button onclick="check('q7','bahnhof','r7')">Check</button>
+            <div class="result" id="r7"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Was macht sie im Zug?</p>
+            <label><input type="radio" name="q8" value="lesen"> Lesen</label>
+            <label><input type="radio" name="q8" value="arbeiten"> Arbeiten</label>
+            <button onclick="check('q8','lesen','r8')">Check</button>
+            <div class="result" id="r8"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Wie fühlt sie sich manchmal?</p>
+            <label><input type="radio" name="q9" value="müde"> Müde</label>
+            <label><input type="radio" name="q9" value="frisch"> Frisch</label>
+            <button onclick="check('q9','müde','r9')">Check</button>
+            <div class="result" id="r9"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 3 SUPERMARKT -->
+<div class="card">
+    <img src="supermarket.jfif" alt="Supermarket">
+
+    <div class="content">
+        <h2>3) Einkaufen im Supermarkt</h2>
+
+        <p>
+        Sara geht dreimal pro Woche in den Supermarkt. Sie macht einen Einkaufszettel, bevor sie geht.
+        Im Supermarkt nimmt sie einen Einkaufswagen und vergleicht die Preise.
+        Sie kauft frisches Obst, Gemüse, Brot, Milch und manchmal Fleisch.
+        Sie achtet auf Sonderangebote und wählt günstige Produkte.
+        An der Kasse bezahlt sie meistens mit Karte.
+        Danach geht sie nach Hause und räumt alles in die Küche.
+        </p>
+
+        <div class="question">
+            <p>1) Wie oft geht Sara einkaufen?</p>
+            <label><input type="radio" name="q10" value="dreimal"> Dreimal pro Woche</label>
+            <label><input type="radio" name="q10" value="einmal"> Einmal pro Woche</label>
+            <button onclick="check('q10','dreimal','r10')">Check</button>
+            <div class="result" id="r10"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Was macht sie vor dem Einkaufen?</p>
+            <label><input type="radio" name="q11" value="liste"> Einkaufszettel</label>
+            <label><input type="radio" name="q11" value="schlafen"> Schlafen</label>
+            <button onclick="check('q11','liste','r11')">Check</button>
+            <div class="result" id="r11"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Was nimmt sie im Supermarkt?</p>
+            <label><input type="radio" name="q12" value="wagen"> Einkaufswagen</label>
+            <label><input type="radio" name="q12" value="auto"> Auto</label>
+            <button onclick="check('q12','wagen','r12')">Check</button>
+            <div class="result" id="r12"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Was kauft sie?</p>
+            <label><input type="radio" name="q13" value="essen"> Lebensmittel</label>
+            <label><input type="radio" name="q13" value="kleidung"> Kleidung</label>
+            <button onclick="check('q13','essen','r13')">Check</button>
+            <div class="result" id="r13"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Wie bezahlt sie?</p>
+            <label><input type="radio" name="q14" value="karte"> Karte</label>
+            <label><input type="radio" name="q14" value="bar"> Bar</label>
+            <button onclick="check('q14','karte','r14')">Check</button>
+            <div class="result" id="r14"></div>
+        </div>
+
+        <div class="question">
+            <p>6) Wohin geht sie danach?</p>
+            <label><input type="radio" name="q15" value="haus"> Nach Hause</label>
+            <label><input type="radio" name="q15" value="arbeit"> Arbeit</label>
+            <button onclick="check('q15','haus','r15')">Check</button>
+            <div class="result" id="r15"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 4 ARZT -->
+<div class="card">
+    <img src="Dr.jfif" alt="Doctor">
+
+    <div class="content">
+        <h2>4) Arztbesuch</h2>
+
+        <p>
+        Lea fühlt sich krank und hat Kopfschmerzen. Sie geht zum Arzt in die Stadt.
+        Im Wartezimmer wartet sie etwa 20 Minuten.
+        Danach ruft der Arzt sie ins Sprechzimmer.
+        Der Arzt stellt Fragen und untersucht sie.
+        Er misst Fieber und hört die Lunge ab.
+        Der Arzt gibt ihr Medikamente und empfiehlt Ruhe.
+        Lea geht danach zur Apotheke und kauft die Medikamente.
+        </p>
+
+        <div class="question">
+            <p>1) Warum geht Lea zum Arzt?</p>
+            <label><input type="radio" name="q16" value="krank"> Sie ist krank</label>
+            <label><input type="radio" name="q16" value="sport"> Sport</label>
+            <button onclick="check('q16','krank','r16')">Check</button>
+            <div class="result" id="r16"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Wo wartet sie?</p>
+            <label><input type="radio" name="q17" value="wartezimmer"> Wartezimmer</label>
+            <label><input type="radio" name="q17" value="haus"> Haus</label>
+            <button onclick="check('q17','wartezimmer','r17')">Check</button>
+            <div class="result" id="r17"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Was macht der Arzt?</p>
+            <label><input type="radio" name="q18" value="untersuchen"> Untersucht sie</label>
+            <label><input type="radio" name="q18" value="kochen"> Kocht</label>
+            <button onclick="check('q18','untersuchen','r18')">Check</button>
+            <div class="result" id="r18"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Was misst der Arzt?</p>
+            <label><input type="radio" name="q19" value="fieber"> Fieber</label>
+            <label><input type="radio" name="q19" value="geld"> Geld</label>
+            <button onclick="check('q19','fieber','r19')">Check</button>
+            <div class="result" id="r19"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Was bekommt sie?</p>
+            <label><input type="radio" name="q20" value="medikamente"> Medikamente</label>
+            <label><input type="radio" name="q20" value="essen"> Essen</label>
+            <button onclick="check('q20','medikamente','r20')">Check</button>
+            <div class="result" id="r20"></div>
+        </div>
+
+        <div class="question">
+            <p>6) Wohin geht sie danach?</p>
+            <label><input type="radio" name="q21" value="apotheke"> Apotheke</label>
+            <label><input type="radio" name="q21" value="schule"> Schule</label>
+            <button onclick="check('q21','apotheke','r21')">Check</button>
+            <div class="result" id="r21"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 5 PROBLEME -->
+<div class="card">
+    <img src="problem.jfif" alt="Problem">
+
+    <div class="content">
+        <h2>5) Probleme im Alltag</h2>
+
+        <p>
+        Enrique hat heute einen stressigen Tag. Am Morgen funktioniert ihr Handy nicht mehr,
+        und er kann keinen wichtigen Anruf machen.
+
+        Danach verpasst sie den Bus und kommt zu spät zur Arbeit.
+        Ihr Chef ist nicht zufrieden und spricht mit ihr darüber.
+
+        Am Nachmittag verliert sie ihre Schlüssel und sucht sie lange in ihrer Tasche.
+        Zum Glück findet sie sie später im Büro.
+
+        Am Abend ist sie müde, aber sie versucht ruhig zu bleiben und den nächsten Tag besser zu planen.
+        </p>
+
+        <div class="question">
+            <p>1) Was funktioniert nicht?</p>
+            <label><input type="radio" name="q22" value="handy"> Handy</label>
+            <label><input type="radio" name="q22" value="auto"> Auto</label>
+            <label><input type="radio" name="q22" value="fernseher"> Fernseher</label>
+            <button onclick="check('q22','handy','r22')">Check</button>
+            <div class="result" id="r22"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Was passiert am Morgen?</p>
+            <label><input type="radio" name="q22b" value="bus"> Sie verpasst den Bus</label>
+            <label><input type="radio" name="q22b" value="reise"> Sie reist</label>
+            <label><input type="radio" name="q22b" value="schule"> Sie geht zur Schule</label>
+            <button onclick="check('q22b','bus','r22b')">Check</button>
+            <div class="result" id="r22b"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Was sagt der Chef?</p>
+            <label><input type="radio" name="q22c" value="unzufrieden"> Er ist nicht zufrieden</label>
+            <label><input type="radio" name="q22c" value="glücklich"> Er ist glücklich</label>
+            <label><input type="radio" name="q22c" value="krank"> Er ist krank</label>
+            <button onclick="check('q22c','unzufrieden','r22c')">Check</button>
+            <div class="result" id="r22c"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Was verliert Enrique?</p>
+            <label><input type="radio" name="q22d" value="schlüssel"> Schlüssel</label>
+            <label><input type="radio" name="q22d" value="geld"> Geld</label>
+            <label><input type="radio" name="q22d" value="tasche"> Tasche</label>
+            <button onclick="check('q22d','schlüssel','r22d')">Check</button>
+            <div class="result" id="r22d"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Wo findet er die Schlüssel?</p>
+            <label><input type="radio" name="q22e" value="büro"> Im Büro</label>
+            <label><input type="radio" name="q22e" value="haus"> Zu Hause</label>
+            <label><input type="radio" name="q22e" value="auto"> Im Auto</label>
+            <button onclick="check('q22e','büro','r22e')">Check</button>
+            <div class="result" id="r22e"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 6 UNFALL -->
+<div class="card">
+    <img src="accident.png" alt="Unfall">
+
+    <div class="content">
+        <h2>6) Unfall im Alltag</h2>
+
+        <p>
+        Jonas ist ein Praktikant und lernt gerade Erste Hilfe.
+        Am Morgen verlässt er schnell sein Haus, weil er zu seinem Kurs muss.
+        Auf der Straße ist es nass, weil es geregnet hat.
+
+        Er läuft zu schnell und rutscht auf dem Boden aus.
+
+        Er fällt hin und verletzt sich leicht am Knie.
+        Eine Frau hilft ihm sofort und zeigt ihm, wie man in einer Notfallsituation reagiert.
+
+        Der Ausbilder erklärt ihm später, was man bei einem Unfall tun muss.
+        Jonas lernt viel über Erste Hilfe und Notruf.
+        </p>
+
+        <div class="question">
+            <p>1) Warum ist der Boden nass?</p>
+            <label><input type="radio" name="q23" value="regen"> Es hat geregnet</label>
+            <label><input type="radio" name="q23" value="schnee"> Schnee</label>
+            <label><input type="radio" name="q23" value="sonne"> Sonne</label>
+            <button onclick="check('q23','regen','r23')">Check</button>
+            <div class="result" id="r23"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Was passiert mit Jonas?</p>
+            <label><input type="radio" name="q23b" value="fällt"> Er fällt hin</label>
+            <label><input type="radio" name="q23b" value="läuft"> Er läuft weg</label>
+            <label><input type="radio" name="q23b" value="schläft"> Er schläft</label>
+            <button onclick="check('q23b','fällt','r23b')">Check</button>
+            <div class="result" id="r23b"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Wer hilft ihm?</p>
+            <label><input type="radio" name="q23c" value="frau"> Eine Frau</label>
+            <label><input type="radio" name="q23c" value="arzt"> Ein Arzt</label>
+            <label><input type="radio" name="q23c" value="freund"> Ein Freund</label>
+            <button onclick="check('q23c','frau','r23c')">Check</button>
+            <div class="result" id="r23c"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Was lernt Jonas?</p>
+            <label><input type="radio" name="q23d" value="untersuchen"> Erste Hilfe</label>
+            <label><input type="radio" name="q23d" value="kochen"> Kochen</label>
+            <button onclick="check('q23d','untersuchen','r23d')">Check</button>
+            <div class="result" id="r23d"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Was macht er am Ende?</p>
+            <label><input type="radio" name="q23e" value="ruhen"> Weiter lernen</label>
+            <label><input type="radio" name="q23e" value="reisen"> Reisen</label>
+            <label><input type="radio" name="q23e" value="sport"> Sport machen</label>
+            <button onclick="check('q23e','ruhen','r23e')">Check</button>
+            <div class="result" id="r23e"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 7 AUSBILDUNG -->
+<div class="card">
+    <img src="computer work.jfif" alt="Büro">
+
+    <div class="content">
+        <h2>7) Ausbildung im Büro</h2>
+
+        <p>
+        Emma macht eine Ausbildung als Bürokauffrau. Jeden Morgen beginnt sie um 8 Uhr im Büro.
+        Sie arbeitet am Computer, beantwortet E-Mails und organisiert Dokumente.
+
+        Ihre Ausbilderin zeigt ihr neue Aufgaben und erklärt wichtige Programme.
+        Emma lernt viel über Kommunikation und Büroarbeit.
+
+        In der Mittagspause isst sie mit ihren Kollegen und spricht über die Arbeit.
+        Am Ende des Tages schreibt sie Berichte über ihre Aufgaben.
+        </p>
+
+        <div class="question">
+            <p>1) Welche Ausbildung macht Emma?</p>
+            <label><input type="radio" name="q24" value="buero"> Bürokauffrau</label>
+            <label><input type="radio" name="q24" value="arzt"> Arzt</label>
+            <label><input type="radio" name="q24" value="koch"> Koch</label>
+            <button onclick="check('q24','buero','r24')">Check</button>
+            <div class="result" id="r24"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Wann beginnt sie zu arbeiten?</p>
+            <label><input type="radio" name="q24b" value="8uhr"> 8 Uhr</label>
+            <label><input type="radio" name="q24b" value="10uhr"> 10 Uhr</label>
+            <label><input type="radio" name="q24b" value="12uhr"> 12 Uhr</label>
+            <button onclick="check('q24b','8uhr','r24b')">Check</button>
+            <div class="result" id="r24b"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Was macht sie am Computer?</p>
+            <label><input type="radio" name="q24c" value="emails"> E-Mails beantworten</label>
+            <label><input type="radio" name="q24c" value="spielen"> Spielen</label>
+            <label><input type="radio" name="q24c" value="kochen"> Kochen</label>
+            <button onclick="check('q24c','emails','r24c')">Check</button>
+            <div class="result" id="r24c"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Mit wem isst sie in der Pause?</p>
+            <label><input type="radio" name="q24d" value="kollegen"> Kollegen</label>
+            <label><input type="radio" name="q24d" value="lehrer"> Lehrer</label>
+            <label><input type="radio" name="q24d" value="familie"> Familie</label>
+            <button onclick="check('q24d','kollegen','r24d')">Check</button>
+            <div class="result" id="r24d"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Was schreibt sie am Ende?</p>
+            <label><input type="radio" name="q24e" value="bericht"> Bericht</label>
+            <label><input type="radio" name="q24e" value="buch"> Buch</label>
+            <label><input type="radio" name="q24e" value="brief"> Brief</label>
+            <button onclick="check('q24e','bericht','r24e')">Check</button>
+            <div class="result" id="r24e"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function check(q, correct, resultId){
+    let val = document.querySelector('input[name="'+q+'"]:checked');
+
+    if(!val){
+        document.getElementById(resultId).innerHTML = "⚠️ Wähle eine Antwort";
+        return;
+    }
+
+    if(val.value === correct){
+        document.getElementById(resultId).innerHTML = "✅ Richtig!";
+    } else {
+        document.getElementById(resultId).innerHTML = "❌ Falsch";
+    }
+}
+</script>
+
+</body>
+</html>

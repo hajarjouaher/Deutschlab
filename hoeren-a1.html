@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hören A1 Übungen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+body{
+    background:#0a0a0f;
+    color:white;
+}
+
+/* TOP HEADER */
+.main-title{
+    text-align:center;
+    padding:30px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.main-title h1{
+    color:#ffd700;
+    font-size:28px;
+}
+
+.main-title p{
+    color:#ccc;
+    font-size:14px;
+}
+
+/* SECTION WRAPPER */
+.section-block{
+    max-width:850px;
+    margin:50px auto;
+    padding:0 15px 40px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* SECTION TITLE */
+.section-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    color:#ffd700;
+    font-size:22px;
+}
+
+.section-title p{
+    color:#aaa;
+    font-size:13px;
+}
+
+/* AUDIO BOX */
+.audio-box{
+    background:rgba(255,215,0,0.08);
+    border:1px solid rgba(255,215,0,0.25);
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+audio{
+    width:100%;
+    margin-top:10px;
+}
+
+/* QUESTION CARD SMALL */
+.question{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,215,0,0.12);
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.question:hover{
+    transform:translateY(-3px);
+    border-color:#ffd700;
+}
+
+.question h3{
+    font-size:14px;
+    margin-bottom:10px;
+    color:#ffd700;
+}
+
+/* OPTIONS */
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.option{
+    padding:8px;
+    border-radius:8px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.08);
+    cursor:pointer;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#ffd700;
+    color:black;
+}
+
+.option.selected{
+    background:#ffd700;
+    color:black;
+}
+
+/* BUTTON */
+.check-btn{
+    margin-top:10px;
+    padding:7px 14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#ffd700;
+    font-weight:bold;
+    font-size:12px;
+}
+
+/* RESULT */
+.result{
+    margin-top:8px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* FOOT SPACING */
+.space{
+    height:30px;
+}
+/*back */
+.back-btn{
+    display:inline-block;
+    padding:10px 16px;
+    background:#ffd700;
+    color:black;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:12px;
+    transition:0.3s;
+    margin:15px;
+}
+
+.back-btn:hover{
+    transform:scale(1.05);
+    background:#ffcc00;
+}
+
+</style>
+
+</head>
+
+<body>
+<a href="Horen.html" class="back-btn">⬅ Back to Hören</a>
+<div class="main-title">
+    <h1>🎧 Hören A1 Übungen</h1>
+    <p>Trainiere dein Hörverständnis Schritt für Schritt</p>
+</div>
+
+<!-- ================= MARKUS ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Markus - Audio</h2>
+        <p>Höre den Text und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A1-Markus.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div class="question" data-answer="Am Bahnhof">
+        <h3>1️⃣ Wo wartet Markus?</h3>
+        <div class="options">
+            <div class="option">Im Krankenhaus</div>
+            <div class="option">Am Bahnhof</div>
+            <div class="option">Im Café</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <div class="question" data-answer="Seit 20 Minuten">
+        <h3>2️⃣ Wie lange wartet Markus schon?</h3>
+        <div class="options">
+            <div class="option">Seit 10 Minuten</div>
+            <div class="option">Seit 20 Minuten</div>
+            <div class="option">Seit 1 Stunde</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <div class="question" data-answer="Daniel">
+        <h3>3️⃣ Wer bekommt die Sprachnachricht?</h3>
+        <div class="options">
+            <div class="option">Anna</div>
+            <div class="option">Daniel</div>
+            <div class="option">Markus</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+
+<!-- ================= LINA ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Lina - Audio</h2>
+        <p>Höre den Text und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A1-Lina.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div class="question" data-answer="Lina fliegt nach Berlin">
+        <h3>1️⃣ Wer fliegt nach Berlin?</h3>
+        <div class="options">
+            <div class="option">Anna fliegt nach Berlin</div>
+            <div class="option">Lina fliegt nach Berlin</div>
+            <div class="option">Markus fliegt nach Berlin</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <div class="question" data-answer="Nach Berlin">
+        <h3>2️⃣ Wohin fliegt Lina?</h3>
+        <div class="options">
+            <div class="option">Nach München</div>
+            <div class="option">Nach Berlin</div>
+            <div class="option">Nach Hamburg</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <div class="question" data-answer="Für ein Vorstellungsgespräch">
+        <h3>3️⃣ Warum fliegt Lina nach Berlin?</h3>
+        <div class="options">
+            <div class="option">Für Urlaub</div>
+            <div class="option">Für ein Vorstellungsgespräch</div>
+            <div class="option">Für Besuch</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <div class="question" data-answer="Die Pflanzen gießen">
+        <h3>4️⃣ Was soll Anna tun?</h3>
+        <div class="options">
+            <div class="option">Die Pflanzen gießen</div>
+            <div class="option">Das Auto waschen</div>
+            <div class="option">Das Haus putzen</div>
+        </div>
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+
+<!-- SCRIPT -->
+
+<!-- ================= JONAS ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Jonas - Audio</h2>
+        <p>Höre den Dialog und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A1-jonas.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Jonas">
+
+        <h3>1️⃣ Wer ist schon im Restaurant?</h3>
+
+        <div class="options">
+            <div class="option">Jonas</div>
+            <div class="option">Sarah</div>
+            <div class="option">Der Kellner</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Am Fenster">
+
+        <h3>2️⃣ Wo sitzt Jonas?</h3>
+
+        <div class="options">
+            <div class="option">Am Eingang</div>
+            <div class="option">Am Fenster</div>
+            <div class="option">An der Bar</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Die Speisekarte">
+
+        <h3>3️⃣ Was bringt der Kellner?</h3>
+
+        <div class="options">
+            <div class="option">Das Wasser</div>
+            <div class="option">Die Speisekarte</div>
+            <div class="option">Das Essen</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-answer="Sarah">
+
+        <h3>4️⃣ Wer bekommt die Sprachnachricht?</h3>
+
+        <div class="options">
+            <div class="option">Jonas</div>
+            <div class="option">Sarah</div>
+            <div class="option">Der Kellner</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- ================= JULIA / LISA ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Lisa - Audio</h2>
+        <p>Höre den Dialog und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A1-julia.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Sie ist krank">
+
+        <h3>1️⃣ Wie geht es Lisa heute?</h3>
+
+        <div class="options">
+            <div class="option">Sie ist müde</div>
+            <div class="option">Sie ist krank</div>
+            <div class="option">Sie ist glücklich</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Zum Arzt">
+
+        <h3>2️⃣ Wohin geht Lisa jetzt?</h3>
+
+        <div class="options">
+            <div class="option">Zur Schule</div>
+            <div class="option">Zum Arzt</div>
+            <div class="option">Zur Arbeit</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Husten und Kopfschmerzen">
+
+        <h3>3️⃣ Was tut Lisa weh?</h3>
+
+        <div class="options">
+            <div class="option">Bauchschmerzen und Fieber</div>
+            <div class="option">Husten und Kopfschmerzen</div>
+            <div class="option">Rückenschmerzen</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-answer="Zur Party">
+
+        <h3>4️⃣ Wohin kann Lisa nicht kommen?</h3>
+
+        <div class="options">
+            <div class="option">Zur Party</div>
+            <div class="option">Zum Restaurant</div>
+            <div class="option">Zum Bahnhof</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- ================= BEN ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Ben - Audio</h2>
+        <p>Höre den Dialog und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A1-Ben.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Vor dem Kino">
+
+        <h3>1️⃣ Wo steht Ben?</h3>
+
+        <div class="options">
+            <div class="option">Im Restaurant</div>
+            <div class="option">Vor dem Kino</div>
+            <div class="option">Am Bahnhof</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Die Tickets">
+
+        <h3>2️⃣ Was kauft Ben gerade?</h3>
+
+        <div class="options">
+            <div class="option">Popcorn</div>
+            <div class="option">Die Tickets</div>
+            <div class="option">Getränke</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Um acht Uhr">
+
+        <h3>3️⃣ Um wie viel Uhr fängt der Film an?</h3>
+
+        <div class="options">
+            <div class="option">Um sechs Uhr</div>
+            <div class="option">Um acht Uhr</div>
+            <div class="option">Um zehn Uhr</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-answer="Popcorn und Cola">
+
+        <h3>4️⃣ Was soll Felix mitbringen?</h3>
+
+        <div class="options">
+            <div class="option">Pizza und Wasser</div>
+            <div class="option">Popcorn und Cola</div>
+            <div class="option">Kaffee und Kuchen</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- ================= MAX ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Max - Audio</h2>
+        <p>Höre den Dialog und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A1-max.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Im Fitnessstudio">
+
+        <h3>1️⃣ Wo ist Max?</h3>
+
+        <div class="options">
+            <div class="option">Im Restaurant</div>
+            <div class="option">Im Fitnessstudio</div>
+            <div class="option">Im Kino</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Trainieren und eine Pause machen">
+
+        <h3>2️⃣ Was macht Max gerade?</h3>
+
+        <div class="options">
+            <div class="option">Arbeiten und telefonieren</div>
+            <div class="option">Trainieren und eine Pause machen</div>
+            <div class="option">Essen und schlafen</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Wasser">
+
+        <h3>3️⃣ Was trinkt Max?</h3>
+
+        <div class="options">
+            <div class="option">Kaffee</div>
+            <div class="option">Saft</div>
+            <div class="option">Wasser</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-answer="Tim">
+
+        <h3>4️⃣ Wer bekommt die Sprachnachricht?</h3>
+
+        <div class="options">
+            <div class="option">Jonas</div>
+            <div class="option">Tim</div>
+            <div class="option">Ben</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- SCRIPT -->
+<script>
+document.querySelectorAll('.question').forEach(question => {
+
+    const options = question.querySelectorAll('.option');
+    const button = question.querySelector('.check-btn');
+    const result = question.querySelector('.result');
+    const correctAnswer = question.getAttribute('data-answer');
+
+    let selected = null;
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+
+            options.forEach(o => o.classList.remove('selected'));
+            option.classList.add('selected');
+
+            selected = option.textContent;
+        });
+    });
+
+    button.addEventListener('click', () => {
+
+        if(!selected){
+            result.textContent = "⚠ Bitte wähle eine Antwort";
+            result.style.color = "orange";
+            return;
+        }
+
+        if(selected === correctAnswer){
+            result.textContent = "✔ Richtig!";
+            result.style.color = "#00ff99";
+        } else {
+            result.textContent = "❌ Falsch! Richtige Antwort: " + correctAnswer;
+            result.style.color = "red";
+        }
+
+    });
+
+});
+</script>
+</body>
+</html>

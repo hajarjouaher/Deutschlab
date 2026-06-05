@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lesen A1 - Deutschlab</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background:#0f0f1a;
+    color:white;
+}
+
+/* HEADER */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+    position:sticky;
+    top:0;
+    backdrop-filter: blur(10px);
+}
+
+.back{
+    background:gold;
+    color:black;
+    padding:8px 12px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* TITLE */
+h1{
+    text-align:center;
+    margin:20px 0;
+    color:gold;
+}
+
+/* CARD LAYOUT (IMPORTANT FIX) */
+.card{
+    max-width:900px;
+    margin:25px auto;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:15px;
+    padding:20px;
+
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.01);
+    box-shadow:0 0 20px rgba(255,215,0,0.2);
+}
+
+/* IMAGE */
+.card img{
+    width:280px;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+    flex-shrink:0;
+}
+
+/* CONTENT */
+.card-content{
+    flex:1;
+}
+
+/* TEXT */
+.card h2{
+    color:gold;
+    margin-top:0;
+}
+
+.card p{
+    color:#ccc;
+    line-height:1.7;
+    font-size:18px;
+}
+
+/* QUESTION BOX */
+.question{
+    margin-top:15px;
+    padding:10px;
+    background:rgba(0,0,0,0.3);
+    border-radius:10px;
+}
+
+.question label{
+    display:block;
+    margin:6px 0;
+    cursor:pointer;
+}
+
+button{
+    margin-top:10px;
+    padding:8px 12px;
+    background:gold;
+    border:none;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+    .card{
+        flex-direction:column;
+    }
+
+    .card img{
+        width:100%;
+        height:200px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <h2>📖 Lesen A1</h2>
+    <a class="back" href="index.html">⬅ Home</a>
+</div>
+
+<h1>Einfach Texte + Übungen</h1>
+
+<!-- 1 -->
+<div class="card">
+<img src="Morning.png">
+
+<div class="card-content">
+
+<h2>1) Tagesroutine</h2>
+
+<p>
+Anna steht jeden Morgen um 7 Uhr auf. Sie geht ins Badezimmer, duscht und frühstückt.
+Danach fährt sie mit dem Bus zur Sprachschule und lernt Deutsch.
+Am Nachmittag macht sie Hausaufgaben und hört Musik.
+Am Abend isst sie mit ihrer Familie und sieht fern.
+</p>
+
+<div class="question">
+<p>1) Wann steht Anna auf?</p>
+<label><input type="radio" name="q1" value="6"> 6 Uhr</label>
+<label><input type="radio" name="q1" value="7"> 7 Uhr</label>
+<label><input type="radio" name="q1" value="9"> 9 Uhr</label>
+<button onclick="check('q1','7','r1')">Check</button>
+<div class="result" id="r1"></div>
+</div>
+
+<div class="question">
+<p>2) Wohin geht Anna zuerst?</p>
+<label><input type="radio" name="q1a" value="bad"> Ins Badezimmer</label>
+<label><input type="radio" name="q1a" value="schule"> Zur Schule</label>
+<label><input type="radio" name="q1a" value="park"> In den Park</label>
+<button onclick="check('q1a','bad','r1a')">Check</button>
+<div class="result" id="r1a"></div>
+</div>
+
+<div class="question">
+<p>3) Was macht sie nach dem Aufstehen?</p>
+<label><input type="radio" name="q1b" value="duscht"> Sie duscht</label>
+<label><input type="radio" name="q1b" value="schlaft"> Sie schläft</label>
+<label><input type="radio" name="q1b" value="arbeitet"> Sie arbeitet</label>
+<button onclick="check('q1b','duscht','r1b')">Check</button>
+<div class="result" id="r1b"></div>
+</div>
+
+<div class="question">
+<p>4) Wie fährt sie zur Sprachschule?</p>
+<label><input type="radio" name="q1c" value="bus"> Mit dem Bus</label>
+<label><input type="radio" name="q1c" value="auto"> Mit dem Auto</label>
+<label><input type="radio" name="q1c" value="fahrrad"> Mit dem Fahrrad</label>
+<button onclick="check('q1c','bus','r1c')">Check</button>
+<div class="result" id="r1c"></div>
+</div>
+
+<div class="question">
+<p>5) Was lernt sie?</p>
+<label><input type="radio" name="q1d" value="deutsch"> Deutsch</label>
+<label><input type="radio" name="q1d" value="mathe"> Mathe</label>
+<label><input type="radio" name="q1d" value="sport"> Sport</label>
+<button onclick="check('q1d','deutsch','r1d')">Check</button>
+<div class="result" id="r1d"></div>
+</div>
+
+<div class="question">
+<p>6) Was macht sie am Nachmittag?</p>
+<label><input type="radio" name="q1e" value="hausaufgaben"> Hausaufgaben</label>
+<label><input type="radio" name="q1e" value="reisen"> Reisen</label>
+<label><input type="radio" name="q1e" value="kochen"> Kochen</label>
+<button onclick="check('q1e','hausaufgaben','r1e')">Check</button>
+<div class="result" id="r1e"></div>
+</div>
+
+<div class="question">
+<p>7) Was hört sie?</p>
+<label><input type="radio" name="q1f" value="musik"> Musik</label>
+<label><input type="radio" name="q1f" value="radio"> Nachrichten</label>
+<label><input type="radio" name="q1f" value="nichts"> Nichts</label>
+<button onclick="check('q1f','musik','r1f')">Check</button>
+<div class="result" id="r1f"></div>
+</div>
+
+<div class="question">
+<p>8) Mit wem isst sie am Abend?</p>
+<label><input type="radio" name="q1g" value="familie"> Mit ihrer Familie</label>
+<label><input type="radio" name="q1g" value="freundin"> Mit ihrer Freundin</label>
+<label><input type="radio" name="q1g" value="allein"> Allein</label>
+<button onclick="check('q1g','familie','r1g')">Check</button>
+<div class="result" id="r1g"></div>
+</div>
+
+<div class="question">
+<p>9) Was macht sie am Abend?</p>
+<label><input type="radio" name="q1h" value="fern"> Sie sieht fern</label>
+<label><input type="radio" name="q1h" value="arbeitet"> Sie arbeitet</label>
+<label><input type="radio" name="q1h" value="lernt"> Sie lernt</label>
+<button onclick="check('q1h','fern','r1h')">Check</button>
+<div class="result" id="r1h"></div>
+</div>
+
+</div>
+</div>
+<!-- 2 -->
+<div class="card">
+<img src="cafe.png" alt="Cafe">
+
+<div class="card-content">
+
+<h2>2) Im Café</h2>
+
+<p>
+Tom geht jeden Nachmittag in ein kleines Café in der Stadt.
+Das Café ist ruhig und gemütlich. Tom sitzt gern am Fenster.
+Er bestellt meistens einen Kaffee und ein Stück Kuchen.
+
+Manchmal trinkt er auch Tee oder Wasser.
+Im Café liest er Bücher und lernt Deutsch.
+Er schreibt neue Wörter in ein Notizbuch.
+
+Oft trifft Tom seine Freunde im Café.
+Sie sprechen zusammen und lachen viel.
+Am Abend geht Tom nach Hause und hört Musik.
+</p>
+
+<div class="question">
+<p>1) Wohin geht Tom?</p>
+<label><input type="radio" name="q2a" value="cafe"> Ins Café</label>
+<label><input type="radio" name="q2a" value="schule"> In die Schule</label>
+<label><input type="radio" name="q2a" value="park"> In den Park</label>
+<button onclick="check('q2a','cafe','r2a')">Check</button>
+<div class="result" id="r2a"></div>
+</div>
+
+<div class="question">
+<p>2) Wie ist das Café?</p>
+<label><input type="radio" name="q2b" value="ruhig"> Ruhig und gemütlich</label>
+<label><input type="radio" name="q2b" value="laut"> Laut</label>
+<label><input type="radio" name="q2b" value="klein"> Leer</label>
+<button onclick="check('q2b','ruhig','r2b')">Check</button>
+<div class="result" id="r2b"></div>
+</div>
+
+<div class="question">
+<p>3) Wo sitzt Tom?</p>
+<label><input type="radio" name="q2c" value="fenster"> Am Fenster</label>
+<label><input type="radio" name="q2c" value="tür"> An der Tür</label>
+<label><input type="radio" name="q2c" value="garten"> Im Garten</label>
+<button onclick="check('q2c','fenster','r2c')">Check</button>
+<div class="result" id="r2c"></div>
+</div>
+
+<div class="question">
+<p>4) Was bestellt er?</p>
+<label><input type="radio" name="q2d" value="kaffee"> Kaffee und Kuchen</label>
+<label><input type="radio" name="q2d" value="pizza"> Pizza</label>
+<label><input type="radio" name="q2d" value="suppe"> Suppe</label>
+<button onclick="check('q2d','kaffee','r2d')">Check</button>
+<div class="result" id="r2d"></div>
+</div>
+
+<div class="question">
+<p>5) Was trinkt er manchmal?</p>
+<label><input type="radio" name="q2e" value="tee"> Tee oder Wasser</label>
+<label><input type="radio" name="q2e" value="cola"> Cola</label>
+<label><input type="radio" name="q2e" value="milch"> Milch</label>
+<button onclick="check('q2e','tee','r2e')">Check</button>
+<div class="result" id="r2e"></div>
+</div>
+
+<div class="question">
+<p>6) Was macht Tom im Café?</p>
+<label><input type="radio" name="q2f" value="lesen"> Lesen und Deutsch lernen</label>
+<label><input type="radio" name="q2f" value="sport"> Sport machen</label>
+<label><input type="radio" name="q2f" value="kochen"> Kochen</label>
+<button onclick="check('q2f','lesen','r2f')">Check</button>
+<div class="result" id="r2f"></div>
+</div>
+
+<div class="question">
+<p>7) Was schreibt er?</p>
+<label><input type="radio" name="q2g" value="wörter"> Neue Wörter</label>
+<label><input type="radio" name="q2g" value="zahlen"> Zahlen</label>
+<label><input type="radio" name="q2g" value="essen"> Essen</label>
+<button onclick="check('q2g','wörter','r2g')">Check</button>
+<div class="result" id="r2g"></div>
+</div>
+
+<div class="question">
+<p>8) Wen trifft Tom oft?</p>
+<label><input type="radio" name="q2h" value="freunde"> Seine Freunde</label>
+<label><input type="radio" name="q2h" value="familie"> Seine Familie</label>
+<label><input type="radio" name="q2h" value="lehrer"> Seine Lehrer</label>
+<button onclick="check('q2h','freunde','r2h')">Check</button>
+<div class="result" id="r2h"></div>
+</div>
+
+<div class="question">
+<p>9) Was machen sie zusammen?</p>
+<label><input type="radio" name="q2i" value="sprechen"> Sie sprechen und lachen</label>
+<label><input type="radio" name="q2i" value="arbeiten"> Sie arbeiten</label>
+<label><input type="radio" name="q2i" value="reisen"> Sie reisen</label>
+<button onclick="check('q2i','sprechen','r2i')">Check</button>
+<div class="result" id="r2i"></div>
+</div>
+
+<div class="question">
+<p>10) Was macht Tom am Abend?</p>
+<label><input type="radio" name="q2j" value="musik"> Er hört Musik</label>
+<label><input type="radio" name="q2j" value="schlafen"> Er schläft sofort</label>
+<label><input type="radio" name="q2j" value="arbeiten"> Er arbeitet</label>
+<button onclick="check('q2j','musik','r2j')">Check</button>
+<div class="result" id="r2j"></div>
+</div>
+
+</div>
+</div>
+<!-- 3 -->
+ <div class="card">
+    <img src="classroom.png" alt="Classroom">
+
+    <div class="content">
+        <h2>3) Im Deutschkurs</h2>
+
+        <p>
+        Die Schüler kommen jeden Morgen in den Deutschkurs.
+        Der Kurs beginnt um 9 Uhr.
+        Der Lehrer heißt Herr Braun und erklärt neue Wörter und einfache Grammatik.
+
+        Die Schüler lesen kleine Texte, schreiben Sätze und sprechen zusammen Deutsch.
+        Manchmal arbeiten sie in Gruppen und machen Übungen.
+        Einige Schüler kommen aus verschiedenen Ländern.
+
+        Anna sitzt neben Maria.
+        Sie lernen zusammen und helfen sich gegenseitig.
+        In der Pause trinken die Schüler Kaffee oder Wasser und sprechen über ihren Tag.
+
+        Alle Schüler lernen Deutsch, weil sie in Deutschland leben oder arbeiten möchten.
+        Der Kurs ist interessant und macht den Schülern Spaß.
+        </p>
+
+        <div class="question">
+            <p><b>1) Wann beginnt der Kurs?</b></p>
+            <label><input type="radio" name="q3a" value="8"> Um 8 Uhr</label>
+            <label><input type="radio" name="q3a" value="9"> Um 9 Uhr</label>
+            <label><input type="radio" name="q3a" value="10"> Um 10 Uhr</label>
+            <button onclick="check('q3a','9','r3a')">Check</button>
+            <div class="result" id="r3a"></div>
+        </div>
+
+        <div class="question">
+            <p><b>2) Wie heißt der Lehrer?</b></p>
+            <label><input type="radio" name="q3b" value="braun"> Herr Braun</label>
+            <label><input type="radio" name="q3b" value="müller"> Herr Müller</label>
+            <label><input type="radio" name="q3b" value="paul"> Herr Paul</label>
+            <button onclick="check('q3b','braun','r3b')">Check</button>
+            <div class="result" id="r3b"></div>
+        </div>
+
+        <div class="question">
+            <p><b>3) Was erklärt der Lehrer?</b></p>
+            <label><input type="radio" name="q3c" value="grammatik"> Wörter und Grammatik</label>
+            <label><input type="radio" name="q3c" value="sport"> Sport</label>
+            <label><input type="radio" name="q3c" value="musik"> Musik</label>
+            <button onclick="check('q3c','grammatik','r3c')">Check</button>
+            <div class="result" id="r3c"></div>
+        </div>
+
+        <div class="question">
+            <p><b>4) Was machen die Schüler?</b></p>
+            <label><input type="radio" name="q3d" value="lesen"> Lesen und schreiben</label>
+            <label><input type="radio" name="q3d" value="schlafen"> Schlafen</label>
+            <label><input type="radio" name="q3d" value="tanzen"> Tanzen</label>
+            <button onclick="check('q3d','lesen','r3d')">Check</button>
+            <div class="result" id="r3d"></div>
+        </div>
+
+        <div class="question">
+            <p><b>5) Arbeiten die Schüler manchmal in Gruppen?</b></p>
+            <label><input type="radio" name="q3e" value="ja"> Ja</label>
+            <label><input type="radio" name="q3e" value="nein"> Nein</label>
+            <button onclick="check('q3e','ja','r3e')">Check</button>
+            <div class="result" id="r3e"></div>
+        </div>
+
+        <div class="question">
+            <p><b>6) Woher kommen einige Schüler?</b></p>
+            <label><input type="radio" name="q3f" value="länder"> Aus verschiedenen Ländern</label>
+            <label><input type="radio" name="q3f" value="schule"> Aus der Schule</label>
+            <label><input type="radio" name="q3f" value="park"> Aus dem Park</label>
+            <button onclick="check('q3f','länder','r3f')">Check</button>
+            <div class="result" id="r3f"></div>
+        </div>
+
+        <div class="question">
+            <p><b>7) Neben wem sitzt Anna?</b></p>
+            <label><input type="radio" name="q3g" value="maria"> Neben Maria</label>
+            <label><input type="radio" name="q3g" value="tom"> Neben Tom</label>
+            <label><input type="radio" name="q3g" value="sara"> Neben Sara</label>
+            <button onclick="check('q3g','maria','r3g')">Check</button>
+            <div class="result" id="r3g"></div>
+        </div>
+
+        <div class="question">
+            <p><b>8) Was trinken die Schüler in der Pause?</b></p>
+            <label><input type="radio" name="q3h" value="kaffee"> Kaffee oder Wasser</label>
+            <label><input type="radio" name="q3h" value="cola"> Cola</label>
+            <label><input type="radio" name="q3h" value="saft"> Saft</label>
+            <button onclick="check('q3h','kaffee','r3h')">Check</button>
+            <div class="result" id="r3h"></div>
+        </div>
+
+        <div class="question">
+            <p><b>9) Warum lernen die Schüler Deutsch?</b></p>
+            <label><input type="radio" name="q3i" value="deutschland"> Sie möchten in Deutschland leben oder arbeiten</label>
+            <label><input type="radio" name="q3i" value="urlaub"> Sie machen Urlaub</label>
+            <label><input type="radio" name="q3i" value="film"> Sie sehen Filme</label>
+            <button onclick="check('q3i','deutschland','r3i')">Check</button>
+            <div class="result" id="r3i"></div>
+        </div>
+
+        <div class="question">
+            <p><b>10) Wie ist der Kurs?</b></p>
+            <label><input type="radio" name="q3j" value="interessant"> Interessant</label>
+            <label><input type="radio" name="q3j" value="langweilig"> Langweilig</label>
+            <label><input type="radio" name="q3j" value="schlecht"> Schlecht</label>
+            <button onclick="check('q3j','interessant','r3j')">Check</button>
+            <div class="result" id="r3j"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 4 -->
+<div class="card">
+    <img src="shopping.png" alt="Shopping">
+
+    <div class="content">
+        <h2>4) Einkaufen im Supermarkt</h2>
+
+        <p>
+        Sara geht zweimal pro Woche in den Supermarkt.
+        Heute möchte sie viele Lebensmittel kaufen.
+
+        Sie nimmt einen Einkaufswagen und geht langsam durch die Regale.
+        Zuerst kauft sie Brot, Milch und Käse.
+        Danach nimmt sie Obst und Gemüse.
+
+        Sara vergleicht die Preise und sucht frische Produkte.
+        Im Supermarkt sind viele Menschen.
+        Einige kaufen Getränke, andere kaufen Süßigkeiten.
+
+        An der Kasse bezahlt Sara mit ihrer Karte.
+        Die Kassiererin ist freundlich und lächelt.
+        Danach packt Sara alles in ihre Tasche und geht nach Hause.
+        </p>
+
+        <div class="question">
+            <p><b>1) Wie oft geht Sara einkaufen?</b></p>
+            <label><input type="radio" name="q4a" value="einmal"> Einmal pro Woche</label>
+            <label><input type="radio" name="q4a" value="zweimal"> Zweimal pro Woche</label>
+            <label><input type="radio" name="q4a" value="nie"> Nie</label>
+            <button onclick="check('q4a','zweimal','r4a')">Check</button>
+            <div class="result" id="r4a"></div>
+        </div>
+
+        <div class="question">
+            <p><b>2) Wohin geht Sara?</b></p>
+            <label><input type="radio" name="q4b" value="supermarkt"> In den Supermarkt</label>
+            <label><input type="radio" name="q4b" value="schule"> In die Schule</label>
+            <label><input type="radio" name="q4b" value="park"> In den Park</label>
+            <button onclick="check('q4b','supermarkt','r4b')">Check</button>
+            <div class="result" id="r4b"></div>
+        </div>
+
+        <div class="question">
+            <p><b>3) Was nimmt sie im Supermarkt?</b></p>
+            <label><input type="radio" name="q4c" value="wagen"> Einen Einkaufswagen</label>
+            <label><input type="radio" name="q4c" value="fahrrad"> Ein Fahrrad</label>
+            <label><input type="radio" name="q4c" value="tasche"> Eine Tasche</label>
+            <button onclick="check('q4c','wagen','r4c')">Check</button>
+            <div class="result" id="r4c"></div>
+        </div>
+
+        <div class="question">
+            <p><b>4) Was kauft sie zuerst?</b></p>
+            <label><input type="radio" name="q4d" value="brot"> Brot, Milch und Käse</label>
+            <label><input type="radio" name="q4d" value="pizza"> Pizza</label>
+            <label><input type="radio" name="q4d" value="kleidung"> Kleidung</label>
+            <button onclick="check('q4d','brot','r4d')">Check</button>
+            <div class="result" id="r4d"></div>
+        </div>
+
+        <div class="question">
+            <p><b>5) Was kauft sie danach?</b></p>
+            <label><input type="radio" name="q4e" value="obst"> Obst und Gemüse</label>
+            <label><input type="radio" name="q4e" value="bücher"> Bücher</label>
+            <label><input type="radio" name="q4e" value="computer"> Computer</label>
+            <button onclick="check('q4e','obst','r4e')">Check</button>
+            <div class="result" id="r4e"></div>
+        </div>
+
+        <div class="question">
+            <p><b>6) Was macht Sara im Supermarkt?</b></p>
+            <label><input type="radio" name="q4f" value="preise"> Sie vergleicht die Preise</label>
+            <label><input type="radio" name="q4f" value="tanzen"> Sie tanzt</label>
+            <label><input type="radio" name="q4f" value="schlafen"> Sie schläft</label>
+            <button onclick="check('q4f','preise','r4f')">Check</button>
+            <div class="result" id="r4f"></div>
+        </div>
+
+        <div class="question">
+            <p><b>7) Sind viele Menschen im Supermarkt?</b></p>
+            <label><input type="radio" name="q4g" value="ja"> Ja</label>
+            <label><input type="radio" name="q4g" value="nein"> Nein</label>
+            <button onclick="check('q4g','ja','r4g')">Check</button>
+            <div class="result" id="r4g"></div>
+        </div>
+
+        <div class="question">
+            <p><b>8) Was kaufen andere Menschen?</b></p>
+            <label><input type="radio" name="q4h" value="getränke"> Getränke und Süßigkeiten</label>
+            <label><input type="radio" name="q4h" value="autos"> Autos</label>
+            <label><input type="radio" name="q4h" value="möbel"> Möbel</label>
+            <button onclick="check('q4h','getränke','r4h')">Check</button>
+            <div class="result" id="r4h"></div>
+        </div>
+
+        <div class="question">
+            <p><b>9) Wie bezahlt Sara?</b></p>
+            <label><input type="radio" name="q4i" value="karte"> Mit Karte</label>
+            <label><input type="radio" name="q4i" value="bar"> Bar</label>
+            <label><input type="radio" name="q4i" value="nicht"> Sie bezahlt nicht</label>
+            <button onclick="check('q4i','karte','r4i')">Check</button>
+            <div class="result" id="r4i"></div>
+        </div>
+
+        <div class="question">
+            <p><b>10) Wohin geht Sara danach?</b></p>
+            <label><input type="radio" name="q4j" value="haus"> Nach Hause</label>
+            <label><input type="radio" name="q4j" value="schule"> Zur Schule</label>
+            <label><input type="radio" name="q4j" value="arbeit"> Zur Arbeit</label>
+            <button onclick="check('q4j','haus','r4j')">Check</button>
+            <div class="result" id="r4j"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 5 -->
+<div class="card">
+    <img src="family.png" alt="Family">
+
+    <div class="content">
+        <h2>5) Familie zu Hause</h2>
+
+        <p>
+        Die Familie Müller lebt in einem kleinen Haus in einer ruhigen Straße.
+        Jeden Abend essen sie zusammen im Wohnzimmer.
+
+        Der Vater kommt um 18 Uhr von der Arbeit nach Hause.
+        Die Mutter kocht das Abendessen und bereitet den Tisch vor.
+        Heute gibt es Suppe, Brot und Salat.
+
+        Die Kinder erzählen Geschichten über die Schule und ihre Freunde.
+        Manchmal lachen sie zusammen und trinken Tee.
+
+        Nach dem Essen sehen sie einen Film oder spielen Brettspiele.
+        Am Wochenende gehen sie oft spazieren oder bleiben zu Hause.
+
+        Die Familie verbringt gerne Zeit zusammen.
+        Alle fühlen sich glücklich und wohl.
+        </p>
+
+        <div class="question">
+            <p><b>1) Wo lebt die Familie?</b></p>
+            <label><input type="radio" name="q5a" value="haus"> In einem kleinen Haus</label>
+            <label><input type="radio" name="q5a" value="hotel"> In einem Hotel</label>
+            <label><input type="radio" name="q5a" value="schule"> In einer Schule</label>
+            <button onclick="check('q5a','haus','r5a')">Check</button>
+            <div class="result" id="r5a"></div>
+        </div>
+
+        <div class="question">
+            <p><b>2) Wann essen sie zusammen?</b></p>
+            <label><input type="radio" name="q5b" value="abend"> Jeden Abend</label>
+            <label><input type="radio" name="q5b" value="morgen"> Jeden Morgen</label>
+            <label><input type="radio" name="q5b" value="mittag"> Jeden Mittag</label>
+            <button onclick="check('q5b','abend','r5b')">Check</button>
+            <div class="result" id="r5b"></div>
+        </div>
+
+        <div class="question">
+            <p><b>3) Wo essen sie?</b></p>
+            <label><input type="radio" name="q5c" value="wohnzimmer"> Im Wohnzimmer</label>
+            <label><input type="radio" name="q5c" value="garten"> Im Garten</label>
+            <label><input type="radio" name="q5c" value="küche"> In der Küche</label>
+            <button onclick="check('q5c','wohnzimmer','r5c')">Check</button>
+            <div class="result" id="r5c"></div>
+        </div>
+
+        <div class="question">
+            <p><b>4) Wer kommt von der Arbeit nach Hause?</b></p>
+            <label><input type="radio" name="q5d" value="vater"> Der Vater</label>
+            <label><input type="radio" name="q5d" value="mutter"> Die Mutter</label>
+            <label><input type="radio" name="q5d" value="kinder"> Die Kinder</label>
+            <button onclick="check('q5d','vater','r5d')">Check</button>
+            <div class="result" id="r5d"></div>
+        </div>
+
+        <div class="question">
+            <p><b>5) Wer kocht das Abendessen?</b></p>
+            <label><input type="radio" name="q5e" value="mutter"> Die Mutter</label>
+            <label><input type="radio" name="q5e" value="vater"> Der Vater</label>
+            <label><input type="radio" name="q5e" value="oma"> Die Oma</label>
+            <button onclick="check('q5e','mutter','r5e')">Check</button>
+            <div class="result" id="r5e"></div>
+        </div>
+
+        <div class="question">
+            <p><b>6) Was gibt es heute?</b></p>
+            <label><input type="radio" name="q5f" value="suppe"> Suppe, Brot und Salat</label>
+            <label><input type="radio" name="q5f" value="pizza"> Pizza und Cola</label>
+            <label><input type="radio" name="q5f" value="reis"> Reis und Fleisch</label>
+            <button onclick="check('q5f','suppe','r5f')">Check</button>
+            <div class="result" id="r5f"></div>
+        </div>
+
+        <div class="question">
+            <p><b>7) Worüber sprechen die Kinder?</b></p>
+            <label><input type="radio" name="q5g" value="schule"> Über die Schule und Freunde</label>
+            <label><input type="radio" name="q5g" value="sport"> Über Sport</label>
+            <label><input type="radio" name="q5g" value="arbeit"> Über Arbeit</label>
+            <button onclick="check('q5g','schule','r5g')">Check</button>
+            <div class="result" id="r5g"></div>
+        </div>
+
+        <div class="question">
+            <p><b>8) Was trinken sie manchmal?</b></p>
+            <label><input type="radio" name="q5h" value="tee"> Tee</label>
+            <label><input type="radio" name="q5h" value="saft"> Saft</label>
+            <label><input type="radio" name="q5h" value="milch"> Milch</label>
+            <button onclick="check('q5h','tee','r5h')">Check</button>
+            <div class="result" id="r5h"></div>
+        </div>
+
+        <div class="question">
+            <p><b>9) Was machen sie nach dem Essen?</b></p>
+            <label><input type="radio" name="q5i" value="film"> Sie sehen einen Film oder spielen Spiele</label>
+            <label><input type="radio" name="q5i" value="schlafen"> Sie schlafen sofort</label>
+            <label><input type="radio" name="q5i" value="lernen"> Sie lernen Deutsch</label>
+            <button onclick="check('q5i','film','r5i')">Check</button>
+            <div class="result" id="r5i"></div>
+        </div>
+
+        <div class="question">
+            <p><b>10) Wie fühlt sich die Familie?</b></p>
+            <label><input type="radio" name="q5j" value="wohl"> Glücklich und wohl</label>
+            <label><input type="radio" name="q5j" value="krank"> Krank</label>
+            <label><input type="radio" name="q5j" value="müde"> Immer müde</label>
+            <button onclick="check('q5j','wohl','r5j')">Check</button>
+            <div class="result" id="r5j"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 6 -->
+<div class="card">
+    <img src="freizeit.png" alt="Freizeit">
+
+    <div class="content">
+        <h2>6) Freizeit</h2>
+
+        <p>
+        Lena hat nach der Schule Freizeit. Sie ist zu Hause und entspannt sich.
+        Sie hört Musik, liest ein Buch und trinkt Tee.
+
+        Danach geht sie mit ihrer Freundin in den Park.
+        Sie spazieren zusammen und sprechen über ihren Tag.
+
+        Am Abend schaut Lena einen Film und bereitet ihre Sachen für morgen vor.
+        Sie fühlt sich ruhig und glücklich.
+        </p>
+
+        <div class="question">
+            <p><b>1) Was macht Lena zu Hause?</b></p>
+            <label><input type="radio" name="q6a" value="musik"> Musik hören</label>
+            <label><input type="radio" name="q6a" value="sport"> Sport machen</label>
+            <label><input type="radio" name="q6a" value="arbeiten"> Arbeiten</label>
+            <button onclick="check('q6a','musik','r6a')">Check</button>
+            <div class="result" id="r6a"></div>
+        </div>
+
+        <div class="question">
+            <p><b>2) Was liest sie?</b></p>
+            <label><input type="radio" name="q6b" value="buch"> Ein Buch</label>
+            <label><input type="radio" name="q6b" value="zeitung"> Eine Zeitung</label>
+            <label><input type="radio" name="q6b" value="magazin"> Ein Magazin</label>
+            <button onclick="check('q6b','buch','r6b')">Check</button>
+            <div class="result" id="r6b"></div>
+        </div>
+
+        <div class="question">
+            <p><b>3) Mit wem geht sie in den Park?</b></p>
+            <label><input type="radio" name="q6c" value="freundin"> Mit ihrer Freundin</label>
+            <label><input type="radio" name="q6c" value="mutter"> Mit ihrer Mutter</label>
+            <label><input type="radio" name="q6c" value="allein"> Allein</label>
+            <button onclick="check('q6c','freundin','r6c')">Check</button>
+            <div class="result" id="r6c"></div>
+        </div>
+
+        <div class="question">
+            <p><b>4) Was machen sie im Park?</b></p>
+            <label><input type="radio" name="q6d" value="spazieren"> Spazieren gehen</label>
+            <label><input type="radio" name="q6d" value="arbeiten"> Arbeiten</label>
+            <label><input type="radio" name="q6d" value="kochen"> Kochen</label>
+            <button onclick="check('q6d','spazieren','r6d')">Check</button>
+            <div class="result" id="r6d"></div>
+        </div>
+
+        <div class="question">
+            <p><b>5) Was macht sie am Abend?</b></p>
+            <label><input type="radio" name="q6e" value="film"> Einen Film schauen</label>
+            <label><input type="radio" name="q6e" value="schule"> Zur Schule gehen</label>
+            <label><input type="radio" name="q6e" value="reisen"> Reisen</label>
+            <button onclick="check('q6e','film','r6e')">Check</button>
+            <div class="result" id="r6e"></div>
+        </div>
+
+        <div class="question">
+            <p><b>6) Was macht sie vor dem Schlafen?</b></p>
+            <label><input type="radio" name="q6f" value="vorbereiten"> Sie bereitet ihre Sachen vor</label>
+            <label><input type="radio" name="q6f" value="kochen"> Sie kocht</label>
+            <label><input type="radio" name="q6f" value="telefonieren"> Sie telefoniert</label>
+            <button onclick="check('q6f','vorbereiten','r6f')">Check</button>
+            <div class="result" id="r6f"></div>
+        </div>
+
+        <div class="question">
+            <p><b>7) Wie fühlt sich Lena?</b></p>
+            <label><input type="radio" name="q6g" value="glücklich"> Glücklich</label>
+            <label><input type="radio" name="q6g" value="krank"> Krank</label>
+            <label><input type="radio" name="q6g" value="wütend"> Wütend</label>
+            <button onclick="check('q6g','glücklich','r6g')">Check</button>
+            <div class="result" id="r6g"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 7 -->
+<div class="card">
+    <img src="city.png" alt="City">
+
+    <div class="content">
+        <h2>7) In der Stadt</h2>
+
+        <p>
+        Paul ist neu in der Stadt. Die Stadt ist groß, laut und sehr lebendig.
+        Viele Menschen gehen zur Arbeit, zur Schule oder zum Einkaufen.
+        Paul sucht den Bahnhof, weil er einen Zug nehmen möchte.
+        Er schaut auf eine Karte, aber er versteht nicht alles.
+        Deshalb fragt er einen freundlichen Mann nach dem Weg.
+        Der Mann erklärt ihm den Weg langsam und deutlich.
+        Paul bedankt sich und geht weiter geradeaus.
+        Nach einigen Minuten findet er den Bahnhof und kauft ein Ticket.
+        Er ist froh, dass er sein Ziel gefunden hat.
+        </p>
+
+        <div class="question">
+            <p><b>1) Wo ist Paul?</b></p>
+            <label><input type="radio" name="q7a" value="stadt"> In der Stadt</label>
+            <label><input type="radio" name="q7a" value="haus"> Zu Hause</label>
+            <label><input type="radio" name="q7a" value="schule"> In der Schule</label>
+            <button onclick="check('q7a','stadt','r7a')">Check</button>
+            <div class="result" id="r7a"></div>
+        </div>
+
+        <div class="question">
+            <p><b>2) Was sucht er?</b></p>
+            <label><input type="radio" name="q7b" value="bahnhof"> Bahnhof</label>
+            <label><input type="radio" name="q7b" value="park"> Park</label>
+            <label><input type="radio" name="q7b" value="schule"> Schule</label>
+            <button onclick="check('q7b','bahnhof','r7b')">Check</button>
+            <div class="result" id="r7b"></div>
+        </div>
+
+        <div class="question">
+            <p><b>3) Was macht er zuerst?</b></p>
+            <label><input type="radio" name="q7c" value="karte"> Karte anschauen</label>
+            <label><input type="radio" name="q7c" value="schlafen"> Schlafen</label>
+            <label><input type="radio" name="q7c" value="kochen"> Kochen</label>
+            <button onclick="check('q7c','karte','r7c')">Check</button>
+            <div class="result" id="r7c"></div>
+        </div>
+
+        <div class="question">
+            <p><b>4) Wen fragt er?</b></p>
+            <label><input type="radio" name="q7d" value="mann"> Einen Mann</label>
+            <label><input type="radio" name="q7d" value="lehrer"> Einen Lehrer</label>
+            <label><input type="radio" name="q7d" value="arzt"> Einen Arzt</label>
+            <button onclick="check('q7d','mann','r7d')">Check</button>
+            <div class="result" id="r7d"></div>
+        </div>
+
+        <div class="question">
+            <p><b>5) Was macht der Mann?</b></p>
+            <label><input type="radio" name="q7e" value="erklaren"> Weg erklären</label>
+            <label><input type="radio" name="q7e" value="essen"> Essen geben</label>
+            <label><input type="radio" name="q7e" value="schlafen"> Schlafen</label>
+            <button onclick="check('q7e','erklaren','r7e')">Check</button>
+            <div class="result" id="r7e"></div>
+        </div>
+
+        <div class="question">
+            <p><b>6) Was macht er am Ende?</b></p>
+            <label><input type="radio" name="q7f" value="ticket"> Ticket kaufen</label>
+            <label><input type="radio" name="q7f" value="essen"> Essen</label>
+            <label><input type="radio" name="q7f" value="schlafen"> Schlafen</label>
+            <button onclick="check('q7f','ticket','r7f')">Check</button>
+            <div class="result" id="r7f"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- JS -->
+<script>
+function check(q, correct, resultId){
+    let val = document.querySelector('input[name="'+q+'"]:checked');
+
+    if(!val){
+        document.getElementById(resultId).innerHTML = "⚠️ Wähle eine Antwort";
+        return;
+    }
+
+    if(val.value === correct){
+        document.getElementById(resultId).innerHTML = "✅ Richtig!";
+    } else {
+        document.getElementById(resultId).innerHTML = "❌ Falsch";
+    }
+}
+</script>
+
+</body>
+</html>

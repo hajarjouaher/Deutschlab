@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hören A2 Übungen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
+
+body{
+    background:#0a0a0f;
+    color:white;
+}
+
+/* TOP HEADER */
+.main-title{
+    text-align:center;
+    padding:30px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.main-title h1{
+    color:#ffd700;
+    font-size:28px;
+}
+
+.main-title p{
+    color:#ccc;
+    font-size:14px;
+}
+
+/* SECTION WRAPPER */
+.section-block{
+    max-width:850px;
+    margin:50px auto;
+    padding:0 15px 40px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+/* SECTION TITLE */
+.section-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    color:#ffd700;
+    font-size:22px;
+}
+
+.section-title p{
+    color:#aaa;
+    font-size:13px;
+}
+
+/* AUDIO BOX */
+.audio-box{
+    background:rgba(255,215,0,0.08);
+    border:1px solid rgba(255,215,0,0.25);
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+audio{
+    width:100%;
+    margin-top:10px;
+}
+
+/* QUESTION CARD SMALL */
+.question{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,215,0,0.12);
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.question:hover{
+    transform:translateY(-3px);
+    border-color:#ffd700;
+}
+
+.question h3{
+    font-size:14px;
+    margin-bottom:10px;
+    color:#ffd700;
+}
+
+/* OPTIONS */
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.option{
+    padding:8px;
+    border-radius:8px;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.08);
+    cursor:pointer;
+    font-size:13px;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#ffd700;
+    color:black;
+}
+
+.option.selected{
+    background:#ffd700;
+    color:black;
+}
+
+/* BUTTON */
+.check-btn{
+    margin-top:10px;
+    padding:7px 14px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#ffd700;
+    font-weight:bold;
+    font-size:12px;
+}
+
+/* RESULT */
+.result{
+    margin-top:8px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* FOOT SPACING */
+.space{
+    height:30px;
+}
+/*back */
+.back-btn{
+    display:inline-block;
+    padding:10px 16px;
+    background:#ffd700;
+    color:black;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:12px;
+    transition:0.3s;
+    margin:15px;
+}
+
+.back-btn:hover{
+    transform:scale(1.05);
+    background:#ffcc00;
+}
+
+</style>
+
+</head>
+
+<body>
+<a href="Horen.html" class="back-btn">⬅ Back to Hören</a>
+<div class="main-title">
+    <h1>🎧 Hören A2 Übungen</h1>
+    <p>Trainiere dein Hörverständnis Schritt für Schritt</p>
+</div>
+
+<!-- ================= LEA - A2 ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Lea - Audio A2</h2>
+        <p>Höre den Dialog und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A2-Lea.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Ihre Tasche">
+
+        <h3>1️⃣ Was hat Lea im Auto von Sophie vergessen?</h3>
+
+        <div class="options">
+            <div class="option">Ihr Handy</div>
+            <div class="option">Ihre Tasche</div>
+            <div class="option">Ihr Buch</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Ihr Portemonnaie, ihr Hausschlüssel und wichtige Papiere">
+
+        <h3>2️⃣ Welche Dinge sind in der Tasche? (Nenne zwei Dinge)</h3>
+
+        <div class="options">
+            <div class="option">Nur ihr Handy</div>
+            <div class="option">Ihr Portemonnaie, ihr Hausschlüssel und wichtige Papiere</div>
+            <div class="option">Nur ihre Kleidung</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Weil sie keinen Hausschlüssel hat">
+
+        <h3>3️⃣ Warum kann Lea nicht nach Hause gehen?</h3>
+
+        <div class="options">
+            <div class="option">Weil sie krank ist</div>
+            <div class="option">Weil sie keinen Hausschlüssel hat</div>
+            <div class="option">Weil sie arbeiten muss</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-answer="Heute Abend">
+
+        <h3>4️⃣ Wann möchte Lea ihre Tasche abholen?</h3>
+
+        <div class="options">
+            <div class="option">Morgen früh</div>
+            <div class="option">Heute Abend</div>
+            <div class="option">Nächste Woche</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+
+<!-- ================= HERR MÜLLER - A2 ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Herr Müller - Audio A2</h2>
+        <p>Höre den Anruf und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A2-Muller.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Jonas Becker ruft an und Herr Müller bekommt die Nachricht">
+
+        <h3>1️⃣ Wer ruft an und wer bekommt die Nachricht?</h3>
+
+        <div class="options">
+            <div class="option">Jonas Becker ruft an und Herr Müller bekommt die Nachricht</div>
+            <div class="option">Herr Müller ruft an und Jonas bekommt die Nachricht</div>
+            <div class="option">Anna ruft an und der Hausmeister bekommt die Nachricht</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Die Heizung funktioniert nicht mehr und es ist sehr kalt">
+
+        <h3>2️⃣ Welches Problem gibt es in der Wohnung?</h3>
+
+        <div class="options">
+            <div class="option">Das Licht funktioniert nicht</div>
+            <div class="option">Die Heizung funktioniert nicht mehr und es ist sehr kalt</div>
+            <div class="option">Das Wasser ist zu heiß</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Seit gestern Abend">
+
+        <h3>3️⃣ Seit wann gibt es dieses Problem?</h3>
+
+        <div class="options">
+            <div class="option">Seit heute Morgen</div>
+            <div class="option">Seit gestern Abend</div>
+            <div class="option">Seit einer Woche</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question" data-answer="Er soll einen Handwerker schicken und Jonas zurückrufen">
+
+        <h3>4️⃣ Was soll Herr Müller tun?</h3>
+
+        <div class="options">
+            <div class="option">Er soll nichts tun</div>
+            <div class="option">Er soll einen Handwerker schicken und Jonas zurückrufen</div>
+            <div class="option">Er soll die Wohnung verkaufen</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+
+<!-- ================= SARAH - A2 ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Sarah - Audio A2</h2>
+        <p>Höre die Nachricht und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A2-sarah.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Weil sie krank ist">
+
+        <h3>1️⃣ Warum kommt Sarah heute nicht ins Büro?</h3>
+
+        <div class="options">
+            <div class="option">Weil sie Urlaub hat</div>
+            <div class="option">Weil sie krank ist</div>
+            <div class="option">Weil sie spät dran ist</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Einen Kunden anrufen und den Termin absagen">
+
+        <h3>2️⃣ Was soll Lukas für sie tun?</h3>
+
+        <div class="options">
+            <div class="option">Einen Kunden anrufen und den Termin absagen</div>
+            <div class="option">Eine E-Mail schreiben und den Termin verschieben</div>
+            <div class="option">Die Datei löschen</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Auf ihrem Schreibtisch">
+
+        <h3>3️⃣ Wo liegt die Telefonnummer vom Kunden?</h3>
+
+        <div class="options">
+            <div class="option">Im Computer</div>
+            <div class="option">Auf ihrem Schreibtisch</div>
+            <div class="option">Im Auto</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- ================= ANNA / PARTY - A2 ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 Anna - Audio A2</h2>
+        <p>Höre den Text und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A2-anna.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Nein, sie feiern am Sonntag, weil Felix am Samstag arbeiten muss">
+
+        <h3>1️⃣ Feiern sie die Party am Samstag?</h3>
+
+        <div class="options">
+            <div class="option">Ja, am Samstag</div>
+            <div class="option">Nein, sie feiern am Sonntag, weil Felix am Samstag arbeiten muss</div>
+            <div class="option">Nein, sie feiern nächste Woche</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Keine von beiden. Felix hat Geburtstag">
+
+        <h3>2️⃣ Wer hat Geburtstag, Julia oder Anna?</h3>
+
+        <div class="options">
+            <div class="option">Julia hat Geburtstag</div>
+            <div class="option">Anna hat Geburtstag</div>
+            <div class="option">Keine von beiden. Felix hat Geburtstag</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Das steht nicht im Text">
+
+        <h3>3️⃣ Warum feiern sie im Garten?</h3>
+
+        <div class="options">
+            <div class="option">Weil das Wetter schön ist</div>
+            <div class="option">Weil das Haus zu klein ist</div>
+            <div class="option">Das steht nicht im Text</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- ================= ANDRÉ / ENRIQUE - A2 ================= -->
+<div class="section-block">
+
+    <div class="section-title">
+        <h2>📍 André / Enrique - Audio A2</h2>
+        <p>Höre den Text und beantworte die Fragen</p>
+    </div>
+
+    <div class="audio-box">
+        <h3>🔊 Audio</h3>
+        <audio controls>
+            <source src="Audio/A2-andre.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question" data-answer="Nein, er fährt mit dem Zug">
+
+        <h3>1️⃣ Fährt Enrique mit dem Auto nach Frankfurt?</h3>
+
+        <div class="options">
+            <div class="option">Ja, mit dem Auto</div>
+            <div class="option">Nein, er fährt mit dem Zug</div>
+            <div class="option">Er fährt nicht nach Frankfurt</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question" data-answer="Nein, das Meeting beginnt um 14 Uhr. Der Zug hat 30 Minuten Verspätung">
+
+        <h3>2️⃣ Beginnt das Meeting um 14:30 Uhr?</h3>
+
+        <div class="options">
+            <div class="option">Ja, um 14:30 Uhr</div>
+            <div class="option">Nein, das Meeting beginnt um 14 Uhr. Der Zug hat 30 Minuten Verspätung</div>
+            <div class="option">Nein, es gibt kein Meeting</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question" data-answer="Weil sein Zug Verspätung hat">
+
+        <h3>3️⃣ Warum kommt Enrique zu spät?</h3>
+
+        <div class="options">
+            <div class="option">Weil er verschlafen hat</div>
+            <div class="option">Weil sein Zug Verspätung hat</div>
+            <div class="option">Weil er im Stau steht</div>
+        </div>
+
+        <button class="check-btn">Check</button>
+        <div class="result"></div>
+    </div>
+
+</div>
+<!-- SCRIPT -->
+<script>
+document.querySelectorAll('.question').forEach(question => {
+
+    const options = question.querySelectorAll('.option');
+    const button = question.querySelector('.check-btn');
+    const result = question.querySelector('.result');
+    const correctAnswer = question.getAttribute('data-answer');
+
+    let selected = null;
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+
+            options.forEach(o => o.classList.remove('selected'));
+            option.classList.add('selected');
+
+            selected = option.textContent;
+        });
+    });
+
+    button.addEventListener('click', () => {
+
+        if(!selected){
+            result.textContent = "⚠ Bitte wähle eine Antwort";
+            result.style.color = "orange";
+            return;
+        }
+
+        if(selected === correctAnswer){
+            result.textContent = "✔ Richtig!";
+            result.style.color = "#00ff99";
+        } else {
+            result.textContent = "❌ Falsch! Richtige Antwort: " + correctAnswer;
+            result.style.color = "red";
+        }
+
+    });
+
+});
+</script>
+</body>
+</html>

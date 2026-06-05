@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutschlab</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+  
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+<Style>/* CONTACT SECTION */
+
+.contact-section{
+    padding:80px 10%;
+    background:#0a0a0f;
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+/* LEFT */
+
+.contact-left{
+    background:rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:20px;
+    border:1px solid rgba(255,215,0,0.2);
+}
+
+.contact-left h2{
+    color:gold;
+    margin-bottom:20px;
+    font-size:32px;
+}
+
+.contact-text{
+    color:#ddd;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.premium-text{
+    color:#ffd700;
+    line-height:1.8;
+    margin-bottom:30px;
+    font-weight:600;
+}
+
+.info-box p{
+    margin:15px 0;
+    color:white;
+}
+
+/* RIGHT */
+
+.contact-right{
+    background:rgba(255,255,255,0.05);
+    padding:40px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.contact-right form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.contact-right input,
+.contact-right textarea{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+    background:#111;
+    color:white;
+}
+
+.contact-right textarea{
+    height:160px;
+    resize:none;
+}
+
+.contact-right button{
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:gold;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.contact-right button:hover{
+    transform:scale(1.03);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+}</Style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="logo-box">
+    
+<a href="index.html">
+    <img src="Logo.png" alt="Logo">
+</a>
+ <h1 class="logo-text">Deutschlab</h1>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="grammatik.html">Grammatik</a></li>
+            <li><a href="Lesen.html">Lesen</a></li>
+            <li><a href="Horen.html">Hören</a></li>
+            <li><a href="Kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
+
+</header>
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+
+    <div class="contact-container">
+
+        <!-- LEFT SIDE -->
+        <div class="contact-left">
+
+            <h2>📩 Kontaktieren Sie uns</h2>
+
+            <p class="contact-text">
+                Haben Sie Fragen oder brauchen Sie Hilfe beim Deutschlernen?
+                Sie können uns jederzeit kontaktieren.
+            </p>
+
+            <p class="premium-text">
+                Für personalisierte Hilfe, Schreiben-Korrektur und Premium-Unterricht
+                auf den Niveaus B1 und B2 kontaktieren Sie uns direkt.
+                Dieser Service ist kostenpflichtig.
+            </p>
+
+            <!-- CONTACT INFO -->
+            <div class="info-box">
+
+                <p>📧 Email: hajarj487@.com</p>
+
+                <p>📱 WhatsApp: +212 626 611 857</p>
+
+                <p>📍 Morocco</p>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="contact-right">
+
+            <form>
+
+                <input type="text" placeholder="Ihr Name">
+
+                <input type="email" placeholder="Ihre E-Mail">
+
+                <input type="text" placeholder="Betreff">
+
+                <textarea placeholder="Ihre Nachricht"></textarea>
+
+                <button type="submit">
+                    Nachricht senden
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <h2>Deutschlab</h2>
+
+        <p>Learn German step by step with practice and confidence.</p>
+
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="grammatik.html">Grammatik</a>
+            <a href="Lesen.html">Lesen</a>
+            <a href="Horen.html">Hören</a>
+            <a href="Kontakt.html">Kontakt</a>
+        </div>
+
+        <span>©  Deutschlab. All rights reserved.</span>
+
+    </div>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

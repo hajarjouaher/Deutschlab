@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lesen B1</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f0f1a;
+    color:white;
+}
+
+/* LOCK SCREEN */
+.lock-box{
+    width:400px;
+    background:rgba(255,255,255,0.06);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 25px rgba(255,215,0,0.15);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation: fadeIn 1s ease;
+    backdrop-filter: blur(12px);
+}
+
+/* Glow animation */
+.lock-box::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:20px;
+    background:linear-gradient(45deg, gold, transparent, gold);
+    z-index:-1;
+    filter:blur(20px);
+    opacity:0.4;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow{
+    from{opacity:0.2; transform:scale(1);}
+    to{opacity:0.6; transform:scale(1.02);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translate(-50%,-55%);}
+    to{opacity:1; transform:translate(-50%,-50%);}
+}
+
+.lock-box img{
+    width:90px;
+    margin-bottom:15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus{
+    box-shadow:0 0 10px gold;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg, gold, orange);
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px gold;
+}
+
+#error{
+    margin-top:10px;
+    color:#ff5c5c;
+}
+/* CONTENT */
+#content{
+    display:none;
+}
+
+/* HEADER */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:rgba(255,255,255,0.05);
+    position:sticky;
+    top:0;
+    backdrop-filter: blur(10px);
+}
+
+h1{
+    text-align:center;
+    color:gold;
+    margin:20px 0;
+}
+
+/* CARD */
+.card{
+    display:flex;
+    gap:20px;
+    max-width:1000px;
+    margin:25px auto;
+    padding:15px;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,0.1);
+
+    opacity:0;
+    transform:translateY(40px);
+    animation: slideUp 0.8s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.4s;}
+.card:nth-child(3){animation-delay:0.6s;}
+.card:nth-child(4){animation-delay:0.8s;}
+
+@keyframes slideUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card:hover{
+    transform:scale(1.01);
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(255,215,0,0.1);
+}
+
+.card img{
+    width:300px;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.content-box{
+    flex:1;
+}
+
+h2{ color:gold; }
+
+.question{
+    background:rgba(0,0,0,0.3);
+    padding:10px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+label{ display:block; margin:5px 0; }
+
+.result{
+    margin-top:5px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 LOCK -->
+<div id="lock" class="lock-box">
+
+    <img src="Logo.png" alt="logo">
+
+    <h1>Lesen B2</h1>
+    <p>Bitte gib den Zugangscode ein</p>
+
+    <input type="password" id="code" placeholder="Code eingeben">
+    <button onclick="checkCode()">Öffnen</button>
+
+    <div id="error"></div>
+</div>
+
+<!-- 📘 CONTENT -->
+<div id="content">
+
+    <div class="topbar">
+        <h2>📘 Lesen B1</h2>
+    </div>
+
+    <h1>Texte & Aufgaben</h1>
+
+   <!-- 1ONLINESHOPPING (Niveau B2) - Lukas -->
+<div class="card">
+    <img src="online shoping.jfif" alt="Onlineshopping und Konsumverhalten">
+
+    <div class="content-box">
+
+        <h2>1) Der digitale Wandel des Konsumverhaltens</h2>
+
+        <p>
+        Heutzutage ist das Onlineshopping aus dem modernen Lebensstil kaum noch wegzudenken. 
+        Auch Lukas, ein junger Berufstätiger, erledigt mittlerweile einen Großteil seiner Besorgungen über diverse E-Commerce-Plattformen im Internet. 
+        Die Vorzüge liegen für ihn klar auf der Hand: Neben der enormen Zeitersparnis schätzt er vor allem die Möglichkeit, Preise plattformübergreifend mit nur wenigen Klicks zu vergleichen und Rezensionen anderer Käufer in seine Entscheidung einzubeziehen.
+
+        Allerdings verliefen seine ersten virtuellen Einkaufstouren keineswegs reibungslos. 
+        Anfänglich neigte Lukas zu Impulskäufen, was dazu führte, dass er minderwertige Ware bestellte oder Kleidung in unpassenden Größen erwarb. 
+        Zudem machten ihm die komplizierten Retourenprozesse und die unübersichtlichen Lieferbedingungen zu schaffen. 
+        Nachdem er jedoch einmal Opfer einer betrügerischen Website wurde und Geld verlor, über dachte er seine Herangehensweise grundlegend.
+
+        Heute agiert Lukas beim digitalen Einkauf äußerst reflektiert und sicherheitsbewusst. 
+        Er bestellt ausschließlich bei zertifizierten Online-Händlern, prüft das Impressum gründlich und meidet allzu verlockende Schnäppchenangebote. 
+        Um zudem den ökologischen Fußabdruck zu minimieren, bündelt er seine Bestellungen, anstatt zahlreiche Einzelpakete anzufordern, und leistet somit einen bewussten Beitrag zur Nachhaltigkeit.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Welcher Aspekt veranlasst Lukas primär dazu, Waren auf digitalem Weg zu erwerben?</p>
+
+            <label>
+                <input type="radio" name="q8_1" value="vorteil">
+                Die logistische Effizienz im Hinblick auf den Zeitaufwand sowie die Transparenz bei der Produktbewertung.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_1" value="zwang">
+                Der Mangel an physischen Geschäften und Einkaufsläden in seiner unmittelbaren Wohnumgebung.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_1" value="günstig">
+                Die Tatsache, dass digitale Produkte ausnahmslos preiswerter sind als im stationären Handel.
+            </label>
+
+            <button onclick="check('q8_1','vorteil','r8_1')">
+                Check
+            </button>
+
+            <div class="result" id="r8_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welche negativen Erfahrungen prägten Lukas' anfängliche Aktivitäten im E-Commerce?</p>
+
+            <label>
+                <input type="radio" name="q8_2" value="fehler">
+                Unüberlegte Kaufentscheidungen sowie die Konfrontation mit mangelhafter Produktqualität und Internetkriminalität.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_2" value="technik">
+                Regelmäßige technische Totalausfälle seines Computers, die den Bestellvorgang komplett blockierten.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_2" value="streit">
+                Anhaltende Konflikte mit Paketboten bezüglich der persönlichen Zustellung an seiner Haustür.
+            </label>
+
+            <button onclick="check('q8_2','fehler','r8_2')">
+                Check
+            </button>
+
+            <div class="result" id="r8_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Wie schützt sich Lukas in der Gegenwart vor potenziellen Gefahren im Internet?</p>
+
+            <label>
+                <input type="radio" name="q8_3" value="schutz">
+                Er betreibt eine sorgfältige Verifizierung der Anbieter und begegnet extremen Rabatten mit Skepsis.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_3" value="verzicht">
+                Er hat den digitalen Konsum vollständig eingestellt und kauft nur noch per Vorkasse im Laden.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_3" value="anwalt">
+                Er lässt jeden einzelnen Kaufvertrag vorab von einem juristischen Fachbeistand überprüfen.
+            </label>
+
+            <button onclick="check('q8_3','schutz','r8_3')">
+                Check
+            </button>
+
+            <div class="result" id="r8_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Auf welche Weise versucht Lukas, den Umweltschutz beim Onlineshopping zu berücksichtigen?</p>
+
+            <label>
+                <input type="radio" name="q8_4" value="umwelt">
+                Durch die gezielte Konsolidierung mehrerer Artikel zu einer einzigen Gesamtlieferung.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_4" value="fahrrad">
+                Indem er die bestellten Waren stets eigenhändig mit dem Fahrrad vom Zentrallager abholt.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_4" value="papier">
+                Er verlangt von den Händlern, dass die Verpackungsmaterialien ausschließlich aus Textilien bestehen.
+            </label>
+
+            <button onclick="check('q8_4','umwelt','r8_4')">
+                Check
+            </button>
+
+            <div class="result" id="r8_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Was lässt sich über die Wandlung von Lukas' Konsumverhalten aussagen?</p>
+
+            <label>
+                <input type="radio" name="q8_5" value="entwicklung">
+                Lukas entwickelte sich von einem naiven Impulskäufer zu einem verantwortungsbewussten, kritischen Konsumenten.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_5" value="frust">
+                Aufgrund der erlebten Enttäuschungen empfindet er heute eine tiefe Aversion gegen jegliche Form von Konsum.
+            </label>
+
+            <label>
+                <input type="radio" name="q8_5" value="gleich">
+                Trotz der Verluste hat er seine Strategie nicht modifiziert und kauft weiterhin unkontrolliert ein.
+            </label>
+
+            <button onclick="check('q8_5','entwicklung','r8_5')">
+                Check
+            </button>
+
+            <div class="result" id="r8_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 2 ROBOTER UND AUTOMATISIERUNG (Niveau B2) - Julian -->
+<div class="card">
+    <img src="robot.jfif" alt="Roboter und künstliche Intelligenz im Alltag">
+
+    <div class="content-box">
+
+        <h2>2) Die fortschreitende Automatisierung durch Robotik</h2>
+
+        <p>
+        In der heutigen Industrie- und Arbeitswelt ist der Einsatz von hochentwickelten Robotern längst zu einem entscheidenden Erfolgsfaktor geworden. 
+        Julian, ein engagierter Projektingenieur in einem mittelständischen Produktionsbetrieb, beschäftigt sich tagtäglich mit der Integration dieser autonomen Systeme in den Fertigungsprozess. 
+        Er ist fest davon überzeugt, dass die Automatisierung monotone sowie physisch belastende Arbeitsabläufe effizienter gestalten und menschliche Arbeitskräfte entlasten kann.
+
+        Dennoch stieß die Einführung der neuen Technologie in Julians Abteilung anfangs auf erhebliche Skepsis seitens der Belegschaft. 
+        Viele Angestellte äußerten die konkrete Befürchtung, durch die maschinelle Konkurrenz mittelfristig ihren Arbeitsplatz zu verlieren oder durch die Digitalisierung sozial isoliert zu werden. 
+        Zudem traten in der Testphase unerwartete Programmierfehler auf, die zu vorübergehenden Stillständen der Produktionsbänder führten und den Zeitplan strapazierten.
+
+        Durch gezielte Aufklärungsarbeit und intensive Weiterbildungsmaßnahmen gelang es Julian jedoch, die Wogen zu glätten. 
+        Heute arbeiten Mensch und Maschine in einem kooperativen Gefüge Hand in Hand: Während die Roboter präzise Routineaufgaben in Sekundenschnelle ausführen, übernehmen die Mitarbeiter die strategische Überwachung und Qualitätskontrolle. 
+        Julian betont stets, dass der Roboter den Menschen keineswegs ersetzen, sondern dessen Potenziale auf ein neues Niveau heben soll.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Welche primäre Funktion schreibt Julian den Robotern im modernen Produktionsprozess zu?</p>
+
+            <label>
+                <input type="radio" name="q9_1" value="entlastung">
+                Sie dienen der Optimierung von Betriebsabläufen und der physischen Entlastung des Personals bei Routinearbeiten.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_1" value="ersatz">
+                Sie sollen die menschliche Belegschaft über kurz oder lang vollständig aus dem Unternehmen verdrängen.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_1" value="unterhaltung">
+                Ihr Hauptzweck besteht darin, das Arbeitsklima durch interaktive Unterhaltungsprogramme aufzulockern.
+            </label>
+
+            <button onclick="check('q9_1','entlastung','r9_1')">
+                Check
+            </button>
+
+            <div class="result" id="r9_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Mit welchen Barrieren sah sich Julian bei der Implementierung der Robotik anfänglich konfrontiert?</p>
+
+            <label>
+                <input type="radio" name="q9_2" value="widerstand">
+                Mit existenziellen Ängsten der Mitarbeiter bezüglich ihrer beruflichen Zukunft sowie mit softwarebasierten Komplikationen.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_2" value="finanzen">
+                Mit dem plötzlichen Staatsbankrott des Zulieferers, der die Roboterteile exklusiv herstellte.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_2" value="platz">
+                Mit einem akuten Platzmangel, da die Maschinen schlicht zu groß für die Werkshalle waren.
+            </label>
+
+            <button onclick="check('q9_2','widerstand','r9_2')">
+                Check
+            </button>
+
+            <div class="result" id="r9_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Wie konnte der anfängliche Widerstand der Belegschaft erfolgreich überwunden werden?</p>
+
+            <label>
+                <input type="radio" name="q9_3" value="bildung">
+                Durch transparente Kommunikation, Sachaufklärung und das Angebot von qualifizierenden Schulungen.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_3" value="kündigung">
+                Durch die konsequente Kündigung all jener Mitarbeiter, die sich gegen die Neuerungen aussprachen.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_3" value="geld">
+                Durch eine pauschale Verdoppelung der Gehälter für alle von der Automatisierung betroffenen Personen.
+            </label>
+
+            <button onclick="check('q9_3','bildung','r9_3')">
+                Check
+            </button>
+
+            <div class="result" id="r9_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Wie gestaltet sich die aktuelle Arbeitsaufteilung zwischen Mensch und Maschine?</p>
+
+            <label>
+                <input type="radio" name="q9_4" value="symbiose">
+                Es herrscht eine funktionale Symbiose, in der repetitive Tätigkeiten maschinell und Kontrollfunktionen menschlich besetzt sind.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_4" value="trennung">
+                Die Mitarbeiter wurden räumlich komplett von den Robotern isoliert, um Unfälle strikt zu vermeiden.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_4" value="stillstand">
+                Die Roboter übernehmen mittlerweile auch die Geschäftsführung, während die Angestellten nur noch zuschauen.
+            </label>
+
+            <button onclick="check('q9_4','symbiose','r9_4')">
+                Check
+            </button>
+
+            <div class="result" id="r9_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Welche philosophische bzw. strategische Kernbotschaft vertritt Julian am Ende des Textes?</p>
+
+            <label>
+                <input type="radio" name="q9_5" value="ergänzung">
+                Technologie sollte als komplementäres Werkzeug verstanden werden, das den Menschen ergänzt und stärkt, statt ihn zu ersetzen.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_5" value="gefahr">
+                Die künstliche Intelligenz birgt unkontrollierbare Gefahren und sollte daher weltweit verboten werden.
+            </label>
+
+            <label>
+                <input type="radio" name="q9_5" value="rückschritt">
+                Die manuelle Produktion ohne Maschinen war im Nachhinein betrachtet wesentlich fortschrittlicher.
+            </label>
+
+            <button onclick="check('q9_5','ergänzung','r9_5')">
+                Check
+            </button>
+
+            <div class="result" id="r9_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 3 TRADITIONEN UND MODERNE (Niveau B2) - Maximilian -->
+<div class="card">
+    <img src="traditionen.jfif" alt="Traditionen und kulturelle Identität">
+
+    <div class="content-box">
+
+        <h2>3) Der Stellenwert von Traditionen in einer globalisierten Welt</h2>
+
+        <p>
+        In Zeiten fortschreitender Globalisierung und Digitalisierung fragen sich viele Menschen, welche Bedeutung historischen Bräuchen überhaupt noch zukommt. 
+        Maximilian, der sich intensiv im örtlichen Kulturverein engagiert, setzt sich leidenschaftlich für die Bewahrung regionaler Traditionen ein. 
+        Für ihn stellen diese Bräuche keineswegs einen rückwärtsgewandten Nostalgie-Kult dar, sondern sie fungieren als ein essenzielles Fundament, das den Bürgern ein Gefühl von Heimat, Zugehörigkeit und sozialer Stabilität vermittelt.
+
+        Allerdings stößt Maximilian mit seinen Initiativen bei der jüngeren Generation oft auf Desinteresse oder gar Ablehnung. 
+        Viele Jugendliche empfinden die überlieferten Feste und Kleidungsstile als altmodisch, starr und nicht mehr zeitgemäß. 
+        Zudem besteht im Rahmen der Vereinsarbeit häufig die Schwierigkeit, einen Kompromiss zwischen der strikten historischen Authentizität und einer modernen, ansprechenden Interpretation der Bräuche zu finden.
+
+        Um dieser Entfremdung entgegenzuwirken, hat Maximilian ein innovatives Konzept entwickelt: Er verknüpft traditionelle Kulturelemente mit modernen Medien. 
+        Durch interaktive Social-Media-Kampagnen und zeitgemäße Musikarrangements bei Volksfesten gelingt es ihm zunehmend, eine Brücke zwischen der Vergangenheit und der Gegenwart zu schlagen. 
+        Er betont unermüdlich, dass Traditionen nicht das Bewahren der Asche, sondern das Weitergeben des Feuers an die nächste Generation bedeuten.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Welche grundlegende Bedeutung schreibt Maximilian regionalen Bräuchen zu?</p>
+
+            <label>
+                <input type="radio" name="q10_1" value="fundament">
+                Sie bilden eine tragende Säule für die Identitätsstiftung und den gesellschaftlichen Zusammenhalt.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_1" value="wirtschaft">
+                Sie dienen ausschließlich als wirtschaftliche Einnahmequelle durch den internationalen Tourismus.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_1" value="bremse">
+                Sie blockieren die gesellschaftliche Weiterentwicklung und sollten daher ignoriert werden.
+            </label>
+
+            <button onclick="check('q10_1','fundament','r10_1')">
+                Check
+            </button>
+
+            <div class="result" id="r10_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welcher Widerstand begegnet Maximilian primär bei der Ausübung seiner Kulturarbeit?</p>
+
+            <label>
+                <input type="radio" name="q10_2" value="ablehnung">
+                Die mangelnde Bereitschaft junger Menschen, sich mit vermeintlich überholten Riten zu identifizieren.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_2" value="verbot">
+                Ein striktes gesetzliches Verbot der Regierung, historische Feste im öffentlichen Raum zu feiern.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_2" value="finanz">
+                Der totale Mangel an finanziellen Mitteln, da der Verein keinerlei Mitgliedsbeiträge einfordert.
+            </label>
+
+            <button onclick="check('q10_2','ablehnung','r10_2')">
+                Check
+            </button>
+
+            <div class="result" id="r10_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Welches interne Dilemma beschäftigt den Kulturverein bei der Umsetzung seiner Projekte?</p>
+
+            <label>
+                <input type="radio" name="q10_3" value="dilemma">
+                Die Gratwanderung zwischen der originalgetreuen Erhaltung und einer modernisierten Anpassung der Kulturgüter.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_3" value="streit">
+                Anhaltende interne Streitigkeiten über die Wahl des neuen Vereinsvorsitzenden.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_3" value="sprache">
+                Das Problem, dass im Verein ausschließlich in einer ausgestorbenen Fremdsprache kommuniziert wird.
+            </label>
+
+            <button onclick="check('q10_3','dilemma','r10_3')">
+                Check
+            </button>
+
+            <div class="result" id="r10_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Mit welcher Strategie versucht Maximilian, die jüngere Zielgruppe effektiv zu erreichen?</p>
+
+            <label>
+                <input type="radio" name="q10_4" value="strategie">
+                Durch die Symbiose aus traditionellen Inhalten und zeitgemäßen, digitalen Kommunikationskanälen.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_4" value="zwang">
+                Indem er Jugendliche mittels vertraglicher Verpflichtungen zur Teilnahme an den Festen zwingt.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_4" value="geld_geschenk">
+                Er verteilt wertvolle Geschenke und Bargeld an alle, die zu den Vereinsabenden erscheinen.
+            </label>
+
+            <button onclick="check('q10_4','strategie','r10_4')">
+                Check
+            </button>
+
+            <div class="result" id="r10_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Was besagt das im Text erwähnte Zitat über das Wesen lebendiger Traditionen?</p>
+
+            <label>
+                <input type="radio" name="q10_5" value="zitat">
+                Tradition bedeutet eine dynamische Weitergabe von Werten und Energie, anstatt starr an Altem festzuhalten.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_5" value="asche">
+                Man sollte die Vergangenheit komplett verbrennen, um Platz für neue Erfindungen zu machen.
+            </label>
+
+            <label>
+                <input type="radio" name="q10_5" value="museum">
+                Kultur gehört ausschließlich ins Museum und sollte im realen Alltag keine Rolle mehr spielen.
+            </label>
+
+            <button onclick="check('q10_5','zitat','r10_5')">
+                Check
+            </button>
+
+            <div class="result" id="r10_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 4 OKTOBERFEST UND KULTURTOURISMUS (Niveau B2) - Felix -->
+<div class="card">
+    <img src="oktober fest.jfif" alt="Das Oktoberfest in München">
+
+    <div class="content-box">
+
+        <h2>4) Das Oktoberfest: Zwischen Tradition und Massentourismus</h2>
+
+        <p>
+        Das Münchener Oktoberfest gilt weltweit als das größte Volksfest und zieht jährlich Millionen von Besuchern aus aller Herren Länder an. 
+        Felix, der im Bereich des Tourismusmanagements tätig ist, analysiert das Phänomen dieser Großveranstaltung seit geraumer Zeit aus einer kritischen Perspektive. 
+        Für ihn stellt das Fest eine faszinierende Schnittstelle dar, an der bayerische Traditionen auf die Dynamik der globalen Unterhaltungsindustrie treffen.
+
+        Obwohl das Event erhebliche wirtschaftliche Gewinne für die Stadt München und das umliegende Gastgewerbe generiert, verweist Felix auch auf die Schattenseiten des Booms. 
+        Die enorme Überfüllung der Festzelte, die rasant steigenden Bierpreise sowie die logistischen Herausforderungen bezüglich der Sicherheit und des öffentlichen Nahverkehrs belasten die Infrastruktur der Stadt immens. 
+        Zudem beklagen viele Einheimische, dass der ursprüngliche, familiäre Charakter des Festes zunehmend durch den rücksichtslosen Massentourismus und übermäßigen Alkoholkonsum verdrängt wird.
+
+        Um den Spagat zwischen wirtschaftlichem Erfolg und dem Erhalt der kulturellen Identität zu meistern, plädiert Felix für nachhaltigere Festkonzepte. 
+        Er unterstützt Initiativen, die verstärkt auf regionale Bio-Produkte setzen, den CO2-Ausstoß der Fahrgeschäfte reduzieren und die historische "Oide Wiesn" – einen ruhigeren, traditionelleren Teil des Festplatzes – fördern. 
+        Seiner Ansicht nach kann das Oktoberfest nur dann zukunftsfähig bleiben, wenn die Balance zwischen Kommerz und authentischem Brauchtum langfristig gewahrt wird.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Aus welchem Blickwinkel betrachtet Felix das weltbekannte Volksfest in München?</p>
+
+            <label>
+                <input type="radio" name="q11_1" value="analyse">
+                Aus einer fachlichen und differenzierten Perspektive, die sowohl Potenziale als auch Risiken abwägt.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_1" value="besucher">
+                Rein als privater Konsument, der nach persönlicher Unterhaltung und Ablenkung sucht.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_1" value="gegner">
+                Als radikaler Gegner, der eine sofortige und dauerhafte Absage der Veranstaltung fordert.
+            </label>
+
+            <button onclick="check('q11_1','analyse','r11_1')">
+                Check
+            </button>
+
+            <div class="result" id="r11_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welche negativen Begleiterscheinungen des Oktoberfests werden im Text explizit erwähnt?</p>
+
+            <label>
+                <input type="radio" name="q11_2" value="probleme">
+                Die Überlastung der städtischen Logistik, die Teuerung sowie der Verlust des ursprünglichen Flairs.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_2" value="wetter">
+                Ein permanenter Mangel an Besuchern aufgrund von extrem schlechten Wetterbedingungen im Herbst.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_2" value="streik">
+                Ein flächendeckender Streik der Festwirte, der zu einer vorzeitigen Schließung aller Zelte führte.
+            </label>
+
+            <button onclick="check('q11_2','probleme','r11_2')">
+                Check
+            </button>
+
+            <div class="result" id="r11_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Was kritisieren viele der in München ansässigen Bürger an der Entwicklung des Festes?</p>
+
+            <label>
+                <input type="radio" name="q11_3" value="kritik">
+                Dass die Kommerzialisierung und der unkontrollierte Tourismus die traditionellen Werte verfälschen.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_3" value="musik">
+                Dass die Musikauswahl in den Festzelten nicht streng genug wissenschaftlich kontrolliert wird.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_3" value="werbung">
+                Dass die Stadt München zu wenig Geld für internationale Marketingkampagnen ausgibt.
+            </label>
+
+            <button onclick="check('q11_3','kritik','r11_3')">
+                Check
+            </button>
+
+            <div class="result" id="r11_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Welche konkrete Maßnahme befürwortet Felix, um das Fest umweltfreundlicher zu gestalten?</p>
+
+            <label>
+                <input type="radio" name="q11_4" value="nachhaltig">
+                Die ökologische Optimierung der Attraktionen sowie die Stärkung von regionalen Wirtschaftskreisläufen.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_4" value="verbot_pkw">
+                Ein absolutes Verbot für die Nutzung von elektrischem Strom auf dem gesamten Festgelände.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_4" value="import">
+                Den ausschließlichen Import von Lebensmitteln und Getränken aus fernen Kontinenten.
+            </label>
+
+            <button onclick="check('q11_4','nachhaltig','r11_4')">
+                Check
+            </button>
+
+            <div class="result" id="r11_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Unter welcher Bedingung sieht Felix eine erfolgreiche Zukunft für das Oktoberfest?</p>
+
+            <label>
+                <input type="radio" name="q11_5" value="balance">
+                Wenn ein ausgewogenes Verhältnis zwischen wirtschaftlichen Interessen und gelebtem Brauchtum erzielt wird.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_5" value="kommerz">
+                Wenn der kommerzielle Profit maximiert wird, ohne Rücksicht auf historische Traditionen zu nehmen.
+            </label>
+
+            <label>
+                <input type="radio" name="q11_5" value="abschaffung">
+                Wenn alle modernen Fahrgeschäfte abgeschafft und durch Museen ersetzt werden.
+            </label>
+
+            <button onclick="check('q11_5','balance','r11_5')">
+                Check
+            </button>
+
+            <div class="result" id="r11_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 5 WEIHNACHTSMÄRKTE UND KULTURELLER WANDEL (Niveau B2) - Simon -->
+<div class="card">
+    <img src="weinachtsmarket.jfif" alt="Traditioneller deutscher Weihnachtsmarkt">
+
+    <div class="content-box">
+
+        <h2>5) Der Weihnachtsmarkt: Kulturgut im Wandel der Zeit</h2>
+
+        <p>
+        Der alljährliche Besuch eines Weihnachtsmarktes gehört für die meiste Menschen in Deutschland fest zur Adventszeit. 
+        Simon, ein Kulturwissenschaftler, befasst sich im Rahmen eines Forschungsprojekts mit der historischen Entwicklung und der gesellschaftlichen Relevanz dieser traditionsreichen Märkte. 
+        Er betrachtet sie als einen wichtigen sozialen Treffpunkt, der in den kalten Wintermonaten das Bedürfnis der Bevölkerung nach Gemeinschaft, Besinnlichkeit und emotionaler Wärme erfüllt.
+
+        Allerdings beobachtet Simon in den letzten Jahren eine zunehmende Transformation, die nicht überall auf Zustimmung stößt. 
+        Viele traditionelle Handwerksstände werden sukzessive durch kommerzielle Verkaufsbuden und globale Fast-Food-Ketten ersetzt, was zu einer spürbaren Kommerzialisierung führt. 
+        Zudem stellt das veränderte Konsumverhalten der Besucher, gepaart mit den gestiegenen Sicherheitsanforderungen und den logistischen Kosten für die Standbetreiber, viele Städte vor enorme organisatorische Hürden. 
+        Kritiker bemängeln häufig, dass der ursprüngliche, besinnliche Charakter durch laute Popmusik und puren Massenkonsum überdeckt wird.
+
+        Trotz dieser kritischen Aspekte sieht Simon optimistisch in die Zukunft. 
+        Er plädiert für Konzepte, die das historische Erbe bewahren und gleichzeitig zeitgemäße, nachhaltige Akzente setzen. 
+        Immer mehr Märkte verzichten mittlerweile auf Plastikgeschirr, bieten biologische sowie vegane Spezialitäten an und beleuchten die Plätze mit stromsparenden LED-Systemen. 
+        Für Simon steht fest: Der Weihnachtsmarkt kann seine magische Anziehungskraft nur dann beibehalten, wenn er sich wandelt, ohne dabei seine kulturelle Seele zu verlieren.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Welche gesellschaftliche Funktion schreibt Simon dem Weihnachtsmarkt in erster Linie zu?</p>
+
+            <label>
+                <input type="radio" name="q12_1" value="gemeinschaft">
+                Er fungiert als eine soziale Plattform, die das menschliche Bedürfnis nach sozialer Nähe und Besinnung stillt.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_1" value="bildung">
+                Er dient primär als akademische Bildungseinrichtung zur Vermittlung von geschichtlichen Fakten.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_1" value="sport">
+                Er wurde geschaffen, um sportliche Aktivitäten unter freiem Himmel im Winter zu fördern.
+            </label>
+
+            <button onclick="check('q12_1','gemeinschaft','r12_1')">
+                Check
+            </button>
+
+            <div class="result" id="r12_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welche Aspekte werden im Text als Ursachen für die Veränderung der Märkte angeführt?</p>
+
+            <label>
+                <input type="radio" name="q12_2" value="ursachen">
+                Die Verdrängung des Handwerks durch den Kommerz, veränderte Konsumwünsche und steigende Kosten.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_2" value="wetter_absage">
+                Die vollständige Absage aller Märkte aufgrund unvorhersehbarer, extremer Hitzewellen im Dezember.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_2" value="streik_bahn">
+                Ein dauerhafter Streik der lokalen Verkehrsbetriebe, der die Anreise der Besucher verhinderte.
+            </label>
+
+            <button onclick="check('q12_2','ursachen','r12_2')">
+                Check
+            </button>
+
+            <div class="result" id="r12_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Was kritisieren Gegner der modernen Entwicklung des Weihnachtsmarktes?</p>
+
+            <label>
+                <input type="radio" name="q12_3" value="kritik">
+                Dass die ursprüngliche Atmosphäre der Ruhe und Besinnlichkeit durch oberflächlichen Konsum verloren geht.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_3" value="preise_niedrig">
+                Dass die angebotenen Waren und Speisen im Vergleich zum Vorjahr viel zu billig verkauft werden.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_3" value="beleuchtung">
+                Dass die Märkte während der gesamten Nacht komplett im Dunkeln gelassen werden.
+            </label>
+
+            <button onclick="check('q12_3','kritik','r12_3')">
+                Check
+            </button>
+
+            <div class="result" id="r12_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Welche ökologischen Anpassungen werden auf modernen Weihnachtsmärkten laut Text vorgenommen?</p>
+
+            <label>
+                <input type="radio" name="q12_4" value="oeko">
+                Die Reduzierung von Abfall durch Verzicht auf Einwegplastik sowie die Nutzung energieeffizienter Beleuchtung.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_4" value="import_ware">
+                Der ausschließliche Verkauf von importierten Waren, die per Flugzeug angeliefert werden.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_4" value="verbot_licht">
+                Das strikte Verbot von jeglicher Art von Musik und künstlichem Licht auf dem Festgelände.
+            </label>
+
+            <button onclick="check('q12_4','oeko','r12_4')">
+                Check
+            </button>
+
+            <div class="result" id="r12_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Welche Schlussfolgerung zieht Simon bezüglich der Zukunftsfähigkeit der Märkte?</p>
+
+            <label>
+                <input type="radio" name="q12_5" value="wandel">
+                Eine Weiterentwicklung ist notwendig, solange die traditionelle Essenz und Identität gewahrt bleiben.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_5" value="konservativ">
+                Jede Form von Veränderung sollte verboten werden, um den Zustand des Mittelalters exakt zu kopieren.
+            </label>
+
+            <label>
+                <input type="radio" name="q12_5" value="aufloesung">
+                Die Märkte haben ausgedient und sollten in Zukunft komplett durch digitale Online-Märkte ersetzt werden.
+            </label>
+
+            <button onclick="check('q12_5','wandel','r12_5')">
+                Check
+            </button>
+
+            <div class="result" id="r12_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 6 DIE CURRYWURST ALS KULTURGUT (Niveau B2) - Niklas -->
+<div class="card">
+    <img src="carry wurst.png" alt="Die deutsche Currywurst">
+
+    <div class="content-box">
+
+        <h2>6) Die Currywurst: Ein kulinarischer Mythos im Wandel</h2>
+
+        <p>
+        Die Currywurst ist aus der deutschen Imbisskultur schlichtweg nicht mehr wegzudenken und gilt weit über die Landesgrenzen hinaus als kulinarisches Markenzeichen. 
+        Niklas, ein angehender Soziologe, untersucht im Rahmen seiner Abschlussarbeit die gesellschaftliche Bedeutung von Fast-Food-Klassikern in urbanen Räumen. 
+        Er begreift die Currywurst nicht bloß als ein einfaches, kalorienreiches Nahrungsmittel, sondern als ein demokratisches Kulturgut, das seit der Nachkriegszeit Menschen aller sozialen Schichten an den Imbissbuden vereint.
+
+        Allerdings steht dieser traditionsreiche Snack in der modernen Gastronomielandschaft vor beachtlichen Herausforderungen. 
+        Durch das steigende Gesundheitsbewusstsein in der Bevölkerung sowie den rasanten Zuwachs an vegetarischen und veganen Lebensstilen gerät der klassische Fleischkonsum zunehmend in die Kritik. 
+        Zudem bemängeln Ernährungswissenschaftler häufig den hohen Salz- und Fettgehalt des Gerichts. 
+        Viele traditionelle Betreiber von Imbissbuden klagen darüber hinaus über steigende Rohstoffpreise und eine veränderte Konkurrenz durch internationale Street-Food-Märkte.
+
+        Dennoch beobachtet Niklas keine Krise, sondern vielmehr eine kreative Anpassung des Klassikers. 
+        Um den Anforderungen der Gegenwart gerecht zu werden, setzen immer mehr Gastronomen auf innovative Konzepte. 
+        Es entstehen fleischlose Alternativen auf Basis von Erbsenprotein, handgemachte Saucen ohne künstliche Zusatzstoffe und Menüs in Bio-Qualität. 
+        Für Niklas demonstriert diese Entwicklung eindrucksvoll, dass ein Kulturgut seine Relevanz nur dann behaupten kann, wenn es flexibel auf den gesellschaftlichen Strukturwandel reagiert.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Welchen gesellschaftlichen Stellenwert schreibt Niklas der Currywurst in seiner Arbeit zu?</p>
+
+            <label>
+                <input type="radio" name="q13_1" value="demokratisch">
+                Sie fungiert als ein verbindendes Element, das soziale Barrieren abbaut und Schichten übergreifend konsumiert wird.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_1" value="exklusiv">
+                Sie gilt als exklusive Luxusspeise, die historisch nur der gehobenen Oberschicht vorbehalten war.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_1" value="medizin">
+                Sie wird primär als medizinisches Nahrungsergänzungsmittel zur Gesundheitsförderung eingesetzt.
+            </label>
+
+            <button onclick="check('q13_1','demokratisch','r13_1')">
+                Check
+            </button>
+
+            <div class="result" id="r13_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welche Faktoren gefährden laut Text gegenwärtig den Status der traditionellen Currywurst?</p>
+
+            <label>
+                <input type="radio" name="q13_2" value="faktoren">
+                Ein verändertes Bewusstsein für Ernährung, der Trend zu fleischloser Kost sowie ökonomischer Druck.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_2" value="importverbot">
+                Ein weltweites Importverbot für exotische Gewürze wie Curry und Paprikapulver.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_2" value="mangel">
+                Ein akuter Mangel an elektrischem Strom für die Betreiber von Imbissbuden.
+            </label>
+
+            <button onclick="check('q13_2','faktoren','r13_2')">
+                Check
+            </button>
+
+            <div class="result" id="r13_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Was wird vonseiten der Ernährungswissenschaft an dem Fast-Food-Klassiker bemängelt?</p>
+
+            <label>
+                <input type="radio" name="q13_3" value="mängel">
+                Die physiologisch ungünstige Zusammensetzung durch ein Übermaß an Fett und Natrium.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_3" value="temperatur">
+                Die Tatsache, dass das Gericht traditionell tiefgekühlt verzehrt werden muss.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_3" value="optik">
+                Die unästhetische optische Präsentation auf den klassischen Papptellern.
+            </label>
+
+            <button onclick="check('q13_3','mängel','r13_3')">
+                Check
+            </button>
+
+            <div class="result" id="r13_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Wie reagiert die Gastronomiebranche auf den beschriebenen Wandel?</p>
+
+            <label>
+                <input type="radio" name="q13_4" value="anpassung">
+                Durch die Etablierung nachhaltigerer, qualitätvollerer und pflanzlicher Produktvarianten.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_4" value="schliessung">
+                Durch die kollektive Schließung aller Betriebe und den vollständigen Verzicht auf den Verkauf.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_4" value="aggressiv">
+                Indem sie die Preise drastisch senkt und ausschließlich minderwertiges Fleisch importiert.
+            </label>
+
+            <button onclick="check('q13_4','anpassung','r13_4')">
+                Check
+            </button>
+
+            <div class="result" id="r13_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Welche Kernbotschaft lässt sich aus Niklas' Beobachtungen ableiten?</p>
+
+            <label>
+                <input type="radio" name="q13_5" value="relevanz">
+                Kulturelle Phänomene bleiben nur dann dauerhaft relevant, wenn sie Transformationsprozesse zulassen.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_5" value="starr">
+                Traditionen müssen völlig unverändert und starr konserviert werden, um echt zu bleiben.
+            </label>
+
+            <label>
+                <input type="radio" name="q13_5" value="untergang">
+                Der Untergang der traditionellen deutschen Küche ist unaufhaltsam und nicht abzuwenden.
+            </label>
+
+            <button onclick="check('q13_5','relevanz','r13_5')">
+                Check
+            </button>
+
+            <div class="result" id="r13_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 7 DIE KRAFT DER WELLEN AUF MALLORCA (Niveau B2) -  -->
+<div class="card">
+    <img src="strand.jpg" alt="Hajar am Strand von Mallorca und Küstenschutz">
+
+    <div class="content-box">
+
+        <h2>7) Wellenbewegungen: Hajars Entdeckungen auf Mallorca</h2>
+
+        <p>
+        Das rhythmische Rauschen der Wellen am Strand von Mallorca übt auf die meisten Menschen eine beruhigende Faszination aus und gilt als Inbegriff von Erholung. 
+        Hajar, eine engagierte Umweltwissenschaftlerin, die die spanische Urlaubsinsel im Rahmen eines Forschungsprojekts besucht, betrachtet die Wellenbewegungen jedoch vor allem als einen dynamischen Motor des globalen Ökosystems. 
+        Für sie sind die Wellen des Mittelmeers keineswegs bloß eine ästhetische Kulisse für Badegäste, sondern sie erfüllen eine fundamentale Funktion: Sie transportieren lebenswichtigen Sauerstoff in die küstennahen Gewässer und formen kontinuierlich die geografische Gestalt der mallorquinischen Küstenlinien.
+
+        Allerdings bringt die immense kinetische Energie der Wellen in Zeiten des Klimawandels zunehmend gravierende Probleme für die Insel mit sich. 
+        Durch den globalen Anstieg des Meeresspiegels und die Häufung extremer Herbststürme verstärkt sich die sogenannte Küstenerosion an vielen Stränden Mallorcas massiv. 
+        Große Strandabschnitte werden sukzessive abgetragen, was nicht nur den Lebensraum zahlreicher mariner Tierarten gefährdet, sondern auch die wirtschaftliche Existenz der lokalen Hotelbetriebe bedroht. 
+        Ingenieure und Umweltschützer vor Ort stehen vor der komplexen Aufgabe, effektive Küstenschutzmaßnahmen wie Wellenbrecher oder künstliche Sandaufspülungen zu realisieren, ohne dabei das sensible maritime Ökosystem nachhaltig zu schädigen.
+
+        Trotz dieser drohenden Gefahren plädiert Hajar für einen respektvollen und wissenschaftlich fundierten Umgang mit dieser Naturgewalt. 
+        Sie unterstützt zukunftsweisende Projekte auf der Insel, die darauf abzielen, die Energie des Wellengangs durch moderne Seekraftwerke in sauberen Strom umzuwandeln. 
+        Für Hajar steht fest: Die Wellen am Strand sind eine unerschöpfliche Ressource, deren Schutz und Erforschung über die Zukunft der mediterranen Küstenregionen entscheiden werden.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Welche wesentliche biologische und geografische Rolle schreibt Hajar den Wellen auf Mallorca zu?</p>
+
+            <label>
+                <input type="radio" name="q14_1" value="funktion">
+                Sie sichern die Sauerstoffversorgung im Küstenbereich und wirken maßgeblich an der Modellierung der Landschaft mit.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_1" value="tourismus">
+                Ihr einziger Zweck besteht darin, eine attraktive Kulisse für den internationalen Badetourismus zu bieten.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_1" value="erwärmung">
+                Sie heizen die Wassertemperatur des Mittelmeers künstlich auf, um das Wachstum von Algen zu beschleunigen.
+            </label>
+
+            <button onclick="check('q14_1','funktion','r14_1')">
+                Check
+            </button>
+
+            <div class="result" id="r14_1"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welche negativen Konsequenzen der verstärkten Wellenaktivität werden im Text geschildert?</p>
+
+            <label>
+                <input type="radio" name="q14_2" value="erosion">
+                Der fortschreitende Verlust von Strandflächen auf der Insel sowie die Bedrohung von marinen Habitaten und lokalen Industrien.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_2" value="schiffe">
+                Ein vollständiges Verbot für den gesamten Fährverkehr zwischen Mallorca und dem spanischen Festland.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_2" value="austrocknung">
+                Die plötzliche Austrocknung aller unterirdischen Süßwasserquellen im Landesinneren der Insel.
+            </label>
+
+            <button onclick="check('q14_2','erosion','r14_2')">
+                Check
+            </button>
+
+            <div class="result" id="r14_2"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Vor welchem Dilemma stehen Experten beim Schutz der mallorquinischen Küsten?</p>
+
+            <label>
+                <input type="radio" name="q14_3" value="dilemma">
+                Sie müssen Schutzbauten errichten, ohne dabei das sensible Gleichgewicht der Meeresbiologie zu zerstören.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_3" value="geldmangel">
+                Es gibt auf Mallorca keinerlei finanzielle Mittel oder Entwürfe für den Bau von funktionierenden Wellenbrechern.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_3" value="streik_hotel">
+                Die Hotelbesitzer weigern sich strikt, dass die Strände vor ihren Gebäuden geschützt werden.
+            </label>
+
+            <button onclick="check('q14_3','dilemma','r14_3')">
+                Check
+            </button>
+
+            <div class="result" id="r14_3"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Auf welche Weise kann die kinetische Energie der Wellen laut Text positiv genutzt werden?</p>
+
+            <label>
+                <input type="radio" name="q14_4" value="energie">
+                Durch die technologische Transformation der mechanischen Meereskraft in regenerative elektrische Energie.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_4" value="erwärmen_stadt">
+                Indem man das warme Wellenwasser direkt in die Klimaanlagen der Hotels leitet.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_4" value="reinigung">
+                Die Wellen werden mechanisch gestoppt, um Plastikmüll automatisch aus dem Sand zu filtern.
+            </label>
+
+            <button onclick="check('q14_4','energie','r14_4')">
+                Check
+            </button>
+
+            <div class="result" id="r14_4"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Welche bilanzierende Schlussfolgerung zieht Hajar am Ende ihrer Beobachtungen?</p>
+
+            <label>
+                <input type="radio" name="q14_5" value="schluss">
+                Der adäquate Schutz und die fundierte Analyse dieses Naturphänomens sind essenziell für die Erhaltung der Küsten.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_5" value="aufgeben">
+                Da der Massentourismus nicht aufzuhalten ist, sollte man jegliche Umweltforschung auf Mallorca sofort einstellen.
+            </label>
+
+            <label>
+                <input type="radio" name="q14_5" value="beton">
+                Sämtliche natürlichen Buchten sollten komplett zubetoniert werden, um den Wellen standzuhalten.
+            </label>
+
+            <button onclick="check('q14_5','schluss','r14_5')">
+                Check
+            </button>
+
+            <div class="result" id="r14_5"></div>
+        </div>
+
+    </div>
+</div>
+
+
+
+</div>
+
+<script>
+
+/* LOCK SYSTEM */
+function checkCode(){
+    let code = document.getElementById("code").value;
+    let correct = "Hj2026";
+
+    if(code === correct){
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    } else {
+        document.getElementById("error").innerHTML = "❌ Falscher Code!";
+    }
+}
+
+/* QUIZ */
+function check(q, correct, resultId){
+    let val = document.querySelector('input[name="'+q+'"]:checked');
+
+    if(!val){
+        document.getElementById(resultId).innerHTML = "⚠️ Wähle eine Antwort";
+        return;
+    }
+
+    if(val.value === correct){
+        document.getElementById(resultId).innerHTML = "✅ Richtig!";
+    } else {
+        document.getElementById(resultId).innerHTML = "❌ Falsch";
+    }
+}
+
+</script>
+
+</body>
+</html>

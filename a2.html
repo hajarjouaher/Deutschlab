@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>A2 Exercises - Deutschlab</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#0b0b12;
+    color:white;
+    padding:30px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.back{
+    color:black;
+    background:gold;
+    padding:10px 15px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.progress-container{
+    width:100%;
+    height:12px;
+    background:#222;
+    border-radius:20px;
+    margin:20px 0;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,gold,orange);
+    transition:0.4s;
+}
+
+.question{
+    background:rgba(255,255,255,0.05);
+    padding:15px;
+    margin:12px 0;
+    border-radius:10px;
+}
+
+.options label{
+    display:block;
+    margin:6px 0;
+    cursor:pointer;
+}
+
+button{
+    margin-top:8px;
+    padding:8px 12px;
+    background:gold;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+.result{
+    margin-top:6px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <h1>A2 Übungen (40 Fragen)</h1>
+    <a class="back" href="index.html">⬅ Home</a>
+</div>
+
+<div class="progress-container">
+    <div id="progress" class="progress"></div>
+</div>
+
+<div id="scoreText">Score: 0 / 40</div>
+
+<!-- ================= QUESTIONS ================= -->
+
+<div class="question">
+1) Gestern ___ ich ins Kino.<br>
+<label><input type="radio" name="q1" value="ging"> ging</label>
+<label><input type="radio" name="q1" value="gehe"> gehe</label>
+<label><input type="radio" name="q1" value="geht"> geht</label>
+<button onclick="check('q1','ging','r1')">Check</button>
+<div class="result" id="r1"></div>
+</div>
+
+<div class="question">
+2) Ich ___ jeden Tag Deutsch.<br>
+<label><input type="radio" name="q2" value="lerne"> lerne</label>
+<label><input type="radio" name="q2" value="lernte"> lernte</label>
+<label><input type="radio" name="q2" value="gelernt"> gelernt</label>
+<button onclick="check('q2','lerne','r2')">Check</button>
+<div class="result" id="r2"></div>
+</div>
+
+<div class="question">
+3) Er ___ gestern gearbeitet.<br>
+<label><input type="radio" name="q3" value="hat"> hat</label>
+<label><input type="radio" name="q3" value="ist"> ist</label>
+<label><input type="radio" name="q3" value="haben"> haben</label>
+<button onclick="check('q3','hat','r3')">Check</button>
+<div class="result" id="r3"></div>
+</div>
+
+<div class="question">
+4) Wir ___ nach Deutschland gefahren.<br>
+<label><input type="radio" name="q4" value="sind"> sind</label>
+<label><input type="radio" name="q4" value="haben"> haben</label>
+<label><input type="radio" name="q4" value="seid"> seid</label>
+<button onclick="check('q4','sind','r4')">Check</button>
+<div class="result" id="r4"></div>
+</div>
+
+<div class="question">
+5) Ich interessiere mich ___ Musik.<br>
+<label><input type="radio" name="q5" value="für"> für</label>
+<label><input type="radio" name="q5" value="auf"> auf</label>
+<label><input type="radio" name="q5" value="mit"> mit</label>
+<button onclick="check('q5','für','r5')">Check</button>
+<div class="result" id="r5"></div>
+</div>
+
+<div class="question">
+6) Ich war ___ Arzt.<br>
+<label><input type="radio" name="q6" value="beim"> beim</label>
+<label><input type="radio" name="q6" value="im"> im</label>
+<label><input type="radio" name="q6" value="auf"> auf</label>
+<button onclick="check('q6','beim','r6')">Check</button>
+<div class="result" id="r6"></div>
+</div>
+
+<div class="question">
+7) Sie ___ ein Auto gekauft.<br>
+<label><input type="radio" name="q7" value="hat"> hat</label>
+<label><input type="radio" name="q7" value="haben"> haben</label>
+<label><input type="radio" name="q7" value="ist"> ist</label>
+<button onclick="check('q7','hat','r7')">Check</button>
+<div class="result" id="r7"></div>
+</div>
+
+<div class="question">
+8) Ich ___ um 7 Uhr aufgestanden.<br>
+<label><input type="radio" name="q8" value="bin"> bin</label>
+<label><input type="radio" name="q8" value="habe"> habe</label>
+<label><input type="radio" name="q8" value="hat"> hat</label>
+<button onclick="check('q8','bin','r8')">Check</button>
+<div class="result" id="r8"></div>
+</div>
+
+<div class="question">
+9) Wir ___ im Urlaub gewesen.<br>
+<label><input type="radio" name="q9" value="sind"> sind</label>
+<label><input type="radio" name="q9" value="haben"> haben</label>
+<label><input type="radio" name="q9" value="seid"> seid</label>
+<button onclick="check('q9','sind','r9')">Check</button>
+<div class="result" id="r9"></div>
+</div>
+
+<div class="question">
+10) Ich muss heute ___ Hausaufgaben machen.<br>
+<label><input type="radio" name="q10" value="meine"> meine</label>
+<label><input type="radio" name="q10" value="mein"> mein</label>
+<label><input type="radio" name="q10" value="meinen"> meinen</label>
+<button onclick="check('q10','meine','r10')">Check</button>
+<div class="result" id="r10"></div>
+</div>
+<div class="question">
+11) Ich ___ gestern Pizza gegessen.<br>
+<label><input type="radio" name="q11" value="habe"> habe</label>
+<label><input type="radio" name="q11" value="bin"> bin</label>
+<label><input type="radio" name="q11" value="hat"> hat</label>
+<button onclick="check('q11','habe','r11')">Check</button>
+<div class="result" id="r11"></div>
+</div>
+
+<div class="question">
+12) Er ___ im Park gespielt.<br>
+<label><input type="radio" name="q12" value="hat"> hat</label>
+<label><input type="radio" name="q12" value="ist"> ist</label>
+<label><input type="radio" name="q12" value="haben"> haben</label>
+<button onclick="check('q12','hat','r12')">Check</button>
+<div class="result" id="r12"></div>
+</div>
+
+<div class="question">
+13) Wir ___ früh aufgestanden.<br>
+<label><input type="radio" name="q13" value="sind"> sind</label>
+<label><input type="radio" name="q13" value="haben"> haben</label>
+<label><input type="radio" name="q13" value="seid"> seid</label>
+<button onclick="check('q13','sind','r13')">Check</button>
+<div class="result" id="r13"></div>
+</div>
+
+<div class="question">
+14) Ich ___ meine Hausaufgaben gemacht.<br>
+<label><input type="radio" name="q14" value="habe"> habe</label>
+<label><input type="radio" name="q14" value="bin"> bin</label>
+<label><input type="radio" name="q14" value="hat"> hat</label>
+<button onclick="check('q14','habe','r14')">Check</button>
+<div class="result" id="r14"></div>
+</div>
+
+<div class="question">
+15) Sie ___ nach Berlin gefahren.<br>
+<label><input type="radio" name="q15" value="ist"> ist</label>
+<label><input type="radio" name="q15" value="hat"> hat</label>
+<label><input type="radio" name="q15" value="haben"> haben</label>
+<button onclick="check('q15','ist','r15')">Check</button>
+<div class="result" id="r15"></div>
+</div>
+
+<div class="question">
+16) Ich ___ ein Buch gelesen.<br>
+<label><input type="radio" name="q16" value="habe"> habe</label>
+<label><input type="radio" name="q16" value="bin"> bin</label>
+<label><input type="radio" name="q16" value="hat"> hat</label>
+<button onclick="check('q16','habe','r16')">Check</button>
+<div class="result" id="r16"></div>
+</div>
+
+<div class="question">
+17) Wir ___ einen Film gesehen.<br>
+<label><input type="radio" name="q17" value="haben"> haben</label>
+<label><input type="radio" name="q17" value="sind"> sind</label>
+<label><input type="radio" name="q17" value="hat"> hat</label>
+<button onclick="check('q17','haben','r17')">Check</button>
+<div class="result" id="r17"></div>
+</div>
+
+<div class="question">
+18) Er ___ sehr schnell gelaufen.<br>
+<label><input type="radio" name="q18" value="ist"> ist</label>
+<label><input type="radio" name="q18" value="hat"> hat</label>
+<label><input type="radio" name="q18" value="haben"> haben</label>
+<button onclick="check('q18','ist','r18')">Check</button>
+<div class="result" id="r18"></div>
+</div>
+
+<div class="question">
+19) Ich ___ Musik gehört.<br>
+<label><input type="radio" name="q19" value="habe"> habe</label>
+<label><input type="radio" name="q19" value="bin"> bin</label>
+<label><input type="radio" name="q19" value="hat"> hat</label>
+<button onclick="check('q19','habe','r19')">Check</button>
+<div class="result" id="r19"></div>
+</div>
+
+<div class="question">
+20) Sie ___ lange gearbeitet.<br>
+<label><input type="radio" name="q20" value="hat"> hat</label>
+<label><input type="radio" name="q20" value="haben"> haben</label>
+<label><input type="radio" name="q20" value="ist"> ist</label>
+<button onclick="check('q20','hat','r20')">Check</button>
+<div class="result" id="r20"></div>
+</div>
+<div class="question">
+21) Ich ___ jeden Tag Deutsch gelernt.<br>
+<label><input type="radio" name="q21" value="habe"> habe</label>
+<label><input type="radio" name="q21" value="bin"> bin</label>
+<label><input type="radio" name="q21" value="hat"> hat</label>
+<button onclick="check('q21','habe','r21')">Check</button>
+<div class="result" id="r21"></div>
+</div>
+
+<div class="question">
+22) Er ___ gestern nicht gekommen.<br>
+<label><input type="radio" name="q22" value="ist"> ist</label>
+<label><input type="radio" name="q22" value="hat"> hat</label>
+<label><input type="radio" name="q22" value="haben"> haben</label>
+<button onclick="check('q22','ist','r22')">Check</button>
+<div class="result" id="r22"></div>
+</div>
+
+<div class="question">
+23) Wir ___ im Restaurant gegessen.<br>
+<label><input type="radio" name="q23" value="haben"> haben</label>
+<label><input type="radio" name="q23" value="sind"> sind</label>
+<label><input type="radio" name="q23" value="hat"> hat</label>
+<button onclick="check('q23','haben','r23')">Check</button>
+<div class="result" id="r23"></div>
+</div>
+
+<div class="question">
+24) Ich ___ um 6 Uhr aufgestanden.<br>
+<label><input type="radio" name="q24" value="bin"> bin</label>
+<label><input type="radio" name="q24" value="habe"> habe</label>
+<label><input type="radio" name="q24" value="hat"> hat</label>
+<button onclick="check('q24','bin','r24')">Check</button>
+<div class="result" id="r24"></div>
+</div>
+
+<div class="question">
+25) Sie ___ die Tür geöffnet.<br>
+<label><input type="radio" name="q25" value="hat"> hat</label>
+<label><input type="radio" name="q25" value="haben"> haben</label>
+<label><input type="radio" name="q25" value="ist"> ist</label>
+<button onclick="check('q25','hat','r25')">Check</button>
+<div class="result" id="r25"></div>
+</div>
+
+<div class="question">
+26) Ich ___ krank gewesen.<br>
+<label><input type="radio" name="q26" value="bin"> bin</label>
+<label><input type="radio" name="q26" value="habe"> habe</label>
+<label><input type="radio" name="q26" value="hat"> hat</label>
+<button onclick="check('q26','bin','r26')">Check</button>
+<div class="result" id="r26"></div>
+</div>
+
+<div class="question">
+27) Wir ___ nach Hause gegangen.<br>
+<label><input type="radio" name="q27" value="sind"> sind</label>
+<label><input type="radio" name="q27" value="haben"> haben</label>
+<label><input type="radio" name="q27" value="hat"> hat</label>
+<button onclick="check('q27','sind','r27')">Check</button>
+<div class="result" id="r27"></div>
+</div>
+
+<div class="question">
+28) Er ___ viel gearbeitet.<br>
+<label><input type="radio" name="q28" value="hat"> hat</label>
+<label><input type="radio" name="q28" value="haben"> haben</label>
+<label><input type="radio" name="q28" value="ist"> ist</label>
+<button onclick="check('q28','hat','r28')">Check</button>
+<div class="result" id="r28"></div>
+</div>
+
+<div class="question">
+29) Ich ___ meine Freunde getroffen.<br>
+<label><input type="radio" name="q29" value="habe"> habe</label>
+<label><input type="radio" name="q29" value="bin"> bin</label>
+<label><input type="radio" name="q29" value="hat"> hat</label>
+<button onclick="check('q29','habe','r29')">Check</button>
+<div class="result" id="r29"></div>
+</div>
+
+<div class="question">
+30) Sie ___ einen Brief geschrieben.<br>
+<label><input type="radio" name="q30" value="hat"> hat</label>
+<label><input type="radio" name="q30" value="haben"> haben</label>
+<label><input type="radio" name="q30" value="ist"> ist</label>
+<button onclick="check('q30','hat','r30')">Check</button>
+<div class="result" id="r30"></div>
+</div>
+
+<div class="question">
+31) Ich ___ ins Bett gegangen.<br>
+<label><input type="radio" name="q31" value="bin"> bin</label>
+<label><input type="radio" name="q31" value="habe"> habe</label>
+<label><input type="radio" name="q31" value="hat"> hat</label>
+<button onclick="check('q31','bin','r31')">Check</button>
+<div class="result" id="r31"></div>
+</div>
+
+<div class="question">
+32) Wir ___ einen Kaffee getrunken.<br>
+<label><input type="radio" name="q32" value="haben"> haben</label>
+<label><input type="radio" name="q32" value="sind"> sind</label>
+<label><input type="radio" name="q32" value="hat"> hat</label>
+<button onclick="check('q32','haben','r32')">Check</button>
+<div class="result" id="r32"></div>
+</div>
+
+<div class="question">
+33) Er ___ die Aufgabe verstanden.<br>
+<label><input type="radio" name="q33" value="hat"> hat</label>
+<label><input type="radio" name="q33" value="haben"> haben</label>
+<label><input type="radio" name="q33" value="ist"> ist</label>
+<button onclick="check('q33','hat','r33')">Check</button>
+<div class="result" id="r33"></div>
+</div>
+
+<div class="question">
+34) Ich ___ im Park spazieren gegangen.<br>
+<label><input type="radio" name="q34" value="bin"> bin</label>
+<label><input type="radio" name="q34" value="habe"> habe</label>
+<label><input type="radio" name="q34" value="hat"> hat</label>
+<button onclick="check('q34','bin','r34')">Check</button>
+<div class="result" id="r34"></div>
+</div>
+
+<div class="question">
+35) Sie ___ sehr schnell gesprochen.<br>
+<label><input type="radio" name="q35" value="hat"> hat</label>
+<label><input type="radio" name="q35" value="haben"> haben</label>
+<label><input type="radio" name="q35" value="ist"> ist</label>
+<button onclick="check('q35','hat','r35')">Check</button>
+<div class="result" id="r35"></div>
+</div>
+
+<div class="question">
+36) Ich ___ ein Auto gekauft.<br>
+<label><input type="radio" name="q36" value="habe"> habe</label>
+<label><input type="radio" name="q36" value="bin"> bin</label>
+<label><input type="radio" name="q36" value="hat"> hat</label>
+<button onclick="check('q36','habe','r36')">Check</button>
+<div class="result" id="r36"></div>
+</div>
+
+<div class="question">
+37) Wir ___ viel gelernt.<br>
+<label><input type="radio" name="q37" value="haben"> haben</label>
+<label><input type="radio" name="q37" value="sind"> sind</label>
+<label><input type="radio" name="q37" value="hat"> hat</label>
+<button onclick="check('q37','haben','r37')">Check</button>
+<div class="result" id="r37"></div>
+</div>
+
+<div class="question">
+38) Er ___ nach Hause gekommen.<br>
+<label><input type="radio" name="q38" value="ist"> ist</label>
+<label><input type="radio" name="q38" value="hat"> hat</label>
+<label><input type="radio" name="q38" value="haben"> haben</label>
+<button onclick="check('q38','ist','r38')">Check</button>
+<div class="result" id="r38"></div>
+</div>
+
+<div class="question">
+39) Ich ___ meine Familie besucht.<br>
+<label><input type="radio" name="q39" value="habe"> habe</label>
+<label><input type="radio" name="q39" value="bin"> bin</label>
+<label><input type="radio" name="q39" value="hat"> hat</label>
+<button onclick="check('q39','habe','r39')">Check</button>
+<div class="result" id="r39"></div>
+</div>
+
+<div class="question">
+40) Sie ___ den Test gemacht.<br>
+<label><input type="radio" name="q40" value="hat"> hat</label>
+<label><input type="radio" name="q40" value="haben"> haben</label>
+<label><input type="radio" name="q40" value="ist"> ist</label>
+<button onclick="check('q40','hat','r40')">Check</button>
+<div class="result" id="r40"></div>
+</div>
+
+<script>
+let score = 0;
+let total = 40;
+let done = {};
+
+function check(q, correct, resultId){
+
+    if(done[q]) return;
+
+    let val = document.querySelector('input[name="'+q+'"]:checked');
+    if(!val) return;
+
+    done[q] = true;
+
+    if(val.value === correct){
+        document.getElementById(resultId).innerHTML = "✅ Richtig!";
+        score++;
+    } else {
+        document.getElementById(resultId).innerHTML = "❌ Falsch";
+    }
+
+    document.getElementById("scoreText").innerText =
+        "Score: " + score + " / " + total;
+
+    document.getElementById("progress").style.width =
+        (score/total)*100 + "%";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lesen B1</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f0f1a;
+    color:white;
+}
+
+/* LOCK SCREEN */
+.lock-box{
+    width:400px;
+    background:rgba(255,255,255,0.06);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 0 25px rgba(255,215,0,0.15);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation: fadeIn 1s ease;
+    backdrop-filter: blur(12px);
+}
+
+/* Glow animation */
+.lock-box::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:20px;
+    background:linear-gradient(45deg, gold, transparent, gold);
+    z-index:-1;
+    filter:blur(20px);
+    opacity:0.4;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow{
+    from{opacity:0.2; transform:scale(1);}
+    to{opacity:0.6; transform:scale(1.02);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translate(-50%,-55%);}
+    to{opacity:1; transform:translate(-50%,-50%);}
+}
+
+.lock-box img{
+    width:90px;
+    margin-bottom:15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus{
+    box-shadow:0 0 10px gold;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg, gold, orange);
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px gold;
+}
+
+#error{
+    margin-top:10px;
+    color:#ff5c5c;
+}
+/* CONTENT */
+#content{
+    display:none;
+}
+
+/* HEADER */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    background:rgba(255,255,255,0.05);
+    position:sticky;
+    top:0;
+    backdrop-filter: blur(10px);
+}
+
+h1{
+    text-align:center;
+    color:gold;
+    margin:20px 0;
+}
+
+/* CARD */
+.card{
+    display:flex;
+    gap:20px;
+    max-width:1000px;
+    margin:25px auto;
+    padding:15px;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,0.1);
+
+    opacity:0;
+    transform:translateY(40px);
+    animation: slideUp 0.8s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.4s;}
+.card:nth-child(3){animation-delay:0.6s;}
+.card:nth-child(4){animation-delay:0.8s;}
+
+@keyframes slideUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card:hover{
+    transform:scale(1.01);
+    transition:0.3s;
+    box-shadow:0 0 15px rgba(255,215,0,0.1);
+}
+
+.card img{
+    width:300px;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.content-box{
+    flex:1;
+}
+
+h2{ color:gold; }
+
+.question{
+    background:rgba(0,0,0,0.3);
+    padding:10px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+label{ display:block; margin:5px 0; }
+
+.result{
+    margin-top:5px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 LOCK -->
+<div id="lock" class="lock-box">
+
+    <img src="logo.png" alt="logo">
+
+    <h1>Lesen B2</h1>
+    <p>Bitte gib den Zugangscode ein</p>
+
+    <input type="password" id="code" placeholder="Code eingeben">
+    <button onclick="checkCode()">Öffnen</button>
+
+    <div id="error"></div>
+</div>
+
+
+
+<!-- 📘 CONTENT -->
+<div id="content">
+
+    <div class="topbar">
+        <h2>📘 Lesen B1</h2>
+    </div>
+
+    <h1>Texte & Aufgaben</h1>
+
+   <!-- 1 MIGRATION -->
+<div class="card">
+    <img src="migration.jfif" alt="Migration">
+
+    <div class="content-box">
+        <h2>1) Migration und Neuanfang</h2>
+
+        <p>
+        Ahmed ist vor sechs Monaten aus Marokko nach Deutschland eingewandert. 
+        In Köln teilt er sich eine Wohnung mit zwei anderen jungen Erwachsenen unterschiedlicher Herkunft. 
+        Obwohl diese Wohngemeinschaft ihm hilft, offener zu werden, war der Anfang in der Fremde extrem mühsam. 
+        Besonders die sprachliche Barriere und die komplexen bürokratischen Abläufe bei den Behörden verunsicherten ihn im Alltag stark.
+
+        Um seine Chancen auf dem Arbeitsmarkt zu verbessern, besucht er jeden Vormittag einen intensiven Integrationskurs. 
+        Da das Leben in Deutschland jedoch teuer ist, reicht seine Motivation allein nicht aus: 
+        Nach dem Unterricht arbeitet er Teilzeit in einem Logistiklager, um seinen Lebensunterhalt und die Miete selbst zu finanzieren.
+
+        Dieser Doppellebenslauf aus Lernen und Arbeiten führt dazu, dass Ahmed abends oft erschöpft ist. 
+        Dennoch investiert er seine verbleibende Energie darin, deutsche Medien zu konsumieren und Grammatik zu wiederholen. 
+        Zwar hat er schon erste soziale Kontakte geknüpft, dennoch leidet er gelegentlich unter starkem Heimweh nach seiner Familie. 
+        Sein langfristiges Ziel verliert er dabei nie aus den Augen: Er strebt eine qualifizierte Berufsausbildung im Logistiksektor an.
+        </p>
+
+        <div class="question">
+            <p>1) Wie lässt sich Ahmeds aktuelle Wohnform am besten beschreiben?</p>
+            <label><input type="radio" name="q1" value="allein"> Er mietet eine eigene Wohnung für sich allein.</label>
+            <label><input type="radio" name="q1" value="wg"> Er wohnt zusammen mit Personen aus anderen Kulturen.</label>
+            <label><input type="radio" name="q1" value="heim"> Er ist in einer offiziellen Unterkunft für Geflüchtete untergebracht.</label>
+            <button onclick="check('q1','wg','r1')">Check</button>
+            <div class="result" id="r1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Welche Faktoren haben Ahmed den Start in Deutschland besonders erschwert?</p>
+            <label><input type="radio" name="q2" value="wetter"> Das ungewohnte Klima und das Essen in der neuen Stadt.</label>
+            <label><input type="radio" name="q2" value="sprache"> Die Kommunikation sowie der Umgang mit offiziellen Ämtern.</label>
+            <label><input type="radio" name="q2" value="arbeit"> Die Suche nach einem geeigneten Arbeitsplatz im Lager.</label>
+            <button onclick="check('q2','sprache','r2')">Check</button>
+            <div class="result" id="r2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Warum geht Ahmed nach dem Sprachkurs noch arbeiten?</p>
+            <label><input type="radio" name="q3" value="praxis"> Er möchte dort in erster Linie seine Deutschkenntnisse praktisch anwenden.</label>
+            <label><input type="radio" name="q3" value="geld"> Er muss Geld verdienen, um für seine laufenden Kosten aufzukommen.</label>
+            <label><input type="radio" name="q3" value="pflicht"> Es ist ein verpflichtender Teil seines Integrationskurses.</label>
+            <button onclick="check('q3','geld','r3')">Check</button>
+            <div class="result" id="r3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Was ist der Grund für Ahmeds regelmäßige Müdigkeit?</p>
+            <label><input type="radio" name="q4" value="belastung"> Die Kombination aus dem täglichen Sprachunterricht und der anschließenden Arbeit.</label>
+            <label><input type="radio" name="q4" value="schlaf"> Er findet nachts wegen des Heimwehs keinen ruhigen Schlaf.</label>
+            <label><input type="radio" name="q4" value="sport"> Die körperliche Anstrengung durch intensiven Freizeitsport.</label>
+            <button onclick="check('q4','belastung','r4')">Check</button>
+            <div class="result" id="r4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Wie verhält sich Ahmed trotz seiner Erschöpfung am Abend?</p>
+            <label><input type="radio" name="q5" value="ruhe"> Er ruht sich aus und trifft sich ausschließlich mit Freunden.</label>
+            <label><input type="radio" name="q5" value="lernen"> Er beschäftigt sich weiterhin aktiv mit der deutschen Sprache.</label>
+            <label><input type="radio" name="q5" value="telefon"> Er telefoniert stundenlang mit seiner Familie in Marokko.</label>
+            <button onclick="check('q5','lernen','r5')">Check</button>
+            <div class="result" id="r5"></div>
+        </div>
+
+        <div class="question">
+            <p>6) Welchen Zukunftsplan verfolgt er konsequent?</p>
+            <label><input type="radio" name="q6" value="studium"> Ein akademisches Studium an einer deutschen Universität.</label>
+            <label><input type="radio" name="q6" value="ausbildung"> Eine fundierte Ausbildung in der Logistikbranche.</label>
+            <label><input type="radio" name="q6" value="rueckkehr"> Die baldige Rückkehr zu seiner Familie nach Marokko.</label>
+            <button onclick="check('q6','ausbildung','r6')">Check</button>
+            <div class="result" id="r6"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 2 STRESS IM ALLTAG (Niveau B1) -->
+<div class="card">
+    <img src="stress.jfif" alt="Stress im Alltag">
+    
+    <div class="content-box">
+        <h2>2) Stress im Alltag und Work-Life-Balance</h2>
+
+        <p>
+        Daniel ist seit zwei Jahren bei einem expandierenden Logistikunternehmen im Norden Deutschlands angestellt. 
+        In jüngster Zeit haben sich seine Arbeitsbedingungen drastisch verschärft: Das Aufgabenpensum ist enorm gestiegen, 
+        während die Abgabefristen immer knapper kalkuliert werden, was unregelmäßige Arbeitszeiten und späte Feierabende zur Folge hat.
+
+        Zu den beruflichen Herausforderungen kommen gravierende private Belastungen hinzu. 
+        Da seine Mutter gesundheitlich stark eingeschränkt ist, übernimmt er einen großen Teil ihrer Pflege. 
+        Gleichzeitig versucht er, den Erwartungen seiner Partnerschaft gerecht zu werden und den Kontakt zu seinem Freundeskreis nicht zu verlieren. 
+        Diese dauerhafte Mehrfachbelastung führt dazu, dass er permanent unter psychischem Druck steht, was sich mittlerweile auch in massiven Schlafstörungen äußert.
+
+        Aufgrund dieser Symptome hat ihm sein Hausarzt dringend dazu geraten, bewusste Erholungsphasen in den Alltag zu integrieren und für körperlichen Ausgleich zu sorgen. 
+        Daniel bemüht sich nun um ein besseres Zeitmanagement und versucht, klare Grenzen zu setzen, indem er zusätzliche Forderungen im Büro ablehnt. 
+        Dennoch fällt es ihm sichtlich schwer, eine gesunde Balance zwischen den verschiedenen Lebensbereichen herzustellen.
+        </p>
+
+        <!-- QUESTIONS -->
+
+        <div class="question">
+            <p>1) Welcher geografische Raum wird als Arbeitsort von Daniel genannt?</p>
+            <label><input type="radio" name="q2_1" value="berlin"> Eine Metropole im Osten Deutschlands.</label>
+            <label><input type="radio" name="q2_1" value="hamburg"> Eine norddeutsche Hafenstadt.</label>
+            <label><input type="radio" name="q2_1" value="koeln"> Eine Stadt im Rheinland.</label>
+            <button onclick="check('q2_1','hamburg','r2_1')">Check</button>
+            <div class="result" id="r2_1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Was ist die Hauptursache für Daniels aktuelle Überlastung?</p>
+            <label><input type="radio" name="q2_2" value="schule"> Eine anstrengende berufliche Weiterbildung am Abend.</label>
+            <label><input type="radio" name="q2_2" value="arbeit+privat"> Die Gleichzeitigkeit von hohem Leistungsdruck im Beruf und familiärer Fürsorge.</label>
+            <label><input type="radio" name="q2_2" value="urlaub"> Die Planung von zu vielen privaten Reisen und Freizeitaktivitäten.</label>
+            <button onclick="check('q2_2','arbeit+privat','r2_2')">Check</button>
+            <div class="result" id="r2_2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Wie wirkt sich die Veränderung an Daniel Arbeitsplatz konkret aus?</p>
+            <label><input type="radio" name="q2_3" value="ueberstunden"> Er verbringt wegen des hohen Zeitdrucks oft die Abendstunden im Büro.</label>
+            <label><input type="radio" name="q2_3" value="sport"> Er nutzt die Abendzeit, um im Betrieb Sport zu treiben.</label>
+            <label><input type="radio" name="q2_3" value="urlaub"> Er kann flexibel von zu Hause aus arbeiten und früher Feierabend machen.</label>
+            <button onclick="check('q2_3','ueberstunden','r2_3')">Check</button>
+            <div class="result" id="r2_3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Welche gesundheitliche Folge leidet Daniel durch den anhaltenden Druck?</p>
+            <label><input type="radio" name="q2_4" value="schlaf"> Seine nächtliche Regeneration ist durch mangelnde Schlafqualität gestört.</label>
+            <label><input type="radio" name="q2_4" value="geld"> Er leidet unter finanziellen Engpässen trotz der vielen Arbeit.</label>
+            <label><input type="radio" name="q2_4" value="reise"> Er ist körperlich nicht mehr in der Lage, weite Reisen zu unternehmen.</label>
+            <button onclick="check('q2_4','schlaf','r2_4')">Check</button>
+            <div class="result" id="r2_4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Welche medizinische Empfehlung hat Daniel erhalten?</p>
+            <label><input type="radio" name="q2_5" value="sport+pausen"> Er soll sportlich aktiv werden und im Alltag gezielt entschleunigen.</label>
+            <label><input type="radio" name="q2_5" value="reisen"> Er sollte sofort eine längere Urlaubsreise ins Ausland buchen.</label>
+            <label><input type="radio" name="q2_5" value="mehr arbeit"> Der Arzt rät ihm, noch mehr Aufgaben zu übernehmen, um sich abzulenken.</label>
+            <button onclick="check('q2_5','sport+pausen','r2_5')">Check</button>
+            <div class="result" id="r2_5"></div>
+        </div>
+
+        <div class="question">
+            <p>6) Welche Aussage beschreibt Daniels momentane Situation korrekt?</p>
+            <label><input type="radio" name="q2_6" value="druck"> Er befindet sich in einer anspruchsvollen und psychisch belastenden Lebensphase.</label>
+            <label><input type="radio" name="q2_6" value="urlaub"> Er hat seine Probleme gelöst und genießt momentan einen Urlaub.</label>
+            <label><input type="radio" name="q2_6" value="schule"> Er hat seinen Job gekündigt und absolviert eine schulische Ausbildung.</label>
+            <button onclick="check('q2_6','druck','r2_6')">Check</button>
+            <div class="result" id="r2_6"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 3 PRAKTIKUM KRANKENHAUS (Niveau B1) - Julia -->
+<div class="card">
+    <img src="krakenhaus.jfif" alt="Praktikum im Krankenhaus">
+
+    <div class="content-box">
+        <h2>3) Praktikum im klinischen Bereich</h2>
+
+        <p>
+        Die 19-jährige Julia absolviert derzeit ein mehrwöchiges Orientierungspraktikum auf der Entbindungsstation eines städtischen Krankenhauses. 
+        Zu Beginn der Tätigkeit war sie von großer Ungewissheit und spürbarer Nervosität geprägt, da ihr die genauen Abläufe noch völlig fremd waren. 
+        Die Atmosphäre auf der Station schwankt permanent: Sie reicht von ruhigen Phasen bis hin zu extremen Stresssituationen, sobald mehrere Patientinnen zeitgleich eine medizinische oder pflegerische Betreuung anfordern.
+
+        In enger Zusammenarbeit mit Hebammen und dem qualifizierten Pflegepersonal sammelt Julia wertvolle Eindrücke. 
+        In den ersten Tagen beschränkt sich ihre Rolle auf das reine Beobachten: Sie schaut zu, wie die Erstversorgung von Neugeborenen abläuft, auf welche Weise junge Mütter Unterstützung erhalten und wie relevante medizinische Daten fehlerfrei dokumentiert werden.
+
+        Nach einer kurzen Einarbeitungszeit übertragen ihr die Kollegen bereits eigenständige, administrative und unterstützende Tätigkeiten. 
+        Dazu gehören das Weiterleiten von Patientenakten, das sterile Herrichten der Krankenzimmer sowie die Begleitung von Patientinnen zu anstehenden Fachuntersuchungen.
+
+        Am Ende ihrer ersten Arbeitswoche hat Julia merklich an Selbstvertrauen gewonnen. 
+        Diese positiven Erfahrungen haben sie dazu bewegt, eine spätere Berufsausbildung im Gesundheits- und Krankenpflegebereich ernsthaft in Erwägung zu ziehen.
+        </p>
+
+        <!-- QUESTIONS -->
+
+        <div class="question">
+            <p>1) In welchem spezifischen Fachbereich des Krankenhauses ist Julia tätig?</p>
+            <label><input type="radio" name="q3_1" value="krankenhaus"> Auf einer Station, die auf Geburten und die Pflege von Säuglingen spezialisiert ist.</label>
+            <label><input type="radio" name="q3_1" value="schule"> In der logistischen Verwaltung der klinischen Infrastruktur.</label>
+            <label><input type="radio" name="q3_1" value="apotheke"> In der hauseigenen Krankenhausapotheke für Medikamentenausgabe.</label>
+            <button onclick="check('q3_1','krankenhaus','r3_1')">Check</button>
+            <div class="result" id="r3_1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Was blockierte Julia an ihren ersten Arbeitstagen?</p>
+            <label><input type="radio" name="q3_2" value="unsicher"> Die Unwissenheit bezüglich der kommenden Herausforderungen und Arbeitsabläufe.</label>
+            <label><input type="radio" name="q3_2" value="krank"> Eine plötzliche gesundheitliche Beeinträchtigung, die sie schwächte.</label>
+            <label><input type="radio" name="q3_2" value="urlaub"> Die Tatsache, dass sie eigentlich lieber Urlaub machen wollte.</label>
+            <button onclick="check('q3_2','unsicher','r3_2')">Check</button>
+            <div class="result" id="r3_2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Worauf lag der Fokus von Julia zu Beginn des Praktikums?</p>
+            <label><input type="radio" name="q3_3" value="pflege"> Auf der passiven Wahrnehmung der Pflege von Wöchnerinnen und Babys.</label>
+            <label><input type="radio" name="q3_3" value="sport"> Auf dem Erlernen von physiotherapeutischen Sportübungen für Patienten.</label>
+            <label><input type="radio" name="q3_3" value="essen"> Auf der Zubereitung und Verteilung der täglichen Krankenhausverpflegung.</label>
+            <button onclick="check('q3_3','pflege','r3_3')">Check</button>
+            <div class="result" id="r3_3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Wie veränderte sich Julias Aufgabenbereich im Laufe der Woche?</p>
+            <label><input type="radio" name="q3_4" value="hilfe"> Sie durfte nach der ersten Phase assistierende Hilfsarbeiten eigenständig ausführen.</label>
+            <label><input type="radio" name="q3_4" value="operation"> Sie wurde direkt bei chirurgischen Eingriffen im Operationssaal eingesetzt.</label>
+            <label><input type="radio" name="q3_4" value="arzt"> Sie übernahm die medizinische Verantwortung eines behandelnden Arztes.</label>
+            <button onclick="check('q3_4','hilfe','r3_4')">Check</button>
+            <div class="result" id="r3_4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Welche konkreten Arbeiten gehören zu ihren neuen Aufgaben?</p>
+            <label><input type="radio" name="q3_5" value="dokumente"> Das Transportieren von Akten, die Raumvorbereitung und der Patiententransport innerhalb des Hauses.</label>
+            <label><input type="radio" name="q3_5" value="kochen"> Die eigenverantwortliche kulinarische Versorgung der Station.</label>
+            <label><input type="radio" name="q3_5" value="fahren"> Das Steuern von Rettungsfahrzeugen bei Notfalleinsätzen.</label>
+            <button onclick="check('q3_5','dokumente','r3_5')">Check</button>
+            <div class="result" id="r3_5"></div>
+        </div>
+
+        <div class="question">
+            <p>6) Welches Fazit zieht Julia am Ende der ersten Woche?</p>
+            <label><input type="radio" name="q3_6" value="sicher"> Sie hat an Sicherheit gewonnen und zieht einen Berufsweg im Pflegebereich in Betracht.</label>
+            <label><input type="radio" name="q3_6" value="verloren"> Sie fühlt sich komplett überfordert und möchte das Praktikum abbrechen.</label>
+            <label><input type="radio" name="q3_6" value="müde"> Sie spürt keinerlei Motivation mehr und klagt ausschließlich über Müdigkeit.</label>
+            <button onclick="check('q3_6','sicher','r3_6')">Check</button>
+            <div class="result" id="r3_6"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 4 HOTEL CHECK-IN (Niveau B1) - Lukas -->
+<div class="card">
+    <img src="Hotel Check-in.jfif" alt="Hotel Check-In">
+
+    <div class="content-box">
+        <h2>4) Ankunft und Check-In im Hotel</h2>
+
+        <p>
+        Nach einer anstrengenden Anreise erreicht Lukas am späten Abend seine Unterkunft in der Bundeshauptstadt. 
+        Da er seine Buchung bereits vor Wochen über ein Online-Portal abgeschlossen hatte, verläuft der administrative Prozess an der Rezeption reibungslos. 
+        Zur Verifizierung seiner Daten legt er dem Hotelpersonal ein gültiges Ausweisdokument vor und nimmt im Anschluss seine Zimmerkarte entgegen.
+
+        Der Rezeptionist informiert ihn höflich über die genauen Servicezeiten des morgendlichen Frühstücksbuffets sowie über die Lage des hauseigenen Gastronomiebereichs. 
+        Aufgrund der weiten Fahrtstrecke verspürt Lukas jedoch eine akute Erschöpfung. 
+        Er verzichtet daher auf weitere Aktivitäten im Haus und begibt sich auf direktem Weg auf sein Zimmer, um sich auszuruhen.
+        </p>
+
+        <!-- QUESTIONS -->
+
+        <div class="question">
+            <p>1) In welcher Umgebung befindet sich Lukas zu Beginn des Textes?</p>
+            <label><input type="radio" name="q4_1" value="schule"> In einer Bildungseinrichtung während des Abendunterrichts.</label>
+            <label><input type="radio" name="q4_1" value="hotel"> In einem Beherbergungsbetrieb für Reisende.</label>
+            <label><input type="radio" name="q4_1" value="krankenhaus"> In der Notaufnahme eines städtischen Sanatoriums.</label>
+            <button onclick="check('q4_1','hotel','r4_1')">Check</button>
+            <div class="result" id="r4_1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Welche bürokratische Vorarbeit hat Lukas vor seiner Ankunft geleistet?</p>
+            <label><input type="radio" name="q4_2" value="reserviert"> Er hat im Vorfeld eine digitale Zimmerreservierung vorgenommen.</label>
+            <label><input type="radio" name="q4_2" value="gekauft"> Er hat online ein gebrauchtes Fahrzeug für die Reise erworben.</label>
+            <label><input type="radio" name="q4_2" value="gekocht"> Er hat sich einen detaillierten Ernährungsplan im Internet zusammengestellt.</label>
+            <button onclick="check('q4_2','reserviert','r4_2')">Check</button>
+            <div class="result" id="r4_2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Was fordert das Personal an der Rezeption zur Überprüfung von Lukas an?</p>
+            <label><input type="radio" name="q4_3" value="ausweis"> Einen amtlichen Identitätsnachweis zur Bestätigung seiner Person.</label>
+            <label><input type="radio" name="q4_3" value="ticket"> Eine ausgedruckte Fahrkarte für die öffentlichen Verkehrsmittel.</label>
+            <label><input type="radio" name="q4_3" value="karte"> Einen topografischen Stadtplan von Berlin zur Orientierung.</label>
+            <button onclick="check('q4_3','ausweis','r4_3')">Check</button>
+            <div class="result" id="r4_3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Welche Orientierungshilfen und Informationen erhält der Gast beim Empfang?</p>
+            <label><input type="radio" name="q4_4" value="frühstück"> Details zur Verpflegung am Morgen und dem Standort des Restaurants.</label>
+            <label><input type="radio" name="q4_4" value="arbeit"> Eine ausführliche Erklärung zu den Arbeitsbedingungen im Hotelgewerbe.</label>
+            <label><input type="radio" name="q4_4" value="reise"> Eine Beratung über die besten Routen und Sehenswürdigkeiten der Stadt.</label>
+            <button onclick="check('q4_4','frühstück','r4_4')">Check</button>
+            <div class="result" id="r4_4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Was veranlasst Lukas dazu, ohne Umwege seine Räumlichkeit aufzusuchen?</p>
+            <label><input type="radio" name="q4_5" value="müde"> Seine ausgeprägte Müdigkeit infolge des langen Reisewegs.</label>
+            <label><input type="radio" name="q4_5" value="krank"> Ein plötzliches Unwohlsein, das eine medizinische Behandlung erfordert.</label>
+            <label><input type="radio" name="q4_5" value="hungrig"> Ein starkes Hungergefühl, weshalb er den Zimmerservice nutzen möchte.</label>
+            <button onclick="check('q4_5','müde','r4_5')">Check</button>
+            <div class="result" id="r4_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 5 FITNESSSTUDIO (Niveau B1) - Tim -->
+<div class="card">
+    <img src="fitness.jfif" alt="Im Fitnessstudio">
+
+    <div class="content-box">
+        <h2>5) Sportliche Aktivität und Gesundheitsvorsorge</h2>
+
+        <p>
+        Tim absolviert wöchentlich drei Trainingseinheiten in einem Sportzentrum. 
+        Seine Hauptziele bestehen darin, seine körperliche Ausdauer zu steigern und einen effektiven Ausgleich zum stressigen Alltag zu schaffen. 
+        Der Ablauf seines Programms folgt einer festen Struktur: Er beginnt stets mit einer moderaten Aufwärmphase, um die Muskulatur zu lockern, bevor er zu intensiveren Übungen an verschiedenen Kraftgeräten übergeht.
+
+        Gelegentlich erweitert er sein sportliches Programm und nimmt an einem geleiteten Gruppenkurs für Yoga teil, um seine Flexibilität zu fördern. 
+        Sobald das Training beendet ist, achtet Tim konsequent auf eine ausreichende Flüssigkeitszufuhr, indem er reichlich Wasser konsumiert, bevor er schließlich den Heimweg antritt.
+        </p>
+
+        <!-- QUESTIONS -->
+
+        <div class="question">
+            <p>1) In welcher Regelmäßigkeit geht Tim seinem sportlichen Hobby nach?</p>
+            <label><input type="radio" name="q5_1" value="dreimal"> Er sucht das Sportstudio an drei Tagen pro Woche auf.</label>
+            <label><input type="radio" name="q5_1" value="einmal"> Er beschränkt seine sportlichen Aktivitäten auf einen einzigen Wochentag.</label>
+            <label><input type="radio" name="q5_1" value="täglich"> Das Training findet ohne Unterbrechung jeden Tag statt.</label>
+            <button onclick="check('q5_1','dreimal','r5_1')">Check</button>
+            <div class="result" id="r5_1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Welche Absicht verfolgt Tim mit dem regelmäßigen Training?</p>
+            <label><input type="radio" name="q5_2" value="fit"> Er strebt eine Optimierung seiner Fitness sowie einen mentalen Stressabbau an.</label>
+            <label><input type="radio" name="q5_2" value="arbeit"> Er absolviert dort eine Ausbildung zum Fitnesstrainer.</label>
+            <label><input type="radio" name="q5_2" value="freunde"> Er versucht in erster Linie, neue Kontakte und Freundschaften zu knüpfen.</label>
+            <button onclick="check('q5_2','fit','r5_2')">Check</button>
+            <div class="result" id="r5_2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Welcher Schritt markiert traditionell den Beginn seiner Trainingseinheit?</p>
+            <label><input type="radio" name="q5_3" value="wärmen"> Eine einleitende Phase, die der Vorbereitung des Körpers dient.</label>
+            <label><input type="radio" name="q5_3" value="essen"> Die Aufnahme einer kalorienreichen Mahlzeit zur Energiegewinnung.</label>
+            <label><input type="radio" name="q5_3" value="dusche"> Ein ausgiebiger Duschvorgang zur Erfrischung vor dem Sport.</label>
+            <button onclick="check('q5_3','wärmen','r5_3')">Check</button>
+            <div class="result" id="r5_3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Für welches zusätzliche sportliche Angebot entscheidet sich Tim ab und zu?</p>
+            <label><input type="radio" name="q5_4" value="yoga"> Für eine kollektive Dehnungs- und Entspannungsmethode im Kursbereich.</label>
+            <label><input type="radio" name="q5_4" value="musik"> Für einen rhythmischen Tanz- und Musikkurs des Sportvereins.</label>
+            <label><input type="radio" name="q5_4" value="sprache"> Für einen theoretischen Vortrag über gesunde Ernährung.</label>
+            <button onclick="check('q5_4','yoga','r5_4')">Check</button>
+            <div class="result" id="r5_4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) Welches Verhalten zeigt Tim unmittelbar nach dem Verlassen der Trainingsfläche?</p>
+            <label><input type="radio" name="q5_5" value="wasser"> Er sorgt für eine angemessene Hydratation durch Wassertrinken.</label>
+            <label><input type="radio" name="q5_5" value="schlafen"> Er nutzt die Ruheräume des Studios für einen kurzen Schlaf.</label>
+            <label><input type="radio" name="q5_5" value="arbeiten"> Er beginnt sofort mit der Arbeit im Büro der Studioleitung.</label>
+            <button onclick="check('q5_5','wasser','r5_5')">Check</button>
+            <div class="result" id="r5_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 6 MEINE ERSTE AUTOFAHRT (Niveau B1) - Lars -->
+<div class="card">
+    <img src="Meine erste Autofahr.jfif" alt="Meine erste Autofahrt">
+
+    <div class="content-box">
+        <h2>6) Die erste Fahrt im Straßenverkehr</h2>
+
+        <p>
+        Lars hat vor vierzehn Tagen seine praktische Fahrprüfung erfolgreich bestanden und die offizielle Fahrerlaubnis erhalten. 
+        Am heutigen Tag bewältigt er zum ersten Mal ohne Begleitung den Weg zu seiner Arbeitsstätte mit dem eigenen PKW. 
+        In der Anfangsphase kämpft er mit starker Nervosität, da das hohe Aufkommen an Fahrzeugen im morgendlichen Berufsverkehr extreme Konzentration erfordert.
+
+        Im turbulenten Kreuzungsbereich unterläuft ihm infolge der Anspannung ein kleines Missgeschick. 
+        Glücklicherweise reagiert ein anderer Verkehrsteilnehmer sehr rücksichtsvoll und signalisiert ihm verständnisvoll die Vorfahrt. 
+        Dieses kooperative Verhalten nimmt Lars die anfängliche Angst, sodass er im Anschluss wesentlich fokussierter agieren kann. 
+        Nachdem er sein Ziel unbeschadet erreicht hat, empfindet Lars eine tiefe innere Zufriedenheit über diesen gelungenen Meilenstein.
+        </p>
+
+        <!-- QUESTIONS -->
+
+        <div class="question">
+            <p>1) Welches wichtige Dokument hat Lars vor zwei Wochen erworben?</p>
+            <label><input type="radio" name="q6_1" value="führerschein"> Die gesetzliche Berechtigung zum Führen eines Kraftfahrzeugs.</label>
+            <label><input type="radio" name="q6_1" value="ticket"> Einen Strafzettel wegen eines Parkverstoßes.</label>
+            <label><input type="radio" name="q6_1" value="auto"> Einen Kaufvertrag für ein fabrikneues Automobil.</label>
+            <button onclick="check('q6_1','führerschein','r6_1')">Check</button>
+            <div class="result" id="r6_1"></div>
+        </div>
+
+        <div class="question">
+            <p>2) Welches Ziel steuert Lars mit seinem Fahrzeug an?</p>
+            <label><input type="radio" name="q6_2" value="arbeit"> Seinen vertraglichen Arbeitsplatz.</label>
+            <label><input type="radio" name="q6_2" value="schule"> Ein Bildungszentrum für Erwachsenenbildung.</label>
+            <label><input type="radio" name="q6_2" value="hotel"> Eine gebuchte Unterkunft in einer fremden Stadt.</label>
+            <button onclick="check('q6_2','arbeit','r6_2')">Check</button>
+            <div class="result" id="r6_2"></div>
+        </div>
+
+        <div class="question">
+            <p>3) Welcher Umstand blockiert Lars emotional in der ersten Phase der Fahrt?</p>
+            <label><input type="radio" name="q6_3" value="verkehr"> Das dichte und unruhige Fahrzeugaufkommen auf den Straßen.</label>
+            <label><input type="radio" name="q6_3" value="regen"> Die schlechte Sicht durch heftige, langanhaltende Niederschläge.</label>
+            <label><input type="radio" name="q6_3" value="musik"> Die extreme Lautstärke des bordeigenen Radiosystems.</label>
+            <button onclick="check('q6_3','verkehr','r6_3')">Check</button>
+            <div class="result" id="r6_3"></div>
+        </div>
+
+        <div class="question">
+            <p>4) Zu welchem Ereignis kommt es an der Straßenkreuzung?</p>
+            <label><input type="radio" name="q6_4" value="fehler"> Lars begeht einen Fahrfehler, der jedoch glimpflich verläuft.</label>
+            <label><input type="radio" name="q6_4" value="unfall"> Es ereignet sich ein schwerer Verkehrsunfall mit Blechschaden.</label>
+            <label><input type="radio" name="q6_4" value="pause"> Er stellt den Motor ab, um eine längere Erholungspause einzulegen.</label>
+            <button onclick="check('q6_4','fehler','r6_4')">Check</button>
+            <div class="result" id="r6_4"></div>
+        </div>
+
+        <div class="question">
+            <p>5) In welcher Gemütsverfassung befindet sich Lars nach der erfolgreichen Ankunft?</p>
+            <label><input type="radio" name="q6_5" value="stolz"> Er verspürt großen Stolz und eine Bestätigung seines Könnens.</label>
+            <label><input type="radio" name="q6_5" value="wütend"> Er ist verärgert über das aggressive Verhalten der anderen Autofahrer.</label>
+            <label><input type="radio" name="q6_5" value="krank"> Er klagt über physisches Unwohlsein aufgrund des Stresses.</label>
+            <button onclick="check('q6_5','stolz','r6_5')">Check</button>
+            <div class="result" id="r6_5"></div>
+        </div>
+
+    </div>
+</div>
+<!-- 7 MÜLLTRENNUNG (Niveau B1) - Noah -->
+<div class="card">
+    <img src="mull.jfif" alt="Mülltrennung in Deutschland">
+
+    <div class="content-box">
+
+        <h2>7) Das System der Mülltrennung in Deutschland</h2>
+
+        <p>
+        In Deutschland besitzt die systematische Abfalltrennung einen extrem hohen Stellenwert im Alltag. 
+        Noah, der vor einem Jahr seinen Wohnsitz nach Hamburg verlegt hat, sah sich anfangs mit der Herausforderung konfrontiert, die komplexen Vorschriften dieses Recycling-Systems zu verinnerlichen.
+
+        Die Verteilung der Wertstoffe folgt klaren Regeln: Altpapier wird in der blauen Tonne gesammelt, Verpackungsmaterialien aus Kunststoff gehören in den gelben Sack bzw. die gelbe Tonne, und organische Abfälle werden in der braunen Biotonne entsorgt. 
+        Gebrauchtes Glas hingegen muss nach Farben sortiert zu speziellen öffentlichen Sammelcontainern transportiert werden.
+
+        In der ersten Zeit fühlte sich Noah oft verunsichert, weshalb Fehlwürfe nicht ausblieben. 
+        Als er fälschlicherweise Plastikverpackungen im Restmüll entsorgte, wies ihn ein Hausbewohner auf charmante, aber bestimmte Weise auf das korrekte Verfahren hin.
+
+        Mittlerweile hat Noah ein ausgeprägtes Umweltbewusstsein entwickelt. 
+        Er beschränkt sich nicht mehr nur auf die Mülltrennung, sondern versucht aktiv, seinen Plastikkonsum zu reduzieren, indem er beispielsweise beim Lebensmitteleinkauf grundsätzlich auf wiederverwendbare Stofftaschen zurückgreift.
+        </p>
+
+        <!-- FRAGE 1 -->
+        <div class="question">
+            <p>1) Aus welchem Grund musste sich Noah intensiv mit der Abfalltrennung beschäftigen?</p>
+
+            <label>
+                <input type="radio" name="q13" value="neu">
+                Aufgrund seines Umzugs und des damit verbundenen Neuanfangs in einer anderen Umgebung.
+            </label>
+
+            <label>
+                <input type="radio" name="q13" value="schule">
+                Weil das Bestehen einer schulischen Prüfung von diesen Kenntnissen abhing.
+            </label>
+
+            <label>
+                <input type="radio" name="q13" value="arbeit">
+                Weil er eine berufliche Anstellung bei einem Entsorgungsunternehmen angetreten hat.
+            </label>
+
+            <button onclick="check('q13','neu','r13')">
+                Check
+            </button>
+
+            <div class="result" id="r13"></div>
+        </div>
+
+        <!-- FRAGE 2 -->
+        <div class="question">
+            <p>2) Welche Entsorgungsvariante ist laut Text für Erzeugnisse aus Papier vorgesehen?</p>
+
+            <label>
+                <input type="radio" name="q14" value="blau">
+                Sie müssen in dem dafür vorgesehenen blauen Sammelbehälter deponiert werden.
+            </label>
+
+            <label>
+                <input type="radio" name="q14" value="gelb">
+                Sie werden zusammen mit den Kunststoffabfällen in der gelben Tonne gesammelt.
+            </label>
+
+            <label>
+                <input type="radio" name="q14" value="braun">
+                Sie gehören aufgrund ihrer organischen Beschaffenheit in den braunen Behälter.
+            </label>
+
+            <button onclick="check('q14','blau','r14')">
+                Check
+            </button>
+
+            <div class="result" id="r14"></div>
+        </div>
+
+        <!-- FRAGE 3 -->
+        <div class="question">
+            <p>3) Wie gestaltete sich Noahs Einstieg in das deutsche Recycling-System?</p>
+
+            <label>
+                <input type="radio" name="q15" value="fehler">
+                Er war anfänglich von Zweifeln geprägt und sortierte die Wertstoffe nicht immer korrekt.
+            </label>
+
+            <label>
+                <input type="radio" name="q15" value="perfekt">
+                Er beherrschte sämtliche bürokratischen und praktischen Regeln auf Anhieb fehlerfrei.
+            </label>
+
+            <label>
+                <input type="radio" name="q15" value="urlaub">
+                Er ignorierte die Vorschriften komplett, da ihm der Umweltschutz gleichgültig war.
+            </label>
+
+            <button onclick="check('q15','fehler','r15')">
+                Check
+            </button>
+
+            <div class="result" id="r15"></div>
+        </div>
+
+        <!-- FRAGE 4 -->
+        <div class="question">
+            <p>4) Wer leistete Noah bei der Aufklärung über die Trennungsregeln Unterstützung?</p>
+
+            <label>
+                <input type="radio" name="q16" value="nachbar">
+                Eine Person aus seiner unmittelbaren Nachbarschaft.
+            </label>
+
+            <label>
+                <input type="radio" name="q16" value="chef">
+                Der Vorgesetzte seines Hamburger Arbeitgebers.
+            </label>
+
+            <label>
+                <input type="radio" name="q16" value="freundin">
+                Eine Bekannte, die ihn in seiner Wohnung besuchte.
+            </label>
+
+            <button onclick="check('q16','nachbar','r16')">
+                Check
+            </button>
+
+            <div class="result" id="r16"></div>
+        </div>
+
+        <!-- FRAGE 5 -->
+        <div class="question">
+            <p>5) Wie verhält sich Noah gegenwärtig bei der Besorgung von Lebensmitteln?</p>
+
+            <label>
+                <input type="radio" name="q17" value="tasche">
+                Er führt ein eigenes, mehrfach nutzbares Behältnis mit sich, um Plastik zu vermeiden.
+            </label>
+
+            <label>
+                <input type="radio" name="q17" value="plastik">
+                Er bevorzugt Produkte, die aufwendig in Kunststoff verschweißt sind.
+            </label>
+
+            <label>
+                <input type="radio" name="q17" value="auto">
+                Er nutzt für jeden noch so kurzen Einkaufsweg das eigene Automobil.
+            </label>
+
+            <button onclick="check('q17','tasche','r17')">
+                Check
+            </button>
+
+            <div class="result" id="r17"></div>
+        </div>
+
+        <!-- FRAGE 6 -->
+        <div class="question">
+            <p>6) Welche Schlussfolgerung lässt sich aus Noahs Entwicklung ziehen?</p>
+
+            <label>
+                <input type="radio" name="q18" value="umwelt">
+                Noahs ökologisches Bewusstsein und sein nachhaltiges Handeln haben sich positiv verstärkt.
+            </label>
+
+            <label>
+                <input type="radio" name="q18" value="egal">
+                Das Thema Umweltschutz hat für ihn nach wie vor keinerlei Relevanz im Alltag.
+            </label>
+
+            <label>
+                <input type="radio" name="q18" value="hasst">
+                Er empfindet die deutschen Umweltauflagen als Belastung und lehnt sie innerlich ab.
+            </label>
+
+            <button onclick="check('q18','umwelt','r18')">
+                Check
+            </button>
+
+            <div class="result" id="r18"></div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+<script>
+
+/* LOCK SYSTEM */
+function checkCode(){
+    let code = document.getElementById("code").value;
+    let correct = "Hj2026";
+
+    if(code === correct){
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    } else {
+        document.getElementById("error").innerHTML = "❌ Falscher Code!";
+    }
+}
+
+/* QUIZ */
+function check(q, correct, resultId){
+    let val = document.querySelector('input[name="'+q+'"]:checked');
+
+    if(!val){
+        document.getElementById(resultId).innerHTML = "⚠️ Wähle eine Antwort";
+        return;
+    }
+
+    if(val.value === correct){
+        document.getElementById(resultId).innerHTML = "✅ Richtig!";
+    } else {
+        document.getElementById(resultId).innerHTML = "❌ Falsch";
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>B1 Exercises - Deutschlab</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#0b0b12;
+    color:white;
+    padding:30px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.back{
+    color:black;
+    background:gold;
+    padding:10px 15px;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.progress-container{
+    width:100%;
+    height:12px;
+    background:#222;
+    border-radius:20px;
+    margin:20px 0;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,gold,orange);
+    transition:0.4s;
+}
+
+.question{
+    background:rgba(255,255,255,0.05);
+    padding:15px;
+    margin:12px 0;
+    border-radius:10px;
+}
+
+label{
+    display:block;
+    margin:5px 0;
+    cursor:pointer;
+}
+
+button{
+    margin-top:8px;
+    padding:8px 12px;
+    background:gold;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+.result{
+    margin-top:6px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <h1>B1 Übungen (40 Fragen)</h1>
+    <a class="back" href="index.html">⬅ Home</a>
+</div>
+
+<div class="progress-container">
+    <div id="progress" class="progress"></div>
+</div>
+
+<div id="scoreText">Score: 0 / 40</div>
+
+<!-- ================= QUESTIONS ================= -->
+
+<!-- 1-10: Konjunktiv / Modal / Perfekt -->
+<div class="question">
+1) Ich hätte mehr lernen ___ .<br>
+<label><input type="radio" name="q1" value="sollen"> sollen</label>
+<label><input type="radio" name="q1" value="soll"> soll</label>
+<label><input type="radio" name="q1" value="sollte"> sollte</label>
+<button onclick="check('q1','sollen','r1')">Check</button>
+<div class="result" id="r1"></div>
+</div>
+
+<div class="question">
+2) Wenn ich Zeit ___, würde ich reisen.<br>
+<label><input type="radio" name="q2" value="hätte"> hätte</label>
+<label><input type="radio" name="q2" value="habe"> habe</label>
+<label><input type="radio" name="q2" value="hatte"> hatte</label>
+<button onclick="check('q2','hätte','r2')">Check</button>
+<div class="result" id="r2"></div>
+</div>
+
+<div class="question">
+3) Er sagt, dass er krank ___ .<br>
+<label><input type="radio" name="q3" value="sei"> sei</label>
+<label><input type="radio" name="q3" value="ist"> ist</label>
+<label><input type="radio" name="q3" value="war"> war</label>
+<button onclick="check('q3','sei','r3')">Check</button>
+<div class="result" id="r3"></div>
+</div>
+
+<div class="question">
+4) Ich habe das Buch ___ .<br>
+<label><input type="radio" name="q4" value="gelesen"> gelesen</label>
+<label><input type="radio" name="q4" value="lesen"> lesen</label>
+<label><input type="radio" name="q4" value="liest"> liest</label>
+<button onclick="check('q4','gelesen','r4')">Check</button>
+<div class="result" id="r4"></div>
+</div>
+
+<div class="question">
+5) Wir wären früher gekommen, wenn wir Zeit ___ .<br>
+<label><input type="radio" name="q5" value="gehabt hätten"> gehabt hätten</label>
+<label><input type="radio" name="q5" value="haben"> haben</label>
+<label><input type="radio" name="q5" value="hatten"> hatten</label>
+<button onclick="check('q5','gehabt hätten','r5')">Check</button>
+<div class="result" id="r5"></div>
+</div>
+
+<!-- 6-20: Relativ + Präpositionen -->
+<div class="question">
+6) Das ist der Mann, ___ ich gestern gesehen habe.<br>
+<label><input type="radio" name="q6" value="den"> den</label>
+<label><input type="radio" name="q6" value="der"> der</label>
+<label><input type="radio" name="q6" value="dem"> dem</label>
+<button onclick="check('q6','den','r6')">Check</button>
+<div class="result" id="r6"></div>
+</div>
+
+<div class="question">
+7) Ich erinnere mich ___ ihn.<br>
+<label><input type="radio" name="q7" value="an"> an</label>
+<label><input type="radio" name="q7" value="für"> für</label>
+<label><input type="radio" name="q7" value="mit"> mit</label>
+<button onclick="check('q7','an','r7')">Check</button>
+<div class="result" id="r7"></div>
+</div>
+
+<div class="question">
+8) Die Frau, ___ Auto kaputt ist, ist meine Lehrerin.<br>
+<label><input type="radio" name="q8" value="deren"> deren</label>
+<label><input type="radio" name="q8" value="der"> der</label>
+<label><input type="radio" name="q8" value="die"> die</label>
+<button onclick="check('q8','deren','r8')">Check</button>
+<div class="result" id="r8"></div>
+</div>
+
+<div class="question">
+9) Ich interessiere mich ___ Geschichte.<br>
+<label><input type="radio" name="q9" value="für"> für</label>
+<label><input type="radio" name="q9" value="auf"> auf</label>
+<label><input type="radio" name="q9" value="an"> an</label>
+<button onclick="check('q9','für','r9')">Check</button>
+<div class="result" id="r9"></div>
+</div>
+
+<div class="question">
+10) Er hat sich ___ die Prüfung vorbereitet.<br>
+<label><input type="radio" name="q10" value="auf"> auf</label>
+<label><input type="radio" name="q10" value="für"> für</label>
+<label><input type="radio" name="q10" value="mit"> mit</label>
+<button onclick="check('q10','auf','r10')">Check</button>
+<div class="result" id="r10"></div>
+</div>
+<!-- 11 -->
+<div class="question">
+11) Ich bleibe zu Hause, ___ ich krank bin.<br>
+<label><input type="radio" name="q11" value="weil"> weil</label>
+<label><input type="radio" name="q11" value="dass"> dass</label>
+<label><input type="radio" name="q11" value="obwohl"> obwohl</label>
+<button onclick="check('q11','weil','r11')">Check</button>
+<div class="result" id="r11"></div>
+</div>
+
+<!-- 12 -->
+<div class="question">
+12) ___ es regnet, gehe ich spazieren.<br>
+<label><input type="radio" name="q12" value="obwohl"> obwohl</label>
+<label><input type="radio" name="q12" value="weil"> weil</label>
+<label><input type="radio" name="q12" value="dass"> dass</label>
+<button onclick="check('q12','obwohl','r12')">Check</button>
+<div class="result" id="r12"></div>
+</div>
+
+<!-- 13 -->
+<div class="question">
+13) Ich denke, ___ er kommt morgen.<br>
+<label><input type="radio" name="q13" value="dass"> dass</label>
+<label><input type="radio" name="q13" value="weil"> weil</label>
+<label><input type="radio" name="q13" value="ob"> ob</label>
+<button onclick="check('q13','dass','r13')">Check</button>
+<div class="result" id="r13"></div>
+</div>
+
+<!-- 14 -->
+<div class="question">
+14) Das Haus ___ von den Arbeitern gebaut.<br>
+<label><input type="radio" name="q14" value="wird"> wird</label>
+<label><input type="radio" name="q14" value="wurde"> wurde</label>
+<label><input type="radio" name="q14" value="hat"> hat</label>
+<button onclick="check('q14','wurde','r14')">Check</button>
+<div class="result" id="r14"></div>
+</div>
+
+<!-- 15 -->
+<div class="question">
+15) Ich war müde, ___ ich habe weitergearbeitet.<br>
+<label><input type="radio" name="q15" value="trotzdem"> trotzdem</label>
+<label><input type="radio" name="q15" value="weil"> weil</label>
+<label><input type="radio" name="q15" value="damit"> damit</label>
+<button onclick="check('q15','trotzdem','r15')">Check</button>
+<div class="result" id="r15"></div>
+</div>
+
+<!-- 16 -->
+<div class="question">
+16) Er hat gesagt, ___ er keine Zeit hat.<br>
+<label><input type="radio" name="q16" value="dass"> dass</label>
+<label><input type="radio" name="q16" value="weil"> weil</label>
+<label><input type="radio" name="q16" value="obwohl"> obwohl</label>
+<button onclick="check('q16','dass','r16')">Check</button>
+<div class="result" id="r16"></div>
+</div>
+
+<!-- 17 -->
+<div class="question">
+17) Ich warte ___ den Bus.<br>
+<label><input type="radio" name="q17" value="auf"> auf</label>
+<label><input type="radio" name="q17" value="für"> für</label>
+<label><input type="radio" name="q17" value="an"> an</label>
+<button onclick="check('q17','auf','r17')">Check</button>
+<div class="result" id="r17"></div>
+</div>
+
+<!-- 18 -->
+<div class="question">
+18) Die Kinder ___ im Park spielen.<br>
+<label><input type="radio" name="q18" value="dürfen"> dürfen</label>
+<label><input type="radio" name="q18" value="müssen"> müssen</label>
+<label><input type="radio" name="q18" value="können"> können</label>
+<button onclick="check('q18','dürfen','r18')">Check</button>
+<div class="result" id="r18"></div>
+</div>
+
+<!-- 19 -->
+<div class="question">
+19) Ich habe keine Lust ___ zu lernen.<br>
+<label><input type="radio" name="q19" value="zu"> zu</label>
+<label><input type="radio" name="q19" value="auf"> auf</label>
+<label><input type="radio" name="q19" value="für"> für</label>
+<button onclick="check('q19','zu','r19')">Check</button>
+<div class="result" id="r19"></div>
+</div>
+
+<!-- 20 -->
+<div class="question">
+20) Er fährt schnell, ___ er pünktlich ankommt.<br>
+<label><input type="radio" name="q20" value="damit"> damit</label>
+<label><input type="radio" name="q20" value="weil"> weil</label>
+<label><input type="radio" name="q20" value="obwohl"> obwohl</label>
+<button onclick="check('q20','damit','r20')">Check</button>
+<div class="result" id="r20"></div>
+</div>
+
+<!-- 21 -->
+<div class="question">
+21) Ich habe mich ___ den Job beworben.<br>
+<label><input type="radio" name="q21" value="auf"> auf</label>
+<label><input type="radio" name="q21" value="für"> für</label>
+<label><input type="radio" name="q21" value="an"> an</label>
+<button onclick="check('q21','auf','r21')">Check</button>
+<div class="result" id="r21"></div>
+</div>
+
+<!-- 22 -->
+<div class="question">
+22) Er ist stolz ___ seine Arbeit.<br>
+<label><input type="radio" name="q22" value="auf"> auf</label>
+<label><input type="radio" name="q22" value="für"> für</label>
+<label><input type="radio" name="q22" value="mit"> mit</label>
+<button onclick="check('q22','auf','r22')">Check</button>
+<div class="result" id="r22"></div>
+</div>
+
+<!-- 23 -->
+<div class="question">
+23) Ich hoffe, ___ du kommst bald.<br>
+<label><input type="radio" name="q23" value="dass"> dass</label>
+<label><input type="radio" name="q23" value="weil"> weil</label>
+<label><input type="radio" name="q23" value="obwohl"> obwohl</label>
+<button onclick="check('q23','dass','r23')">Check</button>
+<div class="result" id="r23"></div>
+</div>
+
+<!-- 24 -->
+<div class="question">
+24) Das Essen ___ gekocht.<br>
+<label><input type="radio" name="q24" value="wird"> wird</label>
+<label><input type="radio" name="q24" value="wurde"> wurde</label>
+<label><input type="radio" name="q24" value="hat"> hat</label>
+<button onclick="check('q24','wurde','r24')">Check</button>
+<div class="result" id="r24"></div>
+</div>
+
+<!-- 25 -->
+<div class="question">
+25) Ich lerne Deutsch, ___ ich in Deutschland arbeiten möchte.<br>
+<label><input type="radio" name="q25" value="weil"> weil</label>
+<label><input type="radio" name="q25" value="damit"> damit</label>
+<label><input type="radio" name="q25" value="obwohl"> obwohl</label>
+<button onclick="check('q25','damit','r25')">Check</button>
+<div class="result" id="r25"></div>
+</div>
+
+<!-- 26 -->
+<div class="question">
+26) Er hat Angst ___ Prüfungen.<br>
+<label><input type="radio" name="q26" value="vor"> vor</label>
+<label><input type="radio" name="q26" value="für"> für</label>
+<label><input type="radio" name="q26" value="an"> an</label>
+<button onclick="check('q26','vor','r26')">Check</button>
+<div class="result" id="r26"></div>
+</div>
+
+<!-- 27 -->
+<div class="question">
+27) Wir treffen uns ___ 5 Uhr.<br>
+<label><input type="radio" name="q27" value="um"> um</label>
+<label><input type="radio" name="q27" value="in"> in</label>
+<label><input type="radio" name="q27" value="auf"> auf</label>
+<button onclick="check('q27','um','r27')">Check</button>
+<div class="result" id="r27"></div>
+</div>
+
+<!-- 28 -->
+<div class="question">
+28) Ich erinnere mich ___ ihn nicht.<br>
+<label><input type="radio" name="q28" value="an"> an</label>
+<label><input type="radio" name="q28" value="auf"> auf</label>
+<label><input type="radio" name="q28" value="für"> für</label>
+<button onclick="check('q28','an','r28')">Check</button>
+<div class="result" id="r28"></div>
+</div>
+
+<!-- 29 -->
+<div class="question">
+29) Die Aufgabe ___ schwer gewesen.<br>
+<label><input type="radio" name="q29" value="ist"> ist</label>
+<label><input type="radio" name="q29" value="war"> war</label>
+<label><input type="radio" name="q29" value="hat"> hat</label>
+<button onclick="check('q29','war','r29')">Check</button>
+<div class="result" id="r29"></div>
+</div>
+
+<!-- 30 -->
+<div class="question">
+30) Ich brauche jemanden, ___ mir hilft.<br>
+<label><input type="radio" name="q30" value="der"> der</label>
+<label><input type="radio" name="q30" value="den"> den</label>
+<label><input type="radio" name="q30" value="dem"> dem</label>
+<button onclick="check('q30','der','r30')">Check</button>
+<div class="result" id="r30"></div>
+</div>
+<!-- 31 -->
+<div class="question">
+31) Ich habe keine Zeit, ___ ich viel arbeiten muss.<br>
+<label><input type="radio" name="q31" value="weil"> weil</label>
+<label><input type="radio" name="q31" value="dass"> dass</label>
+<label><input type="radio" name="q31" value="obwohl"> obwohl</label>
+<button onclick="check('q31','weil','r31')">Check</button>
+<div class="result" id="r31"></div>
+</div>
+
+<!-- 32 -->
+<div class="question">
+32) Er spricht so gut Deutsch, ___ er in Deutschland lebt.<br>
+<label><input type="radio" name="q32" value="weil"> weil</label>
+<label><input type="radio" name="q32" value="dass"> dass</label>
+<label><input type="radio" name="q32" value="obwohl"> obwohl</label>
+<button onclick="check('q32','weil','r32')">Check</button>
+<div class="result" id="r32"></div>
+</div>
+
+<!-- 33 -->
+<div class="question">
+33) Ich freue mich ___ den Urlaub.<br>
+<label><input type="radio" name="q33" value="auf"> auf</label>
+<label><input type="radio" name="q33" value="für"> für</label>
+<label><input type="radio" name="q33" value="an"> an</label>
+<button onclick="check('q33','auf','r33')">Check</button>
+<div class="result" id="r33"></div>
+</div>
+
+<!-- 34 -->
+<div class="question">
+34) Das Auto ___ repariert worden.<br>
+<label><input type="radio" name="q34" value="ist"> ist</label>
+<label><input type="radio" name="q34" value="wurde"> wurde</label>
+<label><input type="radio" name="q34" value="hat"> hat</label>
+<button onclick="check('q34','ist','r34')">Check</button>
+<div class="result" id="r34"></div>
+</div>
+
+<!-- 35 -->
+<div class="question">
+35) Ich lerne viel, ___ ich die Prüfung bestehe.<br>
+<label><input type="radio" name="q35" value="damit"> damit</label>
+<label><input type="radio" name="q35" value="weil"> weil</label>
+<label><input type="radio" name="q35" value="obwohl"> obwohl</label>
+<button onclick="check('q35','damit','r35')">Check</button>
+<div class="result" id="r35"></div>
+</div>
+
+<!-- 36 -->
+<div class="question">
+36) Die Frau, ___ ich geholfen habe, ist nett.<br>
+<label><input type="radio" name="q36" value="der"> der</label>
+<label><input type="radio" name="q36" value="die"> die</label>
+<label><input type="radio" name="q36" value="den"> den</label>
+<button onclick="check('q36','der','r36')">Check</button>
+<div class="result" id="r36"></div>
+</div>
+
+<!-- 37 -->
+<div class="question">
+37) Ich bin müde, ___ ich habe weitergearbeitet.<br>
+<label><input type="radio" name="q37" value="trotzdem"> trotzdem</label>
+<label><input type="radio" name="q37" value="weil"> weil</label>
+<label><input type="radio" name="q37" value="dass"> dass</label>
+<button onclick="check('q37','trotzdem','r37')">Check</button>
+<div class="result" id="r37"></div>
+</div>
+
+<!-- 38 -->
+<div class="question">
+38) Ich habe Angst ___ die Prüfung.<br>
+<label><input type="radio" name="q38" value="vor"> vor</label>
+<label><input type="radio" name="q38" value="für"> für</label>
+<label><input type="radio" name="q38" value="an"> an</label>
+<button onclick="check('q38','vor','r38')">Check</button>
+<div class="result" id="r38"></div>
+</div>
+
+<!-- 39 -->
+<div class="question">
+39) Wenn ich reich ___, würde ich ein Haus kaufen.<br>
+<label><input type="radio" name="q39" value="wäre"> wäre</label>
+<label><input type="radio" name="q39" value="bin"> bin</label>
+<label><input type="radio" name="q39" value="war"> war</label>
+<button onclick="check('q39','wäre','r39')">Check</button>
+<div class="result" id="r39"></div>
+</div>
+
+<!-- 40 -->
+<div class="question">
+40) Ich hoffe, ___ du bald kommst.<br>
+<label><input type="radio" name="q40" value="dass"> dass</label>
+<label><input type="radio" name="q40" value="weil"> weil</label>
+<label><input type="radio" name="q40" value="obwohl"> obwohl</label>
+<button onclick="check('q40','dass','r40')">Check</button>
+<div class="result" id="r40"></div>
+</div>
+
+<script>
+let score = 0;
+let total = 40;
+let done = {};
+
+function check(q, correct, resultId){
+
+    if(done[q]) return;
+
+    let val = document.querySelector('input[name="'+q+'"]:checked');
+    if(!val) return;
+
+    done[q] = true;
+
+    if(val.value === correct){
+        document.getElementById(resultId).innerHTML = "✅ Richtig!";
+        score++;
+    } else {
+        document.getElementById(resultId).innerHTML = "❌ Falsch";
+    }
+
+    document.getElementById("scoreText").innerText =
+        "Score: " + score + " / " + total;
+
+    document.getElementById("progress").style.width =
+        (score/total)*100 + "%";
+}
+</script>
+
+</body>
+</html>
