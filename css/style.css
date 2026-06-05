@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+
+  
+   background: linear-gradient(135deg, #0b0b12, #111827);
+    font-family: 'Montserrat', sans-serif;
+    background: #0a0a0f;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ================= HEADER ================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-box img {
+    width: 60px;
+    filter: drop-shadow(0 0 10px gold);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #fff, gold, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: gold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: gold;
+    transform: scale(1.05);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* ================= HERO SLIDER ================= */
+.hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: 1s ease;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) contrast(1.2);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* TEXT OVER SLIDER */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    transform: translateY(-50%);
+
+    background: rgba(0,0,0,0.5);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.hero-text p {
+    margin-top: 10px;
+    color: #ccc;
+}
+
+.hero-text a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: gold;
+    color: black;
+    font-weight: 800;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.hero-text a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px gold;
+}
+
+/* ================= CARDS ================= */
+.cards-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    padding: 100px 40px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.card h2 {
+    color: gold;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #bbb;
+    padding-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255,215,0,0.25);
+}
+
+/* ================= MOTIVATION ================= */
+.motivation {
+    position: relative;
+    margin-top: 60px;
+}
+
+.motivation img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+.motivation-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.motivation-text h1 {
+    font-size: 48px;
+    font-weight: 900;
+    text-shadow: 0 0 20px gold;
+}
+
+.motivation-text p {
+    margin-top: 10px;
+    color: #ddd;
+}
+
+/* ================= GRAMMATIK PAGE ================= */
+.grammatik-hero {
+    padding-top: 140px;
+    text-align: center;
+}
+
+.grammatik-hero h1 {
+    font-size: 45px;
+    font-weight: 900;
+    color: gold;
+    text-shadow: 0 0 20px rgba(255,215,0,0.3);
+}
+
+.grammatik-hero p {
+    margin-top: 10px;
+    color: #ccc;
+}
+
+/* LEVELS */
+
+.levels {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 80px 20px;
+}
+
+.level-box {
+    width: 140px;
+    height: 140px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 45px;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+
+    transition: 0.4s;
+}
+
+.level-box:hover {
+    transform: translateY(-10px) scale(1.1);
+    box-shadow: 0 0 25px gold;
+    color: gold;
+}
+
+/* ================= CTA ================= */
+.cta-section {
+    padding: 80px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.cta-box {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.cta-box h2 {
+    color: gold;
+    font-weight: 900;
+}
+
+.cta-box p {
+    margin: 10px 0;
+    color: #ccc;
+}
+
+.cta-box a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 25px;
+    background: gold;
+    color: black;
+    font-weight: 900;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+
+/* ================= FOOTER ================= */
+.footer {
+    padding: 60px 20px;
+    text-align: center;
+    background: #050507;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner h2 {
+    color: gold;
+    font-weight: 900;
+}
+
+.footer-nav {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: gold;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ================= LEARN SECTION ================= */
+
+.learn-section{
+    padding: 100px 30px;
+    text-align: center;
+}
+
+.learn-section h2{
+    font-size: 38px;
+    font-weight: 900;
+    color: gold;
+    margin-bottom: 50px;
+    text-shadow: 0 0 20px rgba(255,215,0,0.2);
+    animation: fadeUp 0.8s ease;
+}
+
+/* CARDS CONTAINER */
+.learn-cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.learn-card{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+
+    padding: 35px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ddd;
+
+    backdrop-filter: blur(12px);
+
+    position: relative;
+    overflow: hidden;
+
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+/* glow effect */
+.learn-card::before{
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+
+    background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 60%);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.learn-card:hover::before{
+    opacity: 1;
+}
+
+.learn-card:hover{
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 25px rgba(255,215,0,0.25);
+    color: gold;
+}
+
+/* optional small animation */
+.learn-card{
+    animation: pop 0.8s ease;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop{
+    from{
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* ================= .lesen-hero ================= */
+.lesen-hero{
+    height: 90vh;
+    background: url("../reading.jpg") center/cover no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lesen-overlay{
+    background: rgba(0,0,0,0.65);
+    padding: 50px;
+    text-align: center;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+}
+
+.lesen-hero h1{
+    font-size: 50px;
+    color: gold;
+    font-weight: 900;
+}
+
+.lesen-hero p{
+    color: #ccc;
+    margin-top: 10px;
+}
+
+.lesen-levels{
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.lesen-levels a{
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.lesen-levels a:hover{
+    background: gold;
+    color: black;
+    transform: scale(1.1);
+}
+/* lesen section2*/
+.how-it-works{
+    padding: 80px 30px;
+    text-align: center;
+}
+
+.how-it-works h2{
+    font-size: 35px;
+    color: gold;
+    margin-bottom: 40px;
+    font-weight: 900;
+}
+
+.steps{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.step{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.step:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(255,215,0,0.2);
+}
+
+.step h3{
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.step p{
+    color: #ccc;
+}
